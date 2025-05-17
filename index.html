@@ -82,6 +82,17 @@
       padding: 20px;
       text-align: center;
     }
+    #skills img.skill-icon {
+  width: 60px;
+  height: 60px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#skills img.skill-icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(109, 158, 255, 0.8);
+}
   </style>
 </head>
 
@@ -119,51 +130,51 @@
     </div>
   </section>
   
- <section id="skills" class="section text-center">
+<section id="skills" class="section text-center">
   <div class="container">
     <h2 class="mb-5">Skills</h2>
     <div class="row justify-content-center g-5">
       <!-- SQL -->
       <div class="col-6 col-sm-3">
         <a href="sql.html" target="_blank" title="View SQL Projects">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL Logo" width="60" height="60">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL Logo" class="skill-icon">
           <p class="mt-2">SQL</p>
         </a>
         <div class="progress" style="height: 8px;">
-          <div class="progress-bar" style="width: 85%; background-color: #6d9eff;" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" style="width: 85%; background-color: #6d9eff;" role="progressbar"></div>
         </div>
       </div>
 
       <!-- R -->
       <div class="col-6 col-sm-3">
         <a href="r.html" target="_blank" title="View R Projects">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R Logo" width="60" height="60">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R Logo" class="skill-icon">
           <p class="mt-2">R</p>
         </a>
         <div class="progress" style="height: 8px;">
-          <div class="progress-bar" style="width: 70%; background-color: #6d9eff;" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" style="width: 70%; background-color: #6d9eff;" role="progressbar"></div>
         </div>
       </div>
 
       <!-- Excel -->
       <div class="col-6 col-sm-3">
         <a href="excel.html" target="_blank" title="View Excel Work">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7f/Microsoft_Excel_2013_logo.svg" alt="Excel Logo" width="60" height="60">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/excel/excel-original.svg" alt="Excel Logo" class="skill-icon">
           <p class="mt-2">Excel</p>
         </a>
         <div class="progress" style="height: 8px;">
-          <div class="progress-bar" style="width: 90%; background-color: #6d9eff;" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" style="width: 90%; background-color: #6d9eff;" role="progressbar"></div>
         </div>
       </div>
 
       <!-- Tableau -->
       <div class="col-6 col-sm-3">
         <a href="tableau.html" target="_blank" title="View Tableau Dashboards">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Tableau_Logo.png" alt="Tableau Logo" width="60" height="60">
+          <img src="https://raw.githubusercontent.com/jake-m-portfolio/assets/main/tableau-white.png" alt="Tableau Logo" class="skill-icon">
           <p class="mt-2">Tableau</p>
         </a>
         <div class="progress" style="height: 8px;">
-          <div class="progress-bar" style="width: 95%; background-color: #6d9eff;" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+          <div class="progress-bar" style="width: 95%; background-color: #6d9eff;" role="progressbar"></div>
         </div>
       </div>
     </div>

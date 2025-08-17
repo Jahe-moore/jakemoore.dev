@@ -1,0 +1,12 @@
+{
+  "name": "focuslinked",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build:frontend": "vite build",
+    "build:backend": "esbuild server/index.ts --platform=node --bundle --format=esm --outdir=api",
+    "build": "npm run build:frontend",
+    "preview": "vite preview",
+    "deploy": "npm run build && git add docs && git commit -m 'Deploy to GitHub Pages' && git push"
+  }
+}

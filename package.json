@@ -1,0 +1,9 @@
+{
+  "name": "jakemoore-dev",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx http-server .",
+    "build": "rm -rf dist && mkdir dist && rsync -av --exclude '.git*' --exclude 'node_modules' --exclude 'dist' --exclude '.github' --exclude 'package.json' --exclude 'package-lock.json' --exclude 'README.md' . dist"
+  }
+}

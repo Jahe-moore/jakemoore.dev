@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jake Moore | MIS &amp; Business Analytics | Portfolio</title>
+  <meta name="description" content="Data engineering, analytics, and visualization work with clean, production-minded delivery." />
+  <meta name="theme-color" content="#020AF5" />
+
+  <meta property="og:title" content="Jake Moore | MIS &amp; Business Analytics | Portfolio" />
+  <meta property="og:description" content="Data engineering, analytics, and visualization work with clean, production-minded delivery." />
+  <meta property="og:image" content="/og-image.png" />
+  <meta property="og:url" content="https://your-domain" />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" />
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  <script async defer data-domain="your-domain" src="https://plausible.io/js/plausible.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fcfcfc;
+      color: #0f172a;
+    }
+    .nav-open {
+      display: block !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen">
+  <div class="h-[3px] w-full bg-[#020AF5]"></div>
+
+  <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
+    <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 lg:px-6 lg:py-5">
+      <a href="home.html" class="flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-slate-900">
+        <span class="text-[#020AF5]">datascienceportfol.io</span>
+        <span class="text-slate-400">/</span>
+        <span>Jake</span>
+      </a>
+      <div class="hidden items-center gap-6 text-sm font-medium text-slate-600 lg:flex">
+        <a href="#projects" class="transition hover:text-slate-900">Explore projects</a>
+        <a href="https://datascienceportfol.io" class="rounded-full bg-[#020AF5] px-4 py-2 text-white shadow-sm transition hover:bg-[#0A0FE6]">Portfolio builder</a>
+        <a href="index.html" class="transition hover:text-slate-900">Sign out</a>
+      </div>
+      <button id="menu-toggle" class="inline-flex items-center justify-center rounded-md border border-slate-200 p-2 text-slate-600 transition hover:border-[#020AF5] hover:text-[#020AF5] lg:hidden" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="sr-only">Toggle navigation</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden border-t border-slate-200 bg-white px-4 pb-4 pt-2 text-sm font-medium text-slate-600">
+      <a href="#projects" class="block rounded-lg px-3 py-2 transition hover:bg-slate-50 hover:text-slate-900">Explore projects</a>
+      <a href="https://datascienceportfol.io" class="mt-2 block rounded-lg bg-[#020AF5] px-3 py-2 text-center text-white transition hover:bg-[#0A0FE6]">Portfolio builder</a>
+      <a href="index.html" class="mt-2 block rounded-lg px-3 py-2 transition hover:bg-slate-50 hover:text-slate-900">Sign out</a>
+    </div>
+  </header>
+
+  <main class="mx-auto flex w-full max-w-6xl flex-col gap-12 px-4 pb-24 pt-12 lg:flex-row lg:gap-16 lg:px-6">
+    <aside class="lg:w-1/3">
+      <div class="top-32 space-y-8 rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-[0_20px_60px_-40px_rgba(2,10,245,0.45)] backdrop-blur lg:sticky">
+        <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
+          <img src="headshot.png" alt="Portrait of Jake Moore" class="h-28 w-28 rounded-full border-2 border-[#020AF5] object-cover" loading="lazy" />
+          <h1 class="mt-6 text-3xl font-semibold text-slate-900">Jake Moore</h1>
+          <p class="mt-2 text-sm font-medium uppercase tracking-[0.22em] text-[#020AF5]">Data &amp; Systems</p>
+          <p class="mt-2 text-base text-slate-600">MIS + Business Analytics</p>
+          <p class="mt-2 inline-flex items-center gap-2 text-sm text-slate-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#020AF5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-6-4.35-6-10a6 6 0 1112 0c0 5.65-6 10-6 10z" />
+              <circle cx="12" cy="11" r="2.5" />
+            </svg>
+            Tucson, AZ
+          </p>
+        </div>
+        <p class="text-sm leading-snug text-slate-600">Student &amp; BI engineer-in-progress. I ship clean pipelines, honest visuals, and ROI-focused insights.</p>
+
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Social</h2>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a href="https://linkedin.com/in/..." class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:border-[#020AF5] hover:text-[#020AF5]" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 015 0 2.5 2.5 0 11-5 0zm.02 4.75h4.96v12H5V8.25zM13 8.25h4.75v1.73h.07c.66-1.25 2.27-2.57 4.68-2.57 5 0 5.93 3.29 5.93 7.57v8.27h-4.96v-7.33c0-1.75-.03-4-2.44-4-2.44 0-2.81 1.9-2.81 3.86v7.47H13v-12z"/></svg>
+            </a>
+            <a href="https://github.com/..." class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:border-[#020AF5] hover:text-[#020AF5]" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2a10 10 0 00-3.16 19.48c.5.09.68-.22.68-.48v-1.7c-2.77.6-3.36-1.34-3.36-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.63.07-.62.07-.62 1 .07 1.52 1.06 1.52 1.06.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.95 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.53 9.53 0 0112 6.8c.85.004 1.71.115 2.5.337 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.21 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.76c0 .26.18.57.69.47A10 10 0 0012 2z" clip-rule="evenodd"/></svg>
+            </a>
+            <a href="https://kaggle.com/..." class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:border-[#020AF5] hover:text-[#020AF5]" aria-label="Kaggle">
+              <span class="text-lg font-semibold">K</span>
+            </a>
+            <a href="https://medium.com/@..." class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:border-[#020AF5] hover:text-[#020AF5]" aria-label="Medium">
+              <span class="text-lg font-semibold">M</span>
+            </a>
+            <a href="mailto:..." class="group inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white transition hover:border-[#020AF5] hover:text-[#020AF5]" aria-label="Email Jake Moore">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-.977 1.856l-7.5 5.25a2.25 2.25 0 01-2.546 0l-7.5-5.25a2.25 2.25 0 01-.977-1.856V6.75"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">About</h2>
+          <p class="mt-3 text-sm leading-snug text-slate-600">I build production-ready analytics that move the business: clean ETL, opinionated dashboards, and exec-ready narratives backed by metrics.</p>
+        </div>
+
+        <div>
+          <h2 class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Skills</h2>
+          <div id="skills" class="mt-3 flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="flex-1 space-y-14">
+      <header>
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Projects</p>
+        <h2 class="mt-3 text-3xl font-semibold text-slate-900">Production analytics built for impact</h2>
+      </header>
+      <div id="projects" class="grid gap-6 sm:grid-cols-2"></div>
+
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Now shipping</p>
+            <h3 class="mt-2 text-2xl font-semibold text-slate-900">Live iterations worth watching</h3>
+          </div>
+        </div>
+        <div id="now-shipping" class="grid gap-4 sm:grid-cols-2"></div>
+      </section>
+
+      <section class="space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Tech stack</p>
+        <div id="tech-stack" class="flex flex-wrap items-center gap-4"></div>
+      </section>
+
+      <section class="space-y-6">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Experience</p>
+          <div id="experience" class="space-y-4 text-sm text-slate-600"></div>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Education</p>
+          <div id="education" class="space-y-4 text-sm text-slate-600"></div>
+        </div>
+      </section>
+
+      <section class="space-y-4">
+        <p class="text-xs font-semibold uppercase tracking-[0.22em] text-slate-400">Talks &amp; posts</p>
+        <div id="posts" class="grid gap-4 lg:grid-cols-2"></div>
+      </section>
+    </section>
+  </main>
+
+  <button class="fixed bottom-6 right-6 rounded-full bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-[#020AF5] shadow-lg ring-1 ring-slate-200 transition hover:bg-[#020AF5] hover:text-white" type="button">
+    Built with datascienceportfol.io
+  </button>
+
+  <div id="loader-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/70 p-6" role="dialog" aria-modal="true" aria-labelledby="loader-title">
+    <div class="w-full max-w-sm rounded-2xl bg-white p-6 text-center shadow-xl">
+      <svg class="mx-auto h-10 w-10 animate-spin text-[#020AF5]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+      </svg>
+      <p id="loader-title" class="mt-4 text-lg font-semibold text-slate-900">Analyzing portfolio data</p>
+      <p class="mt-1 text-sm text-slate-500">Pulling fresh metrics—hang tight.</p>
+    </div>
+  </div>
+
+  <script id="portfolio-data" type="application/json">
+  {
+    "site": {
+      "brand_name": "Jake Moore",
+      "brand_color": "#020AF5",
+      "bg_color": "#fcfcfc",
+      "font": "Inter",
+      "og": {
+        "title": "Jake Moore | MIS & Business Analytics | Portfolio",
+        "description": "Data engineering, analytics, and visualization work with clean, production-minded delivery.",
+        "image": "/og-image.png",
+        "url": "https://your-domain"
+      },
+      "analytics": {
+        "gtag_id": "G-XXXXXXX",
+        "plausible_domain": "your-domain"
+      }
+    },
+    "profile": {
+      "name": "Jake Moore",
+      "tagline": "Data & Systems | MIS + Business Analytics",
+      "location": "Tucson, AZ",
+      "avatar": "/headshot.png",
+      "about": "Student & BI engineer-in-progress. I ship clean pipelines, honest visuals, and ROI-focused insights.",
+      "social": [
+        {"type": "linkedin", "url": "https://linkedin.com/in/..."},
+        {"type": "github", "url": "https://github.com/..."},
+        {"type": "kaggle", "url": "https://kaggle.com/..."},
+        {"type": "medium", "url": "https://medium.com/@..."},
+        {"type": "email", "url": "mailto:..."}
+      ],
+      "skills": [
+        "Python","R","SQL","Tableau","Pandas","ggplot2",
+        "ETL","Dashboards","A/B Testing","Stat Inference","APIs","Home Assistant"
+      ]
+    },
+    "projects": [
+      {
+        "title": "ServiceNow Ops Dashboards (UArizona)",
+        "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Python","SQL","Tableau","ETL","Ops Analytics"],
+        "summary": "Automated incident and SLA dashboards cut manual prep 5 hrs/week and lifted on-time resolution to 92% (+18%).",
+        "href": "/projects/servicenow",
+        "cta": "Open case study"
+      },
+      {
+        "title": "Retail Revenue Trends – Lowess Smoothing",
+        "image": "https://images.unsplash.com/photo-1532074205216-d0e1f4b87368?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Python","statsmodels","plotnine","Time Series"],
+        "summary": "Rebuilt revenue reporting with Lowess smoothing—flagged 3% margin dip early and redirected $1.2M promo spend.",
+        "href": "/projects/revenue-lowess",
+        "cta": "See code + metrics"
+      },
+      {
+        "title": "Logistics Pick-Pack Optimizer",
+        "image": "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["Python","OR-Tools","Dash","Simulation"],
+        "summary": "Modeled pick-pack constraints, shrinking fulfillment cycle time 27% and saving 1.4 FTE in seasonal staffing.",
+        "href": "#",
+        "cta": "View optimization run"
+      },
+      {
+        "title": "Support Queue Triage GPT",
+        "image": "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80",
+        "tags": ["OpenAI","LangChain","Vector DB","Ops"],
+        "summary": "Fine-tuned triage assistant routes 1K+ tickets/day with 87% accuracy and <2 min queue-to-resolution handoff.",
+        "href": "#",
+        "cta": "Review deployment"
+      }
+    ],
+    "now_shipping": [
+      {
+        "title": "IoT Energy Panel",
+        "detail": "Home Assistant sensors streaming hourly usage; building anomaly alerts for demand spikes < 10 minutes latency.",
+        "eta": "Beta in July"
+      },
+      {
+        "title": "KPI Story Toolkit",
+        "detail": "Reusable dbt + Tableau starter kit to launch CFO-grade scorecards in under 2 sprints.",
+        "eta": "Open-sourcing soon"
+      }
+    ],
+    "tech_stack": [
+      {"name": "Python", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"},
+      {"name": "R", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg"},
+      {"name": "SQL", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg"},
+      {"name": "Tableau", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tableau/tableau-original.svg"},
+      {"name": "Home Assistant", "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/homeassistant/homeassistant-plain.svg"}
+    ],
+    "experience": [
+      {
+        "role": "Technical Consultant",
+        "company": "University of Arizona",
+        "period": "2023 — Present",
+        "summary": "Advising ITSM automation with ServiceNow data products covering 14 departments; -27% MTTR to date."
+      }
+    ],
+    "education": [
+      {
+        "program": "B.S. Management Information Systems",
+        "school": "University of Arizona",
+        "period": "2021 — Present",
+        "summary": "Business Analytics concentration; Dean's List 5x, Applied Analytics Lab fellow."
+      }
+    ],
+    "posts": [
+      {
+        "title": "Designing dashboards that execs actually read",
+        "href": "https://medium.com/@...",
+        "summary": "Tactical checklist I use to keep Tableau stories crisp—zero chart junk, max signal.",
+        "published": "Medium"
+      },
+      {
+        "title": "Open-sourcing a ServiceNow ETL starter",
+        "href": "https://github.com/...",
+        "summary": "dbt seeds + notebooks to bootstrap incident analytics pipelines in hours, not weeks.",
+        "published": "GitHub"
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    const dataEl = document.getElementById('portfolio-data');
+    const portfolio = JSON.parse(dataEl.textContent);
+
+    const skillsContainer = document.getElementById('skills');
+    portfolio.profile.skills.forEach(skill => {
+      const chip = document.createElement('span');
+      chip.className = 'rounded-full border border-[#020AF5]/20 bg-[#020AF5]/10 px-2.5 py-1 text-xs font-medium text-[#020AF5]';
+      chip.textContent = skill;
+      skillsContainer.appendChild(chip);
+    });
+
+    const projectsContainer = document.getElementById('projects');
+    portfolio.projects.forEach(project => {
+      const card = document.createElement('article');
+      card.className = 'group flex h-full flex-col rounded-2xl border border-slate-200 bg-white shadow-gray-100 transition hover:-translate-y-1 hover:shadow-lg';
+
+      const image = document.createElement('img');
+      image.src = project.image;
+      image.alt = project.title;
+      image.loading = 'lazy';
+      image.className = 'h-40 w-full rounded-t-2xl object-cover';
+      card.appendChild(image);
+
+      const body = document.createElement('div');
+      body.className = 'flex flex-1 flex-col gap-3 px-5 pb-5 pt-4';
+
+      const title = document.createElement('h3');
+      title.className = 'text-lg font-semibold text-slate-900';
+      title.textContent = project.title;
+      body.appendChild(title);
+
+      const tagsWrap = document.createElement('div');
+      tagsWrap.className = 'flex flex-wrap gap-2';
+      project.tags.forEach(tag => {
+        const badge = document.createElement('span');
+        badge.className = 'rounded-full border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-600';
+        badge.textContent = tag;
+        tagsWrap.appendChild(badge);
+      });
+      body.appendChild(tagsWrap);
+
+      const summary = document.createElement('p');
+      summary.className = 'text-sm leading-snug text-slate-600';
+      summary.textContent = project.summary;
+      body.appendChild(summary);
+
+      const cta = document.createElement('a');
+      cta.href = project.href;
+      cta.className = 'mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#020AF5] transition group-hover:gap-3';
+      cta.textContent = project.cta;
+      const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      arrow.setAttribute('class', 'h-4 w-4');
+      arrow.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      arrow.setAttribute('fill', 'none');
+      arrow.setAttribute('viewBox', '0 0 24 24');
+      arrow.setAttribute('stroke', 'currentColor');
+      arrow.setAttribute('stroke-width', '1.5');
+      arrow.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3" />';
+      cta.appendChild(arrow);
+      body.appendChild(cta);
+
+      card.appendChild(body);
+      projectsContainer.appendChild(card);
+    });
+
+    const nowShippingContainer = document.getElementById('now-shipping');
+    portfolio.now_shipping.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'rounded-2xl border border-dashed border-[#020AF5]/40 bg-white/60 p-5 shadow-sm';
+      const title = document.createElement('h4');
+      title.className = 'text-base font-semibold text-slate-900';
+      title.textContent = item.title;
+      const detail = document.createElement('p');
+      detail.className = 'mt-2 text-sm leading-snug text-slate-600';
+      detail.textContent = item.detail;
+      const eta = document.createElement('p');
+      eta.className = 'mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-[#020AF5]';
+      eta.textContent = item.eta;
+      card.append(title, detail, eta);
+      nowShippingContainer.appendChild(card);
+    });
+
+    const techStackContainer = document.getElementById('tech-stack');
+    portfolio.tech_stack.forEach(tool => {
+      const pill = document.createElement('div');
+      pill.className = 'flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3 py-2 shadow-sm';
+      const icon = document.createElement('img');
+      icon.src = tool.icon;
+      icon.alt = tool.name;
+      icon.loading = 'lazy';
+      icon.className = 'h-6 w-6';
+      const label = document.createElement('span');
+      label.className = 'text-sm font-medium text-slate-700';
+      label.textContent = tool.name;
+      pill.append(icon, label);
+      techStackContainer.appendChild(pill);
+    });
+
+    const experienceContainer = document.getElementById('experience');
+    portfolio.experience.forEach(exp => {
+      const item = document.createElement('div');
+      item.className = 'rounded-2xl border border-slate-200 bg-white/70 p-5 shadow-sm';
+      item.innerHTML = `
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h4 class="text-base font-semibold text-slate-900">${exp.role}</h4>
+          <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[#020AF5]">${exp.period}</span>
+        </div>
+        <p class="mt-1 text-sm font-medium text-slate-500">${exp.company}</p>
+        <p class="mt-2 text-sm leading-snug text-slate-600">${exp.summary}</p>
+      `;
+      experienceContainer.appendChild(item);
+    });
+
+    const educationContainer = document.getElementById('education');
+    portfolio.education.forEach(school => {
+      const item = document.createElement('div');
+      item.className = 'rounded-2xl border border-slate-200 bg-white/70 p-5 shadow-sm';
+      item.innerHTML = `
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h4 class="text-base font-semibold text-slate-900">${school.program}</h4>
+          <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[#020AF5]">${school.period}</span>
+        </div>
+        <p class="mt-1 text-sm font-medium text-slate-500">${school.school}</p>
+        <p class="mt-2 text-sm leading-snug text-slate-600">${school.summary}</p>
+      `;
+      educationContainer.appendChild(item);
+    });
+
+    const postsContainer = document.getElementById('posts');
+    portfolio.posts.forEach(post => {
+      const link = document.createElement('a');
+      link.href = post.href;
+      link.className = 'rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:shadow-lg';
+      link.innerHTML = `
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold uppercase tracking-[0.18em] text-[#020AF5]">${post.published}</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#020AF5]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3" /></svg>
+        </div>
+        <h4 class="mt-3 text-lg font-semibold text-slate-900">${post.title}</h4>
+        <p class="mt-2 text-sm leading-snug text-slate-600">${post.summary}</p>
+      `;
+      postsContainer.appendChild(link);
+    });
+  </script>
+</body>
+</html>

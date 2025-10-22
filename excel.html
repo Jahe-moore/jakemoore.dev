@@ -27,6 +27,7 @@
               <li><a class="dropdown-item" href="tableau.html" target="_blank">Tableau Dashboards</a></li>
             </ul>
           </li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="excel.html">Analytics Library</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           <li class="nav-item">
             <a class="nav-link btn btn-resume px-3 py-1 ms-3" href="Jake Moore Resume.pdf" target="_blank">Resume</a>
@@ -36,27 +37,318 @@
     </div>
   </nav>
 
-  <section class="section">
+  <section class="section excel-hero text-center">
     <div class="container">
-      <h1 class="text-center mb-4">Excel Work</h1>
-      <div class="row g-4">
-        <!-- Example project card structure for future use -->
-        <!--
-        <div class="col-md-4">
-          <div class="card p-3 h-100">
-            <img class="viz-preview" src="path/to/preview.png" alt="Project preview">
-            <h5>Project Title</h5>
-            <p>Short project description.</p>
-            <a href="#" target="_blank">View Project →</a>
-          </div>
-        </div>
-        -->
-        <div class="col-12">
-          <p class="text-center text-muted">Projects will be added soon.</p>
-        </div>
+      <span class="excel-kicker">Excel &amp; Analytics</span>
+      <h1 class="display-5 fw-bold mb-3">Analytics Library</h1>
+      <p class="lead text-muted mx-auto mb-4 max-w-720">
+        Deep-dive deliverables from coursework and consulting, complete with statistical rigor, actionable recommendations, and
+        ready-to-share PDFs. Preview each deck instantly or download a copy to explore the full story.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a class="btn btn-resume px-4 py-2" href="Jake%20Moore%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
+        <a class="btn btn-outline-light px-4 py-2 doc-card__btn" href="#library">Jump to Library ↓</a>
       </div>
     </div>
   </section>
+
+  <section id="library" class="section section-glass">
+    <div class="container">
+      <div class="d-flex flex-column flex-lg-row align-items-lg-center justify-content-between gap-3 mb-5">
+        <div>
+          <h2 class="mb-2">Project Decks &amp; Reports</h2>
+          <p class="text-muted mb-0">Each PDF opens in a polished modal preview with a download option for deeper review.</p>
+        </div>
+        <div class="d-flex flex-wrap gap-2">
+          <span class="chip">Hypothesis Testing</span>
+          <span class="chip">Regression</span>
+          <span class="chip">Dashboarding</span>
+          <span class="chip">Business Strategy</span>
+        </div>
+      </div>
+
+      <div class="row g-4">
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">📊</div>
+            <span class="doc-card__category">Wine Analytics</span>
+            <h3 class="doc-card__title">Gallo Winery — Preliminary Wine Analysis</h3>
+            <p class="doc-card__summary">
+              Explored 13,050 global wine records to map how type and geography influence price and quality. Sparkling wines led
+              on both metrics while Rosé lagged; t-tests confirmed statistically significant differences across regions and
+              informed sourcing strategy.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> Descriptive analytics, two-sample t-tests</li>
+              <li><strong>Tools:</strong> Tableau storytelling, Python/R/SQL stack</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewCase1">Preview</button>
+              <a class="btn btn-resume" href="BNAN276_Case1.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">📈</div>
+            <span class="doc-card__category">Pricing Strategy</span>
+            <h3 class="doc-card__title">Gallo Winery — Wine Pricing Model &amp; Tableau Dashboard</h3>
+            <p class="doc-card__summary">
+              Built correlation, single, and multiple regression models connecting price with rating, vintage, and rating counts.
+              Identified sparkling wines as premium outliers and delivered a Tableau dashboard plus data roadmap for more robust
+              pricing decisions.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> Correlation, regression diagnostics</li>
+              <li><strong>Tools:</strong> Tableau filters, Python/R/SQL</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewCase2">Preview</button>
+              <a class="btn btn-resume" href="BNAN276_Case2.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">💳</div>
+            <span class="doc-card__category">Customer Analytics</span>
+            <h3 class="doc-card__title">Credit Card Behavior — Taiwan (≈25k customers)</h3>
+            <p class="doc-card__summary">
+              Tested gender-based billing differences and seasonal payment shifts. Men carried ~$125 higher balances and
+              September payments surpassed April by ~$15, shaping acquisition and retention tactics for marketing and finance.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> Two-sample &amp; paired t-tests</li>
+              <li><strong>Tools:</strong> Confidence intervals, experiment-to-action translation</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion2">Preview</button>
+              <a class="btn btn-resume" href="Moore_Jake_Discussion2.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">👠</div>
+            <span class="doc-card__category">Retail Pricing</span>
+            <h3 class="doc-card__title">Walmart vs. Amazon/Macy’s/Overstock — Women’s Shoes</h3>
+            <p class="doc-card__summary">
+              Analyzed 26k SKUs to measure Walmart’s pricing delta. ANOVA and Fisher intervals confirmed Walmart’s consistent
+              undercut across major competitors, inspiring recommendations for precision price lifts and bold price-match
+              messaging.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> ANOVA, pairwise confidence intervals</li>
+              <li><strong>Tools:</strong> Large-scale data cleaning &amp; merchant segmentation</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion3">Preview</button>
+              <a class="btn btn-resume" href="Moore_Jake_Discussion3.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">🏦</div>
+            <span class="doc-card__category">Financial Modeling</span>
+            <h3 class="doc-card__title">EPS Drivers — NYSE (1,501 companies)</h3>
+            <p class="doc-card__summary">
+              Modeled EPS via EBT, operating margin, and pre-tax margin. Highlighted EBT as the strongest lever, flagged
+              negative margin relationships, and framed the model as directional guidance with future data-expansion plans.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> Multiple regression, significance testing</li>
+              <li><strong>Tools:</strong> Model diagnostics, financial storytelling</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion4">Preview</button>
+              <a class="btn btn-resume" href="Moore_Jake_Discussion4.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">📬</div>
+            <span class="doc-card__category">Lending Strategy</span>
+            <h3 class="doc-card__title">Debt Predictors — SoFi (≈2,000 clients)</h3>
+            <p class="doc-card__summary">
+              Built a debt prediction model using demographics and financial behavior. Identified key predictors, surfaced
+              multicollinearity watch-outs, and provided actionable targeting for consolidation outreach teams.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Skills:</strong> Multiple regression, diagnostics</li>
+              <li><strong>Tools:</strong> Residual analysis, predictive screening</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion5">Preview</button>
+              <a class="btn btn-resume" href="Moore_Jake_Discussion5.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="col-md-6 col-xl-4">
+          <article class="doc-card h-100">
+            <div class="doc-card__icon" aria-hidden="true">🧭</div>
+            <span class="doc-card__category">Résumé Snapshot</span>
+            <h3 class="doc-card__title">Jake Moore — Professional Résumé</h3>
+            <p class="doc-card__summary">
+              One-page overview connecting analytics coursework to client-facing wins. Features technical toolkit mastery, campus
+              leadership, and quantified consulting outcomes ready for recruiter review.
+            </p>
+            <ul class="doc-card__meta">
+              <li><strong>Highlights:</strong> SQL · Python · Tableau · Excel</li>
+              <li><strong>Bonus:</strong> Certifications &amp; quantified achievements</li>
+            </ul>
+            <div class="doc-card__actions">
+              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewResume">Preview</button>
+              <a class="btn btn-resume" href="Jake%20Moore%20Resume.pdf" target="_blank" rel="noopener">Download PDF</a>
+            </div>
+          </article>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Modals -->
+  <div class="modal fade" id="previewCase1" tabindex="-1" aria-labelledby="previewCase1Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewCase1Label">Preview — Gallo Winery Preliminary Wine Analysis</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="BNAN276_Case1.pdf#toolbar=0" title="Gallo Winery Preliminary Wine Analysis" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="BNAN276_Case1.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewCase2" tabindex="-1" aria-labelledby="previewCase2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewCase2Label">Preview — Gallo Winery Wine Pricing Model &amp; Dashboard</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="BNAN276_Case2.pdf#toolbar=0" title="Gallo Winery Wine Pricing Model" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="BNAN276_Case2.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewDiscussion2" tabindex="-1" aria-labelledby="previewDiscussion2Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewDiscussion2Label">Preview — Credit Card Behavior (Taiwan)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="Moore_Jake_Discussion2.pdf#toolbar=0" title="Credit Card Behavior Taiwan" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="Moore_Jake_Discussion2.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewDiscussion3" tabindex="-1" aria-labelledby="previewDiscussion3Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewDiscussion3Label">Preview — Women’s Shoes Price Gap</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="Moore_Jake_Discussion3.pdf#toolbar=0" title="Women’s Shoes Price Gap" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="Moore_Jake_Discussion3.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewDiscussion4" tabindex="-1" aria-labelledby="previewDiscussion4Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewDiscussion4Label">Preview — EPS Drivers (NYSE)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="Moore_Jake_Discussion4.pdf#toolbar=0" title="EPS Drivers NYSE" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="Moore_Jake_Discussion4.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewDiscussion5" tabindex="-1" aria-labelledby="previewDiscussion5Label" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewDiscussion5Label">Preview — Debt Predictors (SoFi)</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="Moore_Jake_Discussion5.pdf#toolbar=0" title="Debt Predictors SoFi" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="Moore_Jake_Discussion5.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="previewResume" tabindex="-1" aria-labelledby="previewResumeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewResumeLabel">Preview — Jake Moore Résumé</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="Jake%20Moore%20Resume.pdf#toolbar=0" title="Jake Moore Résumé" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="Jake%20Moore%20Resume.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer>
     <small>© 2025 Jake Moore • Hosted on GitHub Pages</small>

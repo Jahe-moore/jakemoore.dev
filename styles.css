@@ -11,7 +11,7 @@
     }
     .section {
       /* Reduce section vertical padding for closer spacing */
-      padding-block: clamp(3rem, 8vw, 4.75rem);
+      padding-block: clamp(2.25rem, 6vw, 3.5rem);
       padding-inline: 15px;
     }
     .btn-resume {
@@ -91,7 +91,7 @@
   padding-block: clamp(2.75rem, 7vw, 3.75rem);
   padding-inline: 30px;
   /* Ease vertical gap between hero and following section */
-  margin-block: clamp(2.25rem, 7vw, 3.5rem);
+  margin-block: 0;
   margin-inline: 20px;
   font-weight: 700;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.08);
@@ -777,3 +777,31 @@
     width: 100%;
   }
 }
+/* Tighten vertical rhythm */
+section { padding-block: clamp(0.75rem, 1.6vw, 1.25rem); }
+.section-title, h2.section-title, h2.section-heading { margin-block-end: .35rem; }
+
+/* Hero less air below */
+.section-hero { padding-block-end: clamp(.25rem, 1vw, .75rem); }
+
+/* Skills: minimal padding; tiny title gap */
+#skills { margin-block-start: 0; padding-block: clamp(.25rem, 1vw, .5rem); }
+#skills .section-title, #skills h2 { margin-block-end: .25rem; }
+
+/* Snapshot: nearly touching Skills */
+#snapshot { margin-block-start: 0; padding-block-start: .25rem; }
+
+/* Cards/grids tighter */
+.grid, .cards, .card-grid { row-gap: clamp(.5rem, 1.2vw, .9rem); }
+.card { padding: clamp(.75rem, 1.4vw, 1.1rem); }
+
+/* Kill spacers under resume button */
+#snapshot .spacer, #snapshot .mt-8.h-32, #snapshot .empty, #snapshot .blank {
+  display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important;
+}
+
+/* Hide duplicate connect row + cards */
+#lets-connect, .card--direct-lines, .card--profiles { display: none !important; }
+
+/* Reduce gap between any two consecutive sections */
+.section + .section { margin-block-start: clamp(.5rem, 1.2vw, .9rem); }

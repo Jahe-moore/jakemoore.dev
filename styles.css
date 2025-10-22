@@ -805,3 +805,56 @@ section { padding-block: clamp(0.75rem, 1.6vw, 1.25rem); }
 
 /* Reduce gap between any two consecutive sections */
 .section + .section { margin-block-start: clamp(.5rem, 1.2vw, .9rem); }
+
+/* ── Tableau dashboard layout fixes ───────────────────────── */
+.container { max-width: 1320px; } /* keep page comfy-wide */
+
+.viz-toggle .btn { padding: 0.25rem .75rem; }
+
+/* Responsive grid */
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* 2 cols large tablets */
+@media (max-width: 1200px) {
+  .viz-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+}
+
+/* 1 col on mobile */
+@media (max-width: 768px) {
+  .viz-grid { grid-template-columns: 1fr; }
+}
+
+.viz-card {
+  background: #141428;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
+  padding: 10px;
+  overflow: hidden;
+}
+
+/* Make embeds BIG by default */
+.viz-card iframe,
+.viz-card object,
+.viz-card .tableauPlaceholder,
+.viz-card .tableauViz {
+  width: 100% !important;
+  height: clamp(480px, 70vh, 900px) !important;
+  display: block;
+  border: 0;
+}
+
+/* Focus mode: one per row, taller height */
+.viz-grid.focus-mode {
+  grid-template-columns: 1fr;
+}
+
+.viz-grid.focus-mode .viz-card iframe,
+.viz-grid.focus-mode .viz-card object,
+.viz-grid.focus-mode .viz-card .tableauPlaceholder,
+.viz-grid.focus-mode .viz-card .tableauViz {
+  height: min(85vh, 1000px) !important;
+}

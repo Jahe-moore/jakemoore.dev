@@ -160,6 +160,39 @@
       font-size: 1.3rem;
     }
 
+.hero-meta {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-meta a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+}
+
+.hero-meta a:hover {
+  color: #6d9eff;
+  border-bottom-color: #6d9eff;
+}
+
+.hero-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.hero-links .btn-resume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.65rem 1.5rem;
+}
+
 .contact-icons {
   display: flex;
   gap: 1rem;

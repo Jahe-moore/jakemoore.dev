@@ -29,6 +29,9 @@
     .card span {
       color: #ffffff;
     }
+    .text-muted {
+      color: #ffffff !important;
+    }
     .viz-preview {
       width: 100%;
       height: 200px;
@@ -183,31 +186,50 @@
   background: rgba(109, 158, 255, 0.25);
 }
 
-.explore-grid {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.explore-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
-.explore-tile {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.85rem 1rem;
-  text-align: center;
-  border-radius: 14px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.06);
+.explore-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: #ffffff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.explore-tile:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 14px rgba(109, 158, 255, 0.6);
-  border-color: rgba(109, 158, 255, 0.6);
+.explore-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 1rem 1.15rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.explore-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(109, 158, 255, 0.55);
+  border-color: rgba(109, 158, 255, 0.65);
+  background: rgba(109, 158, 255, 0.18);
+}
+
+.explore-button__title {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #ffffff;
+}
+
+.explore-button__detail {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  word-break: break-word;
 }
 
 .portfolio-hero {

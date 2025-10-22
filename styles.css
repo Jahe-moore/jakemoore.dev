@@ -390,7 +390,19 @@
   padding: 10px 0 0;
 }
 
+.contact-project-links .skill-icon {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  display: block;
+}
+
 @media (max-width: 575.98px) {
+  .contact-project-links .skill-icon {
+    width: 56px;
+    height: 56px;
+  }
+
   .contact-wrapper {
     margin-top: 96px;
   }

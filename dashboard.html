@@ -22,11 +22,22 @@
       flex: 1;
       padding: 80px 15px;
     }
-    iframe {
-      border: none;
+    .viz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .viz-grid .ratio {
+      background-color: #141429;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    }
+    .viz-grid iframe {
+      border: 0;
+      border-radius: 0;
       width: 100%;
-      height: 80vh;
-      border-radius: 8px;
+      height: 100%;
     }
     footer {
       background-color: #12122b;
@@ -54,10 +65,39 @@
     </div>
   </nav>
 
-  <div class="dashboard-container container text-center">
-    <h1 class="mb-4">Tableau Dashboard</h1>
-    <p class="mb-4">Explore one of my published Tableau visualizations directly below.</p>
-    <div class='tableauPlaceholder' id='viz1747523364402' style='position: relative'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sc&#47;ScatterplotofCellphoneSizebyHandSize_17470929941800&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='ScatterplotofCellphoneSizebyHandSize_17470929941800&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Sc&#47;ScatterplotofCellphoneSizebyHandSize_17470929941800&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1747523364402');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='1000px';vizElement.style.height='827px';} else { vizElement.style.width='100%';vizElement.style.height='727px';}var scriptElement = document.createElement('script');scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+  <div class="dashboard-container container">
+    <h1 class="mb-4 text-center">Tableau Dashboards</h1>
+    <p class="mb-4 text-center">Explore one of my published Tableau visualizations directly below.</p>
+    <div class="viz-grid">
+      <div class="ratio ratio-4x3">
+        <iframe
+          src="https://public.tableau.com/views/AnalysisofTaiwaneseCreditCardData_17592054241290/Septembervs_AprilPayments?:showVizHome=no&amp;:embed=true"
+          title="September vs. April Credit Card Payments"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="ratio ratio-4x3">
+        <iframe
+          src="https://public.tableau.com/views/ScatterplotofCellphoneSizebyHandSize_17470929941800/Dashboard1?:showVizHome=no&amp;:embed=true"
+          title="Scatterplot of Cellphone Size by Hand Size"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="ratio ratio-4x3">
+        <iframe
+          src="https://public.tableau.com/views/WineTypesRatingsandPrices_17464976044650/Dashboard1?:showVizHome=no&amp;:embed=true"
+          title="Wine Types, Ratings, and Prices"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="ratio ratio-4x3">
+        <iframe
+          src="https://public.tableau.com/views/BNAN276-Case1_17431125210280/AverageRatingbyCountry?:showVizHome=no&amp;:embed=true"
+          title="Average Wine Rating by Country"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
   </div>
 
   <footer>

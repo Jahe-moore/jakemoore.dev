@@ -21,8 +21,13 @@
       background-color: #1b1b33;
       border: none;
     }
-    .card h5, .card p, .card a {
-      color: #e0e0ff;
+    .card h3,
+    .card h5,
+    .card p,
+    .card a,
+    .card li,
+    .card span {
+      color: #ffffff;
     }
     .viz-preview {
       width: 100%;
@@ -148,9 +153,62 @@
   transform: scale(1.02);
 }
 .tagline {
-      color: #e0e0ff;
+      color: #ffffff;
       font-size: 1.3rem;
     }
+
+.contact-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.contact-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.contact-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 12px rgba(109, 158, 255, 0.8);
+  background: rgba(109, 158, 255, 0.25);
+}
+
+.explore-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.explore-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  text-align: center;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.explore-tile:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 14px rgba(109, 158, 255, 0.6);
+  border-color: rgba(109, 158, 255, 0.6);
+}
 
 .portfolio-hero {
   position: relative;

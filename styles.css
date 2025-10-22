@@ -10,7 +10,9 @@
       background-color: #12122b;
     }
     .section {
-      padding: 80px 15px;
+      /* Reduce section vertical padding for closer spacing */
+      padding-block: clamp(3rem, 8vw, 4.75rem);
+      padding-inline: 15px;
     }
     .btn-resume {
       background-color: #6d9eff;
@@ -49,7 +51,9 @@
     }
     .about-gradient {
       position: relative;
-      padding: 100px 15px;
+      /* Tighten hero padding while keeping responsive breathing room */
+      padding-block: clamp(3.75rem, 10vw, 5.5rem);
+      padding-inline: 15px;
       text-align: center;
       background: linear-gradient(135deg, #1e1b3a, #181b48, #12122b);
       background-size: 600% 600%;
@@ -83,8 +87,12 @@
   position: relative;
   border: 3px solid rgba(255, 255, 255, 0.9);
   border-radius: 28px;
-  padding: 70px 30px;
-  margin: 60px 20px;
+  /* Trim skill section padding to tighten vertical rhythm */
+  padding-block: clamp(2.75rem, 7vw, 3.75rem);
+  padding-inline: 30px;
+  /* Ease vertical gap between hero and following section */
+  margin-block: clamp(2.25rem, 7vw, 3.5rem);
+  margin-inline: 20px;
   font-weight: 700;
   box-shadow: 0 0 30px rgba(255, 255, 255, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.08);
   background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), rgba(17, 17, 34, 0.8));

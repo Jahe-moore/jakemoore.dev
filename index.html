@@ -71,8 +71,12 @@
       <div class="col-lg-6">
         <div class="video-container">
           <h2 class="mb-4 text-center">Featured Project</h2>
-          <div class="ratio ratio-16x9">
+<div class="ratio ratio-16x9">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/DvZcNDcUFfU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div class="d-flex gap-2 mt-3 justify-content-center flex-wrap">
+            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#previewFinalScript">Preview Script</button>
+            <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Download Script</a>
           </div>
         </div>
       </div>
@@ -111,6 +115,12 @@
               <img src="tab.png" alt="Tableau Logo" class="skill-icon">
               <span class="skill-label">Tableau</span>
             </div>
+
+            <!-- Visio -->
+            <div class="skill-item" title="Microsoft Visio for process and workflow diagrams">
+              <img src="ms-visio.svg" alt="Visio Logo" class="skill-icon">
+              <span class="skill-label">Visio</span>
+            </div>
           </div>
         </div>
       </div>
@@ -128,7 +138,7 @@
           <p class="mb-3">Hi, I’m Jake Moore. Current student at the University of Arizona double majoring in Management Information Systems &amp; Business Analytics. I turn complex data and broken systems into clear, usable solutions that help people make better decisions.</p>
           <ul class="list-unstyled mb-0">
             <li class="mb-3"><strong>Studies:</strong> Building technical depth through Python, R, SQL, Excel, and Tableau while applying analytics to real business and IT problems across campus.</li>
-            <li class="mb-3"><strong>Day Job:</strong> Technical Consultant with University Information Technology Services <span class="d-block mt-2">Audio Visual Technician with the University of Arizona</span></li>
+            <li class="mb-3"><strong>Day Job:</strong> Technical Consultant with the University of Arizona</li>
             <li class="mb-0"><strong>Academic Interests:</strong> Machine learning, data wrangling, and the intersection of analytics and decision-making. I’m drawn to projects that connect technical precision with real-world outcomes — where models meet meaning.</li>
           </ul>
         </div>
@@ -300,6 +310,26 @@
     createParticles(75);
     drawParticles();
   </script>
+
+  <!-- Featured Project Script Modal -->
+  <div class="modal fade" id="previewFinalScript" tabindex="-1" aria-labelledby="previewFinalScriptLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content modal-dark">
+        <div class="modal-header">
+          <h5 class="modal-title" id="previewFinalScriptLabel">Preview — Predicting Flight Delays: Logistic Regression Script</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="ratio ratio-4x3">
+            <iframe src="final_project_script_jakemoore.pdf#toolbar=0" title="Predicting Flight Delays Logistic Regression Script" loading="lazy"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>

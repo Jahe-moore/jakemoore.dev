@@ -4,332 +4,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jake Moore Portfolio</title>
-  <!-- Load Bootstrap CSS -->
+  <title>Jake Moore | Professional Persona</title>
+  <meta name="description" content="Business Analytics &amp; MIS student at the University of Arizona — BCOM 314 Professional Persona." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jake Moore | Professional Persona" />
+  <meta property="og:description" content="Business Analytics &amp; MIS student at the University of Arizona." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jahe-moore.github.io/bcom314-portfolio/" />
+  <meta property="og:image" content="https://jahe-moore.github.io/bcom314-portfolio/headshot.png" />
+  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jake Moore | Professional Persona" />
+  <meta name="twitter:description" content="Business Analytics &amp; MIS student at the University of Arizona." />
+  <meta name="twitter:image" content="https://jahe-moore.github.io/bcom314-portfolio/headshot.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css">
-
-  <!-- Social Preview Meta Tags -->
-<meta property="og:title" content="Jake Moore Portfolio" />
-<meta property="og:description" content="Management Information Systems &amp; Business Analytics Student @ University of Arizona | Technical Consultant @ University of Arizona" />
-<meta property="og:image" content="https://jakemoore.dev/headshot.png" />
-<meta property="og:url" content="https://jakemoore.dev" />
-<meta property="og:type" content="website" />
-
-<!-- Twitter Card (used by iMessage too) -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Jake Moore Portfolio" />
-<meta name="twitter:description" content="Management Information Systems &amp; Business Analytics Student @ University of Arizona | Technical Consultant @ University of Arizona" />
-<meta name="twitter:image" content="https://jakemoore.dev/headshot.png" />
-  
 </head>
 
 <body>
+
+  <!-- ── Navbar ── -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="index.html">Jake Moore &middot; Management Information Systems &middot; Business Analytics</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- About Section with Gradient + Network Canvas -->
-  <section id="about" class="about-gradient">
-    <canvas id="network-canvas"></canvas>
+  <!-- ══════════════════════════════════════════════
+       1 + 2. BIO & RESUME — merged into one navy section
+       Three columns: headshot | bio text | resume card
+       ══════════════════════════════════════════════ -->
+  <section id="about" class="hero-section">
     <div class="container">
-      <img src="headshot.png" alt="Jake Moore Headshot" class="headshot">
-      <h1 class="display-4">Jake Moore</h1>
-      <p class="tagline">Tucson, Arizona</p>
-      <p class="tagline">Management Information Systems &amp; Business Analytics Student at the University of Arizona</p>
-      <p class="tagline">Technical Consultant at the University of Arizona</p>
-      <p class="hero-meta">Passionate about transforming data into decisions and turning analysis into impact.</p>
-      <p class="hero-meta">Actively seeking an internship in analytics, business intelligence, management information systems, or other data-driven roles.</p>
-      <p class="hero-meta">Graduation: May 2027</p>
-      <p class="hero-meta"><a href="mailto:Jakemoore@arizona.edu">Jakemoore@arizona.edu</a></p>
-      <div class="hero-links">
-        <a class="btn btn-resume" href="https://www.linkedin.com/in/jake-moore74" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn btn-resume" href="https://jakemoore.dev/contact.html" target="_blank" rel="noopener">Resume</a>
+      <div class="row g-4 align-items-center">
+
+        <!-- Headshot — far left, desktop only -->
+        <div class="col-lg-3">
+          <img src="headshot.png" alt="Jake Moore" class="hero-headshot">
+        </div>
+
+        <!-- Bio text — center column -->
+        <div class="col-lg-5">
+          <p class="hero-eyebrow">Business Analytics &amp; MIS · University of Arizona</p>
+          <h1 class="hero-name">Jake Moore</h1>
+          <p class="hero-tagline">Turning complexity into clear decisions and measurable results.</p>
+          <p class="hero-body">Hi, I'm Jake Moore — a junior at the University of Arizona's Eller College of Management, double-majoring in Business Analytics and Management Information Systems. I'm drawn to the intersection of business and technology: where analytical thinking, systems design, and clear communication come together to solve real problems. As a Technical Consultant at University IT Services, I've built the ability to translate technical work into outcomes that stakeholders can act on. I'm pursuing roles at the intersection of business strategy and technology, with graduation in May 2027.</p>
+          <div class="hero-links">
+            <a class="btn-hero-primary" href="https://www.linkedin.com/in/jake-moore74/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn-hero-secondary" href="#video">Video</a>
+            <a class="btn-hero-secondary" href="portfolio.html">Portfolio</a>
+          </div>
+        </div>
+
+        <!-- Resume card — right column, anchored for nav -->
+        <div id="resume" class="col-lg-4">
+          <div class="hero-resume-card">
+            <p class="hero-resume-label">Hiring?</p>
+            <h2 class="hero-resume-heading">Let's work together.</h2>
+            <p class="hero-resume-body">I am actively seeking Business Intelligence Engineer and Data Analyst roles — graduating May 2027. If you are building a team that runs on data, I would love to connect.</p>
+            <a class="btn-hero-primary" href="JakeMoore_Resume2026.pdf" target="_blank" rel="noopener" style="display:block; text-align:center;">Download Resume</a>
+            <a class="btn-hero-secondary" href="https://www.linkedin.com/in/jake-moore74/" target="_blank" rel="noopener" style="display:block; margin-top: 0.2rem; text-align:center;">Connect on LinkedIn</a>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-<section id="video-skills-section" class="section">
-  <div class="container">
-    <div class="row g-4 align-items-stretch">
-      <!-- YouTube Video - Left Side -->
-      <div class="col-lg-6">
-        <div class="video-container">
-          <h2 class="mb-4 text-center">Featured Project</h2>
-<div class="ratio ratio-16x9">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/DvZcNDcUFfU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-          </div>
-          <div class="d-flex gap-2 mt-3 justify-content-center flex-wrap">
-            <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#previewFinalScript">Preview Script</button>
-            <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Download Script</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skills - Right Side -->
-      <div class="col-lg-6">
-        <div id="skills" class="h-100">
-          <h2 class="mb-4">Skills</h2>
-          <div class="skills-grid">
-            <!-- SQL -->
-            <div class="skill-item" title="SQL-focused work showcased in the portfolio">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL Logo" class="skill-icon">
-              <span class="skill-label">SQL</span>
-            </div>
-
-            <!-- R -->
-            <div class="skill-item" title="R-focused work showcased in the portfolio">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R Logo" class="skill-icon">
-              <span class="skill-label">R</span>
-            </div>
-
-            <!-- Python -->
-            <div class="skill-item" title="Python-focused work showcased in the portfolio">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo" class="skill-icon">
-              <span class="skill-label">Python</span>
-            </div>
-
-            <!-- Excel -->
-            <div class="skill-item" title="Excel work showcased in the portfolio">
-              <img src="ms-excel.png" alt="Excel Logo" class="skill-icon">
-              <span class="skill-label">Excel</span>
-            </div>
-
-            <!-- Tableau -->
-            <div class="skill-item" title="Tableau dashboards showcased in the portfolio">
-              <img src="tab.png" alt="Tableau Logo" class="skill-icon">
-              <span class="skill-label">Tableau</span>
-            </div>
-
-            <!-- Visio -->
-            <div class="skill-item" title="Microsoft Visio for process and workflow diagrams">
-              <img src="ms-visio.svg" alt="Visio Logo" class="skill-icon">
-              <span class="skill-label">Visio</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="snapshot" class="section">
-  <div class="container">
-    <h2 class="text-center mb-5">Snapshot</h2>
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <div class="card h-100 p-4">
-          <h3 class="h5 text-uppercase text-muted mb-3">Who I Am</h3>
-          <p class="mb-3">Hi, I’m Jake Moore. Current student at the University of Arizona double majoring in Management Information Systems &amp; Business Analytics. I turn complex data and broken systems into clear, usable solutions that help people make better decisions.</p>
-          <ul class="list-unstyled mb-0">
-            <li class="mb-3"><strong>Studies:</strong> Building technical depth through Python, R, SQL, Excel, and Tableau while applying analytics to real business and IT problems across campus.</li>
-            <li class="mb-3"><strong>Day Job:</strong> Technical Consultant with the University of Arizona</li>
-            <li class="mb-0"><strong>Academic Interests:</strong> Machine learning, data wrangling, and the intersection of analytics and decision-making. I’m drawn to projects that connect technical precision with real-world outcomes — where models meet meaning.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card h-100 p-4">
-          <h3 class="h5 text-uppercase text-muted mb-3">Connect</h3>
-          <div class="contact-icons mb-4">
-            <a class="contact-icon" href="mailto:Jakemoore@arizona.edu" aria-label="Email Jake">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-            <a class="contact-icon" href="tel:15035504171" aria-label="Call Jake">
-              <i class="fa-solid fa-phone"></i>
-            </a>
-            <a class="contact-icon" href="https://www.linkedin.com/in/jake-moore74" target="_blank" rel="noopener" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-            <a class="contact-icon" href="https://github.com/jahe-moore" target="_blank" rel="noopener" aria-label="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          </div>
-          <ul class="list-unstyled mb-4">
-            <li class="mb-2">
-              <span class="text-uppercase small text-muted d-block">Email</span>
-              <a href="mailto:Jakemoore@arizona.edu">Jakemoore@arizona.edu</a>
-            </li>
-            <li class="mb-2">
-              <span class="text-uppercase small text-muted d-block">Phone</span>
-              <a href="tel:15035504171">(503) 550-4171</a>
-            </li>
-            <li class="mb-2">
-              <span class="text-uppercase small text-muted d-block">LinkedIn</span>
-              <a href="https://www.linkedin.com/in/jake-moore74" target="_blank" rel="noopener">linkedin.com/in/jake-moore74</a>
-            </li>
-            <li class="mb-0">
-              <span class="text-uppercase small text-muted d-block">GitHub</span>
-              <a href="https://github.com/jahe-moore" target="_blank" rel="noopener">github.com/jahe-moore</a>
-            </li>
-          </ul>
-          <a class="btn btn-resume w-100" href="Jake Moore Resume.pdf" download>Download Resume</a>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="card h-100 p-4">
-          <h3 class="h5 text-uppercase text-muted mb-3">Explore Further</h3>
-          <div class="explore-buttons">
-            <span class="explore-label">Connect</span>
-            <a class="explore-button" href="mailto:Jakemoore@arizona.edu">
-              <span class="explore-button__title">Email</span>
-              <span class="explore-button__detail">Jakemoore@arizona.edu</span>
-            </a>
-            <a class="explore-button" href="tel:15035504171">
-              <span class="explore-button__title">Phone</span>
-              <span class="explore-button__detail">(503) 550-4171</span>
-            </a>
-            <a class="explore-button" href="https://www.linkedin.com/in/jake-moore74" target="_blank" rel="noopener">
-              <span class="explore-button__title">LinkedIn</span>
-              <span class="explore-button__detail">linkedin.com/in/jake-moore74</span>
-            </a>
-            <a class="explore-button" href="https://github.com/jahe-moore" target="_blank" rel="noopener">
-              <span class="explore-button__title">GitHub</span>
-              <span class="explore-button__detail">github.com/jahe-moore</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-  <section id="contact" class="section" hidden>
+  <!-- ══════════════════════════════════════════════
+       3. VIDEOS — who I am + what I do, side by side
+       Background: light gray — sits directly below hero
+       ══════════════════════════════════════════════ -->
+  <section id="video" class="section section-light">
     <div class="container">
-      <h2 class="text-center mb-5">Let's Connect</h2>
-      <div class="row g-4 justify-content-center">
-        <div class="col-md-4">
-          <div class="card h-100 p-4 text-center text-md-start">
-            <h3 class="h6 text-uppercase text-muted mb-3">Direct Lines</h3>
-            <p class="mb-2">Email: <a href="mailto:Jakemoore@arizona.edu">Jakemoore@arizona.edu</a></p>
-            <p class="mb-0">Phone: <a href="tel:15035504171">(503) 550-4171</a></p>
+      <h2 class="section-heading">Who I Am and What I Do</h2>
+      <div class="site-grid-2 mt-1">
+
+        <!-- Card 1: Professional Persona Video -->
+        <div>
+          <div class="video-card">
+            <h3 class="video-card-heading">Professional Persona Video</h3>
+            <div class="ratio ratio-16x9" style="background: #1B2A4A; border-radius: 4px; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+              <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                <p style="color: rgba(255,255,255,0.75); font-family: 'League Spartan', sans-serif; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: center; padding: 2rem; margin: 0;">Professional Persona Video — Coming Soon</p>
+              </div>
+            </div>
+            <p class="video-card-body">A 2–3 minute overview of my professional identity, value proposition, and target career direction — produced as part of BCOM 314 at the University of Arizona's Eller College of Management.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 p-4 text-center text-md-start">
-            <h3 class="h6 text-uppercase text-muted mb-3">Professional Profiles</h3>
-            <p class="mb-2">LinkedIn: <a href="https://www.linkedin.com/in/jake-moore74" target="_blank" rel="noopener">jake-moore74</a></p>
-            <p class="mb-0">GitHub: <a href="https://github.com/jahe-moore" target="_blank" rel="noopener">jahe-moore</a></p>
+
+        <!-- Card 2: Flight Delay Analysis -->
+        <div>
+          <div class="video-card">
+            <h3 class="video-card-heading">Predicting Flight Delays: A Logistic Regression Approach</h3>
+            <div class="ratio ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/DvZcNDcUFfU" title="Predicting Flight Delays: Logistic Regression" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p class="video-card-body">Applied logistic regression to over 1 million U.S. domestic flights from January–February 2024 to identify the strongest predictors of arrival delay. Built end-to-end in R — from data cleaning through model evaluation — and written for a non-technical professional audience.</p>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="card h-100 p-4 text-center text-md-start">
-            <h3 class="h6 text-uppercase text-muted mb-3">Next Steps</h3>
-            <p class="mb-3">Need the full story&mdash;experience, certifications, and deliverables?</p>
-            <a class="btn btn-resume w-100" href="contact.html">Open the Contact &amp; Resume Hub</a>
-          </div>
-        </div>
+
       </div>
     </div>
   </section>
 
+
+
+  <!-- ── Footer ── -->
   <footer>
-    <small>© 2025 Jake Moore • Hosted on GitHub Pages</small>
+    <div class="container">
+      <span>© 2026 Jake Moore</span>
+      <span class="footer-sep">·</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span class="footer-sep">·</span>
+      <a href="contact.html">Contact</a>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Particle network canvas effect -->
-  <script>
-    const canvas = document.getElementById('network-canvas');
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    let particles = [];
-
-    function resizeCanvas() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = document.getElementById('about').offsetHeight;
-    }
-
-    function createParticles(num) {
-      particles = [];
-      for (let i = 0; i < num; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5
-        });
-      }
-    }
-
-    function drawParticles() {
-      ctx.clearRect(0, 0, width, height);
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#6d9eff';
-        ctx.fill();
-
-        for (let j = i + 1; j < particles.length; j++) {
-          const q = particles[j];
-          const dx = p.x - q.x;
-          const dy = p.y - q.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 100) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(q.x, q.y);
-            ctx.strokeStyle = 'rgba(109, 158, 255, ' + (1 - dist / 100) + ')';
-            ctx.stroke();
-          }
-        }
-
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
-      }
-      requestAnimationFrame(drawParticles);
-    }
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      createParticles(75);
-    });
-
-    resizeCanvas();
-    createParticles(75);
-    drawParticles();
-  </script>
-
-  <!-- Featured Project Script Modal -->
-  <div class="modal fade" id="previewFinalScript" tabindex="-1" aria-labelledby="previewFinalScriptLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewFinalScriptLabel">Preview — Predicting Flight Delays: Logistic Regression Script</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="final_project_script_jakemoore.pdf#toolbar=0" title="Predicting Flight Delays Logistic Regression Script" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </body>
 
 </html>

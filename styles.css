@@ -1,656 +1,909 @@
-    body {
-      background-color: #0f0f1a;
-      color: #ffffff;
-      font-family: 'Roboto', sans-serif;
-    }
-    a {
-      color: #6d9eff;
-    }
-    .navbar {
-      background-color: #12122b;
-    }
-    .section {
-      /* Reduce section vertical padding for closer spacing */
-      padding-block: clamp(2.25rem, 6vw, 3.5rem);
-      padding-inline: 15px;
-    }
-    .btn-resume {
-      background-color: #6d9eff;
-      border: none;
-      color: white;
-    }
-    .card {
-      background-color: #1b1b33;
-      border: none;
-    }
-    .card h3,
-    .card h5,
-    .card p,
-    .card a,
-    .card li,
-    .card span {
-      color: #ffffff;
-    }
-    .text-muted {
-      color: #ffffff !important;
-    }
-    .viz-preview {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 5px;
-      margin-bottom: 10px;
-    }
-    .headshot {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #6d9eff;
-      margin-bottom: 20px;
-    }
-    .about-gradient {
-      position: relative;
-      /* Tighten hero padding while keeping responsive breathing room */
-      padding-block: clamp(3.75rem, 10vw, 5.5rem);
-      padding-inline: 15px;
-      text-align: center;
-      background: linear-gradient(135deg, #1e1b3a, #181b48, #12122b);
-      background-size: 600% 600%;
-      animation: gradientShift 15s ease infinite;
-      overflow: hidden;
-    }
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    #network-canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-    .about-gradient .container {
-      position: relative;
-      z-index: 1;
-    }
-    footer {
-      background-color: #12122b;
-      padding: 20px;
-      text-align: center;
-    }
-#skills {
-  position: relative;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  border-radius: 28px;
-  padding: 30px;
-  margin: 0;
-  font-weight: 700;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.12), inset 0 0 20px rgba(255, 255, 255, 0.08);
-  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), rgba(17, 17, 34, 0.8));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+/* ═══════════════════════════════════════════════
+   BCOM 314 — Professional Persona
+   Palette  : navy / charcoal / white / light gray / steel blue
+   Fonts    : League Spartan (headings) · Libre Baskerville (body)
+   Design   : flat, clean, left-aligned — no dynamic effects
+   ═══════════════════════════════════════════════ */
+
+:root {
+  --navy:        #1B2A4A;   /* primary dark — nav, hero, footer    */
+  --navy-dark:   #0F1D36;   /* deeper navy for hover states         */
+  --charcoal:    #2D2D2D;   /* section background — evolution       */
+  --charcoal-mid:#3D3D3D;   /* slightly lighter for card surfaces   */
+  --steel:       #5B7FA6;   /* accent — links, labels, borders      */
+  --steel-light: #DDE8F2;   /* tinted bg for tags, hover fills      */
+  --white:       #FFFFFF;
+  --light-gray:  #ECEEF1;   /* visible alternating section bg       */
+  --border:      #D4D8DF;
+  --text:        #2D2D2D;   /* charcoal for all body text           */
+  --text-muted:  #6B7280;
 }
 
-#skills h2 {
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; }
 
-.skills-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  padding: 10px 0;
-  overflow: visible;
-}
+html, body { overflow-x: hidden; }
 
-.skill-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
-  width: 100px;
-  padding: 0.5rem;
-  color: #ffffff;
-  text-decoration: none;
-  transition: transform 0.3s ease, text-shadow 0.3s ease;
-}
-
-.skill-item:hover {
-  transform: translateY(-6px);
-  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
-}
-
-#skills img.skill-icon {
-  width: 60px;
-  height: 60px;
-  filter: brightness(0) invert(1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#skills img.skill-icon:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 10px rgba(109, 158, 255, 0.8);
-}
-
-.skill-label {
+body {
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Libre Baskerville', Georgia, serif;
   font-size: 1rem;
+  line-height: 1.75;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'League Spartan', sans-serif;
+  color: var(--navy);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 0;
+}
+
+a { color: var(--steel); text-decoration: none; }
+a:hover { color: var(--navy); text-decoration: underline; }
+
+img { display: block; max-width: 100%; }
+
+.container { max-width: 1400px; padding-inline: clamp(1rem, 2.5vw, 2rem); }
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+   ═══════════════════════════════════════════════ */
+.navbar {
+  background: var(--navy) !important;
+  border-bottom: 2px solid var(--navy-dark);
+  padding-block: 0.6rem;
+}
+
+.navbar-brand {
+  font-family: 'League Spartan', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  color: var(--white) !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;        /* allows flex to shrink the brand below its content width */
+  flex-shrink: 1;
+}
+
+.navbar-toggler {
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem;
+  flex-shrink: 0;      /* toggler never shrinks — brand absorbs all compression */
+}
+
+.nav-link {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
-}
-.dropdown-menu .dropdown-item:hover {
-  background-color: #1b1b33;
-  color: #6d9eff;
-}
-.btn-resume:hover {
-  box-shadow: 0 0 10px rgba(109, 158, 255, 0.7);
-  transform: scale(1.02);
-}
-.tagline {
-      color: #ffffff;
-      font-size: 1.3rem;
-    }
-
-.hero-meta {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.05rem;
-  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75) !important;
+  padding: 0.45rem 0.8rem !important;
+  transition: color 0.15s ease;
 }
 
-.hero-meta a {
-  color: inherit;
+.nav-link:hover,
+.nav-link.active {
+  color: var(--white) !important;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  padding-bottom: 2px;
 }
 
-.hero-meta a:hover {
-  color: #6d9eff;
-  border-bottom-color: #6d9eff;
+/* ═══════════════════════════════════════════════
+   HERO — left-aligned, compact, navy background
+   ═══════════════════════════════════════════════ */
+.hero-section {
+  background: var(--navy);
+  padding-top: clamp(5.5rem, 12vw, 7rem);   /* clears fixed navbar */
+  padding-bottom: clamp(3rem, 7vw, 4.5rem);
+  padding-inline: 15px;
+}
+
+.hero-eyebrow {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  margin-bottom: 0.6rem;
+}
+
+.hero-name {
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-tagline {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.25rem;
+  max-width: 580px;
+  line-height: 1.55;
+}
+
+.hero-body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 540px;
+  line-height: 1.75;
+  margin-bottom: 0;
 }
 
 .hero-links {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 1.5rem;
+  gap: 0.75rem;
+  margin-top: 2rem;
 }
 
-.hero-links .btn-resume {
+.btn-hero-primary {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--steel);
+  color: var(--white);
+  padding: 0.65rem 1.6rem;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+.btn-hero-primary:hover {
+  background: #4a6d92;
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn-hero-secondary {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 0.65rem 1.6rem;
+  border-radius: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+  display: inline-block;
+}
+
+.btn-hero-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Headshot: portrait, integrated with text block */
+.hero-headshot {
+  width: 260px;
+  max-width: 260px;
+  height: 260px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  display: block;
+}
+
+/* Resume card — lives inside the navy hero section */
+.hero-resume-card {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  padding: 1.75rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hero-resume-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  opacity: 0.75;
+  margin: 0;
+}
+
+.hero-resume-heading {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.25rem;
+  color: var(--white);
+  margin: 0;
+}
+
+.hero-resume-body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.62);
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+/* Legacy .headshot class (contact page) */
+.headshot {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  margin-bottom: 1.5rem;
+  display: block;
+  margin-inline: auto;
+}
+
+/* ═══════════════════════════════════════════════
+   SECTION FOUNDATIONS
+   ═══════════════════════════════════════════════ */
+.section {
+  padding-block: clamp(2rem, 5vw, 3rem);
+  padding-inline: 15px;
+  background: var(--white);
+}
+
+/* Light gray — Resume, Portfolio library */
+.section-light {
+  background: var(--light-gray);
+}
+
+/* Charcoal — Evolution (most important section) */
+.section-dark {
+  background: var(--charcoal);
+}
+
+/* ── Section typography — light bg ── */
+.section-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 0.5rem;
+}
+
+.section-heading {
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  color: var(--navy);
+  margin-bottom: 0.6rem;
+}
+
+.section-subhead {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.975rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ── Section typography — dark (charcoal) bg ── */
+.section-label-light {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel-light);
+  margin-bottom: 0.5rem;
+  opacity: 0.75;
+}
+
+.section-heading-light {
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.section-subhead-light {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.975rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 620px;
+  line-height: 1.7;
+  margin-bottom: 0;
+}
+
+/* ── Video cards — two equal columns ── */
+.video-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.video-card-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin: 0;
+}
+
+.video-card-heading {
+  font-family: 'League Spartan', sans-serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+  color: var(--navy);
+  margin: 0 0 0.75rem;
+}
+
+.video-card .ratio {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.video-card-body {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin: 0;
+}
+
+
+/* ═══════════════════════════════════════════════
+   SITE-WIDE GRID UTILITIES
+   ═══════════════════════════════════════════════ */
+.site-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 767px) {
+  .site-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Company logos on contact page ── */
+.company-logo {
+  height: 22px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+/* ── Portfolio samples grid ── */
+.portfolio-samples-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .portfolio-samples-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════════════════════════════════════
+   GLOBAL BUTTONS (light bg pages)
+   ═══════════════════════════════════════════════ */
+.btn-primary {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.65rem 1.6rem;
+  border-radius: 3px;
+  border: none;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--navy-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Bootstrap override — .btn-resume used on portfolio/contact */
+.btn-resume {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--steel);
+  border: none;
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  border-radius: 3px;
+  transition: background 0.2s ease;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0.65rem 1.5rem;
-}
-
-.contact-icons {
-  display: flex;
-  gap: 1rem;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.contact-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 1.1rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.contact-icon:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0 12px rgba(109, 158, 255, 0.8);
-  background: rgba(109, 158, 255, 0.25);
-}
-
-.explore-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.explore-label {
-  font-size: 0.85rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #ffffff;
-}
-
-.explore-button {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  padding: 1rem 1.15rem;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.explore-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 0 16px rgba(109, 158, 255, 0.55);
-  border-color: rgba(109, 158, 255, 0.65);
-  background: rgba(109, 158, 255, 0.18);
+.btn-resume:hover {
+  background: var(--navy-dark);
+  color: var(--white);
+  text-decoration: none;
 }
 
-.explore-button__title {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #ffffff;
-}
-
-.explore-button__detail {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.82);
-  word-break: break-word;
-}
-
+/* ═══════════════════════════════════════════════
+   PORTFOLIO PAGE
+   ═══════════════════════════════════════════════ */
 .portfolio-hero {
-  position: relative;
-  background: radial-gradient(circle at 20% 20%, rgba(109, 158, 255, 0.25), transparent 55%),
-              radial-gradient(circle at 80% 30%, rgba(140, 82, 255, 0.25), transparent 55%),
-              linear-gradient(135deg, rgba(18, 18, 43, 0.95), rgba(11, 11, 26, 0.95));
-  overflow: hidden;
+  background: var(--navy);
+  padding-top: clamp(5.5rem, 12vw, 7rem);
+  padding-bottom: clamp(3rem, 7vw, 4.5rem);
+  padding-inline: 15px;
+}
+
+.portfolio-hero h1 { color: var(--white); }
+.portfolio-hero .hero-tagline { color: rgba(255, 255, 255, 0.85); font-style: normal; }
+
+.portfolio-hero .lead {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
 .portfolio-kicker {
   display: inline-block;
-  letter-spacing: 0.4em;
+  font-family: 'League Spartan', sans-serif;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.6rem;
 }
+
+.section-glass { background: var(--light-gray); }
 
 .technical-header {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: space-between;
 }
 
-.filter-controls {
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  min-width: 200px;
+.section-title {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--navy);
 }
 
-.filter-select {
-  background: rgba(21, 21, 42, 0.95);
-  border: 1px solid rgba(109, 158, 255, 0.5);
-  color: #ffffff;
-  border-radius: 999px;
-  padding-left: 1.25rem;
-  padding-right: 2.75rem;
-  background-image: none;
-}
+.max-w-720 { max-width: 720px; }
 
-.filter-select:focus {
-  box-shadow: 0 0 0 0.25rem rgba(109, 158, 255, 0.25);
-  border-color: rgba(109, 158, 255, 0.8);
-  color: #ffffff;
-}
-
-.max-w-720 {
-  max-width: 720px;
-}
-
-.section-glass {
-  background: linear-gradient(180deg, rgba(18, 18, 43, 0.92), rgba(11, 11, 26, 0.96));
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 999px;
-  background: rgba(109, 158, 255, 0.12);
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 0.85rem;
-  border: 1px solid rgba(109, 158, 255, 0.3);
-}
-
+/* Doc cards */
 .doc-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.9rem;
-  padding: 2.75rem 2rem 2rem;
-  border-radius: 22px;
-  background: linear-gradient(160deg, rgba(27, 27, 51, 0.96), rgba(19, 19, 38, 0.96));
-  border: 2px solid rgba(255, 255, 255, 0.55);
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+  gap: 0.65rem;
+  padding: 1.6rem 1.4rem 1.4rem;
+  border-radius: 5px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s ease;
 }
 
-.doc-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(109, 158, 255, 0.8);
-  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.55);
-  background: linear-gradient(160deg, rgba(33, 33, 68, 0.98), rgba(20, 20, 42, 0.98));
-}
+.doc-card:hover { border-color: var(--steel); }
 
 .doc-card__tags {
   position: absolute;
-  top: 1.4rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.3rem;
   justify-content: flex-end;
 }
 
 .doc-card__tag {
   display: inline-flex;
   align-items: center;
-  padding: 0.25rem 0.8rem;
-  border-radius: 999px;
-  background: rgba(109, 158, 255, 0.2);
-  border: 1px solid rgba(109, 158, 255, 0.6);
-  color: #f1f4ff;
-  font-size: 0.75rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 3px;
+  background: var(--steel-light);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  box-shadow: inset 0 0 12px rgba(109, 158, 255, 0.25);
 }
 
 .doc-card__icon {
-  font-size: 2.25rem;
+  font-size: 1.5rem;
   line-height: 1;
 }
 
 .doc-card__category {
+  font-family: 'League Spartan', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.15em;
+  font-size: 0.68rem;
+  color: var(--text-muted);
 }
 
 .doc-card__title {
-  font-size: 1.25rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--navy);
 }
 
 .doc-card__summary {
-  color: rgba(224, 224, 255, 0.85);
-  font-size: 0.95rem;
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.65;
 }
 
 .doc-card__meta {
   margin: 0;
-  padding-left: 1.2rem;
+  padding-left: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  color: rgba(192, 201, 255, 0.85);
-  font-size: 0.9rem;
+  gap: 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
 }
 
-.doc-card__meta li::marker {
-  color: rgba(109, 158, 255, 0.8);
-}
+.doc-card__meta li::marker { color: var(--steel); }
 
 .doc-card__actions {
   margin-top: auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.55rem;
+  padding-top: 0.35rem;
 }
 
 .doc-card__btn {
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  color: rgba(255, 255, 255, 0.85);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  color: var(--navy);
+  background: transparent;
+  transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .doc-card__btn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(109, 158, 255, 0.8);
-  box-shadow: 0 0 20px rgba(109, 158, 255, 0.45);
+  border-color: var(--navy);
+  background: var(--steel-light);
+  color: var(--navy);
+  text-decoration: none;
 }
 
 .doc-card__actions .btn-resume {
   flex: 1 1 auto;
-  border-radius: 999px;
+  border-radius: 3px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
 }
 
-.modal-dark {
-  background: rgba(15, 15, 26, 0.96);
-  border: 1px solid rgba(109, 158, 255, 0.25);
-  color: #ffffff;
-}
-
-.modal-dark .modal-header,
-.modal-dark .modal-footer {
-  border-color: rgba(109, 158, 255, 0.2);
-}
-
-.modal-dark iframe {
-  border: none;
-  border-radius: 12px;
-}
-
-@media (max-width: 768px) {
-  .technical-header {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .filter-controls {
-    position: static;
-    transform: none;
-    width: 100%;
-  }
-  .filter-select {
-    width: 100%;
-  }
-  .doc-card {
-    padding: 2.25rem 1.5rem 1.5rem;
-  }
-  .doc-card__tags {
-    position: static;
-    justify-content: flex-start;
-    margin-bottom: 0.75rem;
-  }
-  .doc-card__actions {
-    flex-direction: column;
-  }
-  .doc-card__actions .btn-resume {
-    width: 100%;
-  }
-}
-
+/* ═══════════════════════════════════════════════
+   CONTACT PAGE
+   ═══════════════════════════════════════════════ */
 .contact-page {
-  background-color: #0f0f1a;
-  color: #ffffff;
-  font-family: 'Roboto', sans-serif;
+  background: var(--white);
+  color: var(--text);
+  font-family: 'Libre Baskerville', Georgia, serif;
 }
 
 .contact-wrapper {
-  max-width: 1000px;
-  margin: 120px auto 80px;
-  padding: 0 20px 40px;
+  max-width: 1400px;
+  margin: clamp(5.5rem, 12vw, 7rem) auto 80px;
+  padding: 0 clamp(1rem, 2.5vw, 2rem) 40px;
 }
 
 .section-card {
-  background: rgba(27, 27, 51, 0.85);
-  border: 1px solid rgba(109, 158, 255, 0.25);
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 32px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(6px);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 22px 26px;
+  margin-bottom: 18px;
 }
 
 .section-card h2 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 1.1rem;
-  color: #9ab7ff;
-  margin-bottom: 20px;
+  letter-spacing: 0.15em;
+  color: var(--steel);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
 }
 
 .contact-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 0.4rem;
+  font-size: 1.75rem;
+  margin-bottom: 0.15rem;
+  color: var(--navy);
 }
 
 .contact-header-top {
   display: flex;
-  gap: 24px;
-  align-items: center;
-  margin-bottom: 28px;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 18px;
 }
 
-.contact-headshot-wrap {
-  flex-shrink: 0;
-}
+.contact-headshot-wrap { flex-shrink: 0; }
 
 .contact-headshot {
-  width: 140px;
-  height: 140px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
-  border-radius: 20px;
-  border: 2px solid rgba(109, 158, 255, 0.6);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  object-position: center 30%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
 }
 
 .contact-social-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 18px;
+  gap: 7px;
+  margin-top: 10px;
 }
 
 .social-link {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  background: rgba(15, 15, 26, 0.9);
-  border: 1px solid rgba(109, 158, 255, 0.3);
-  color: #ffffff;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 3px;
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  color: var(--navy);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
   font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
-.social-link img {
-  width: 22px;
-  height: 22px;
-  filter: drop-shadow(0 4px 8px rgba(109, 158, 255, 0.25));
-}
+.social-link img { width: 15px; height: 15px; }
 
 .social-link:hover {
-  transform: translateY(-2px);
-  border-color: rgba(109, 158, 255, 0.6);
-  box-shadow: 0 10px 25px rgba(109, 158, 255, 0.25);
+  border-color: var(--steel);
+  color: var(--navy);
+  text-decoration: none;
 }
 
 .contact-title {
+  font-family: 'League Spartan', sans-serif;
   font-size: 1.1rem;
-  color: #e0e0ff;
+  color: var(--text);
 }
 
 .contact-info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin: 28px 0;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 9px;
+  margin: 16px 0;
 }
 
 .info-item {
-  background: rgba(15, 15, 26, 0.9);
-  border: 1px solid rgba(109, 158, 255, 0.2);
-  border-radius: 14px;
-  padding: 16px 18px;
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 11px 13px;
 }
 
 .info-label {
   display: block;
-  font-size: 0.75rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.67rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: rgba(224, 224, 255, 0.8);
-  margin-bottom: 6px;
+  color: var(--text-muted);
+  margin-bottom: 3px;
 }
 
 .info-value {
-  color: #ffffff;
-  font-weight: 600;
+  color: var(--text);
+  font-weight: 700;
   text-decoration: none;
   word-break: break-word;
+  font-size: 0.85rem;
 }
 
-.info-value:hover {
-  color: #6d9eff;
-}
+.info-value:hover { color: var(--steel); text-decoration: none; }
 
-.download-links {
+/* Contact header two-column layout */
+.contact-header-inner {
   display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  gap: 24px;
+  align-items: flex-start;
 }
+
+.contact-header-left {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* Right side-by-side card pair */
+.contact-side-stack {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.contact-panel {
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+}
+
+/* Action card — right of the pair, slightly more prominent */
+.contact-panel--action {
+  width: 300px;
+  padding: 18px 20px;
+  border-color: rgba(91, 127, 166, 0.4);
+}
+
+/* Info card — left of the pair, quieter */
+.contact-panel--info {
+  width: 300px;
+  padding: 14px 16px;
+  border-color: rgba(91, 127, 166, 0.4);
+}
+
+.side-panel-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--steel);
+  margin: 0 0 4px;
+}
+
+.side-panel-heading {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 14px;
+  border: none;
+  padding: 0;
+  letter-spacing: -0.01em;
+}
+
+.side-panel-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.side-panel-btn {
+  display: block;
+  text-align: center;
+  padding: 7px 14px;
+  border-radius: 3px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: var(--navy);
+  color: var(--white);
+  border: 1px solid var(--navy);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.side-panel-btn:hover {
+  background: var(--steel);
+  border-color: var(--steel);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.side-panel-btn--outline {
+  background: transparent;
+  color: var(--navy);
+}
+
+.side-panel-btn--outline:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.side-panel-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 11px;
+}
+
+.side-panel-detail:last-child { margin-bottom: 0; }
+
+.side-panel-detail-label {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.67rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.side-panel-detail-value {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.download-links { display: flex; flex-wrap: wrap; gap: 9px; }
 
 .download-link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 12px 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(109, 158, 255, 0.5);
-  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 3px;
+  border: 1px solid var(--navy);
+  color: var(--navy);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, rgba(109, 158, 255, 0.35), rgba(50, 70, 140, 0.5));
-  box-shadow: 0 10px 25px rgba(109, 158, 255, 0.25);
+  background: transparent;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .download-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 30px rgba(109, 158, 255, 0.35);
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
 }
 
+/* Resume entries */
 .resume-entry + .resume-entry {
-  margin-top: 28px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
 }
 
 .resume-entry-header {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 2px;
 }
 
 @media (min-width: 576px) {
@@ -662,190 +915,182 @@
 }
 
 .resume-entry h3 {
-  font-size: 1.15rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.975rem;
   margin: 0;
-  color: #ffffff;
+  color: var(--navy);
 }
 
 .resume-entry-dates {
-  font-size: 0.95rem;
-  color: rgba(224, 224, 255, 0.7);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  white-space: nowrap;
 }
 
 .resume-entry-location {
-  font-size: 0.95rem;
-  color: rgba(224, 224, 255, 0.75);
-  margin: 8px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 4px 0 8px;
 }
 
-.section-card ul {
-  padding-left: 1.2rem;
-  margin-bottom: 0;
-}
+.section-card ul { padding-left: 1.05rem; margin-bottom: 0; }
 
 .section-card li {
-  margin-bottom: 8px;
-  line-height: 1.6;
+  margin-bottom: 4px;
+  line-height: 1.65;
+  font-size: 0.875rem;
+  color: var(--text);
 }
 
+/* Skills grid */
 .contact-skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
   padding: 0;
   grid-auto-rows: 1fr;
 }
 
 .skill-block {
-  background: rgba(15, 15, 26, 0.9);
-  border: 1px solid rgba(109, 158, 255, 0.15);
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  background: var(--light-gray);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 13px;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .skill-block h3 {
-  font-size: 1rem;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #9ab7ff;
-  margin-bottom: 10px;
+  color: var(--navy);
+  margin-bottom: 5px;
 }
 
 .skill-block p {
   margin: 0;
-  color: rgba(224, 224, 255, 0.85);
+  color: var(--text);
+  font-size: 0.83rem;
   line-height: 1.6;
 }
 
-.contact-project-links {
+.skill-icons-row {
+  display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 2.5rem;
-  padding: 10px 0 0;
+  gap: 6px;
+  margin-top: 0.5rem;
 }
 
-.contact-project-links .skill-icon {
-  width: 72px;
-  height: 72px;
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.skill-badge img {
+  width: 16px;
+  height: 16px;
   object-fit: contain;
-  display: block;
 }
 
+.skill-badge i {
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════════════
+   MODALS
+   ═══════════════════════════════════════════════ */
+.modal-dark {
+  background: var(--white);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.modal-dark .modal-header,
+.modal-dark .modal-footer { border-color: var(--border); }
+
+.modal-dark .modal-title {
+  font-family: 'League Spartan', sans-serif;
+  color: var(--navy);
+}
+
+.modal-dark iframe { border: none; border-radius: 3px; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════════ */
+footer {
+  background: var(--charcoal);
+  padding: 1.25rem 15px;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: 'League Spartan', sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+footer a {
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+footer a:hover {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.footer-sep { opacity: 0.3; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════════ */
 @media (max-width: 575.98px) {
-  .contact-project-links .skill-icon {
-    width: 56px;
-    height: 56px;
-  }
-
-  .contact-wrapper {
-    margin-top: 96px;
-  }
-
-  .section-card {
-    padding: 24px;
-  }
-
-  .download-links {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .contact-header-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .contact-headshot {
-    width: 120px;
-    height: 120px;
-  }
-
-  .contact-social-links {
-    width: 100%;
-  }
-}
-/* Tighten vertical rhythm */
-section { padding-block: clamp(0.75rem, 1.6vw, 1.25rem); }
-.section-title, h2.section-title, h2.section-heading { margin-block-end: .35rem; }
-
-/* Hero less air below */
-.section-hero { padding-block-end: clamp(.25rem, 1vw, .75rem); }
-
-/* Skills: minimal padding; tiny title gap */
-#skills { margin-block-start: 0; padding-block: clamp(.25rem, 1vw, .5rem); }
-#skills .section-title, #skills h2 { margin-block-end: .25rem; }
-
-/* Snapshot: nearly touching Skills */
-#snapshot { margin-block-start: 0; padding-block-start: .25rem; }
-
-/* Cards/grids tighter */
-.grid, .cards, .card-grid { row-gap: clamp(.5rem, 1.2vw, .9rem); }
-.card { padding: clamp(.75rem, 1.4vw, 1.1rem); }
-
-/* Kill spacers under resume button */
-#snapshot .spacer, #snapshot .mt-8.h-32, #snapshot .empty, #snapshot .blank {
-  display: none !important; height: 0 !important; margin: 0 !important; padding: 0 !important;
+  .contact-header-inner { flex-direction: column; }
+  .contact-side-stack { flex: none; width: 100%; flex-direction: column; }
+  .contact-panel--action, .contact-panel--info { width: 100%; }
+  .contact-header-top { flex-direction: column; }
+  .contact-headshot { width: 100px; height: 100px; object-position: center 30%; border-radius: 50%; }
+  .contact-wrapper { margin-top: 75px; }
+  .section-card { padding: 16px; }
+  .download-links { flex-direction: column; }
+  .doc-card__tags { position: static; justify-content: flex-start; margin-bottom: 0.4rem; }
+  .doc-card__actions { flex-direction: column; }
+  .doc-card__actions .btn-resume { width: 100%; }
 }
 
-/* Hide duplicate connect row + cards */
-#lets-connect, .card--direct-lines, .card--profiles { display: none !important; }
-
-/* Reduce gap between any two consecutive sections */
-.section + .section { margin-block-start: clamp(.5rem, 1.2vw, .9rem); }
-
-/* ── Tableau dashboard layout fixes ───────────────────────── */
-.container { max-width: 1320px; } /* keep page comfy-wide */
-
-.viz-toggle .btn { padding: 0.25rem .75rem; }
-
-/* Responsive grid */
-.viz-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 1fr));
-  gap: 24px;
+@media (max-width: 767.98px) {
+  .technical-header { flex-direction: column; gap: 1rem; text-align: center; }
 }
 
-/* 2 cols large tablets */
-@media (max-width: 1200px) {
-  .viz-grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
 }
 
-/* 1 col on mobile */
-@media (max-width: 768px) {
-  .viz-grid { grid-template-columns: 1fr; }
-}
-
-.viz-card {
-  background: #141428;
-  border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
-  padding: 10px;
-  overflow: hidden;
-}
-
-/* Make embeds BIG by default */
-.viz-card iframe,
-.viz-card object,
-.viz-card .tableauPlaceholder,
-.viz-card .tableauViz {
-  width: 100% !important;
-  height: clamp(480px, 70vh, 900px) !important;
-  display: block;
-  border: 0;
-}
-
-/* Focus mode: one per row, taller height */
-.viz-grid.focus-mode {
-  grid-template-columns: 1fr;
-}
-
-.viz-grid.focus-mode .viz-card iframe,
-.viz-grid.focus-mode .viz-card object,
-.viz-grid.focus-mode .viz-card .tableauPlaceholder,
-.viz-grid.focus-mode .viz-card .tableauViz {
-  height: min(85vh, 1000px) !important;
+@media (max-width: 991.98px) {
+  .navbar-brand { font-size: 0.75rem; max-width: calc(100% - 56px); }
+  .hero-section { padding-top: max(6.5rem, 12vw); }
+  .hero-headshot { width: 140px; height: 140px; max-width: 140px; margin: 0 auto 0.5rem; }
+  .btn-hero-primary,
+  .btn-hero-secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 }

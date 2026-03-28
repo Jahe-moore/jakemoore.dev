@@ -3,653 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jake Moore - Portfolio</title>
+  <title>Jake Moore | Portfolio</title>
+  <meta name="description" content="Portfolio of Jake Moore — Business Analytics &amp; MIS projects from the University of Arizona." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jake Moore | Portfolio" />
+  <meta property="og:description" content="Business Analytics &amp; MIS student at the University of Arizona." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jahe-moore.github.io/bcom314-portfolio/portfolio.html" />
+  <meta property="og:image" content="https://jahe-moore.github.io/bcom314-portfolio/headshot.png" />
+  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jake Moore | Portfolio" />
+  <meta name="twitter:description" content="Business Analytics &amp; MIS student at the University of Arizona." />
+  <meta name="twitter:image" content="https://jahe-moore.github.io/bcom314-portfolio/headshot.png" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+  <!-- ── Navbar ── -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html">Home</a>
+      <a class="navbar-brand" href="index.html">Jake Moore &middot; Management Information Systems &middot; Business Analytics</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" aria-current="page" href="portfolio.html">Portfolio</a></li>
           <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-          <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <section class="section portfolio-hero text-center">
+  <!-- ══════════════════════════════════════════════
+       5. PORTFOLIO — navy header, left-aligned
+       ══════════════════════════════════════════════ -->
+  <section class="portfolio-hero">
     <div class="container">
-      <span class="portfolio-kicker">Analytics &amp; Strategy</span>
-      <h1 class="display-5 fw-bold mb-3">Portfolio</h1>
-      <p class="lead text-white mx-auto mb-4 max-w-720">
-        Concise project decks with clear takeaways—preview instantly or download a polished PDF to dive deeper.
-      </p>
-      <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a class="btn btn-resume px-4 py-2" href="Jake%20Moore%20Resume.pdf" target="_blank" rel="noopener">Download Résumé</a>
-        <a class="btn btn-outline-light px-4 py-2 doc-card__btn" href="#library">Jump to Projects ↓</a>
+      <h1 class="hero-name">Work Samples</h1>
+      <p class="hero-tagline">Projects in statistical modeling, data analysis, and visualization. Each one built, written, and presented by me.</p>
+      <div class="hero-links mt-3">
+        <a class="btn-hero-primary" href="JakeMoore_Resume2026.pdf" target="_blank" rel="noopener">Download Résumé</a>
+        <a class="btn-hero-secondary" href="#library">View Samples ↓</a>
+      </div>
+      <div class="contact-social-links mt-3" style="justify-content: flex-start;">
+        <a class="social-link" href="https://www.linkedin.com/in/jake-moore74/" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn logo">
+          <span>LinkedIn</span>
+        </a>
+        <a class="social-link" href="https://github.com/Jahe-moore" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub logo">
+          <span>GitHub</span>
+        </a>
+        <a class="social-link" href="https://www.kaggle.com/jahe57" target="_blank" rel="noopener">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kaggle/kaggle-original.svg" alt="Kaggle logo">
+          <span>Kaggle</span>
+        </a>
+        <a class="social-link" href="https://public.tableau.com/app/profile/jake.moore8327/vizzes" target="_blank" rel="noopener">
+          <i class="fa-solid fa-chart-bar" style="font-size:1.1rem; color:#E8762D;"></i>
+          <span>Tableau</span>
+        </a>
+        <a class="social-link" href="https://arizona.joinhandshake.com/profiles/jakemoore" target="_blank" rel="noopener">
+          <i class="fa-solid fa-handshake" style="font-size:1.1rem; color:#E8762D;"></i>
+          <span>Handshake</span>
+        </a>
       </div>
     </div>
   </section>
 
+  <!-- ── Work samples — light gray background ── -->
   <section id="library" class="section section-glass">
     <div class="container">
-      <div class="technical-header mb-5">
-        <h2 class="section-title text-white text-center mb-0">Technical Projects</h2>
-        <div class="filter-controls">
-          <label class="visually-hidden" for="projectFilter">Filter projects</label>
-          <select id="projectFilter" class="form-select filter-select">
-            <option value="all">All Topics</option>
-            <option value="excel">Excel</option>
-            <option value="reports">Reports</option>
-            <option value="tableau">Tableau</option>
-          </select>
-        </div>
-      </div>
+      <h2 class="section-heading mb-4">Evidence of How I Work</h2>
 
-      <div class="row g-4">
+      <div class="portfolio-samples-grid">
 
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">R</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">✈️</div>
-            <span class="doc-card__category">Predictive Analytics</span>
-            <h3 class="doc-card__title">Predicting Flight Delays — Logistic Regression on 1M+ U.S. Flights</h3>
-            <p class="doc-card__summary">
-              Cleaned and feature-engineered a dataset of 1M+ U.S. flights (Jan–Feb 2024), conducted EDA across airports and days of the week, then trained a logistic regression model to predict delay probability. Found origin airport is the dominant predictor — JFK, LGA, and EWR exceeded 80% delay rates — while distance and departure time had minimal influence. Model achieved 65.2% accuracy on a held-out test set.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Logistic regression, EDA, train-test split, confusion matrix</li>
-              <li><strong>Tools:</strong> R (tidyverse, ggplot2, caret, lubridate)</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewFinalScript">Preview</button>
-              <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
+        <!-- Sample 1 — Flight Delay Analysis (sole-authored, required) -->
+        <article class="doc-card">
+          <div class="doc-card__tags">
+            <span class="doc-card__tag">Analytics</span>
+            <span class="doc-card__tag">Solo</span>
+          </div>
+          <span class="doc-card__category">Statistical Modeling</span>
+          <h3 class="doc-card__title">Predicting Flight Delays: Logistic Regression</h3>
+          <p class="doc-card__summary">
+            Developed a binary logistic regression model to classify U.S. domestic flight arrival delays using over 1 million records from January–February 2024. Independently sourced and cleaned the dataset, engineered features, built and evaluated the model using confusion matrices and ROC-AUC in R, and produced a written analysis for a non-technical professional audience. This project demonstrates end-to-end analytical ownership: from raw data to actionable conclusion.
+          </p>
+          <ul class="doc-card__meta">
+            <li><strong>Skills:</strong> Logistic regression, feature engineering, model evaluation, data cleaning, technical writing</li>
+            <li><strong>Tools:</strong> R, tidyverse, ggplot2, caret</li>
+          </ul>
+          <div class="doc-card__actions">
+            <a class="btn btn-resume" href="Flight_Delay_Analysis.pdf" target="_blank" rel="noopener">Download PDF</a>
+            <a class="btn btn-resume" href="https://www.youtube.com/watch?v=DvZcNDcUFfU" target="_blank" rel="noopener">Watch on YouTube</a>
+          </div>
+        </article>
 
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports,tableau">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Reports</span>
-              <span class="doc-card__tag">Tableau</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">📊</div>
-            <span class="doc-card__category">Wine Analytics</span>
-            <h3 class="doc-card__title">Gallo Winery — Preliminary Wine Analysis</h3>
-            <p class="doc-card__summary">
-              Analyzed 13,050 wine records to understand how type and geography affect price and quality. Sparkling wines performed best, Rosé worst. Used t-tests to validate regional differences and guide sourcing decisions.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Descriptive analytics, two-sample t-tests</li>
-              <li><strong>Tools:</strong> Tableau storytelling, Python/R/SQL stack</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewCase1">Preview</button>
-              <a class="btn btn-resume" href="BNAN276_Case1.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports,tableau">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-              <span class="doc-card__tag">Tableau</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">📈</div>
-            <span class="doc-card__category">Pricing Strategy</span>
-            <h3 class="doc-card__title">Gallo Winery — Wine Pricing Model &amp; Tableau Dashboard</h3>
-            <p class="doc-card__summary">
-              Built regression models linking price to rating, vintage, and popularity. Found sparkling wines command premium prices. Created interactive Tableau dashboard to support pricing strategy.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Correlation, regression diagnostics</li>
-              <li><strong>Tools:</strong> Tableau filters, Python/R/SQL</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewCase2">Preview</button>
-              <a class="btn btn-resume" href="BNAN276_Case2.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">💳</div>
-            <span class="doc-card__category">Customer Analytics</span>
-            <h3 class="doc-card__title">Credit Card Behavior — Taiwan (≈25k customers)</h3>
-            <p class="doc-card__summary">
-              Tested gender and seasonal payment patterns. Men carried $125 higher balances on average. September payments exceeded April by $15. Results shaped marketing and retention strategies.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Two-sample &amp; paired t-tests</li>
-              <li><strong>Tools:</strong> Confidence intervals, experiment-to-action translation</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion2">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion2.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">👠</div>
-            <span class="doc-card__category">Retail Pricing</span>
-            <h3 class="doc-card__title">Walmart vs. Amazon/Macy's/Overstock — Women's Shoes</h3>
-            <p class="doc-card__summary">
-              Compared 26k shoe prices across retailers. ANOVA confirmed Walmart consistently undercuts competitors. Recommended targeted price adjustments and aggressive price-match messaging.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> ANOVA, pairwise confidence intervals</li>
-              <li><strong>Tools:</strong> Large-scale data cleaning &amp; merchant segmentation</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion3">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion3.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">🏦</div>
-            <span class="doc-card__category">Financial Modeling</span>
-            <h3 class="doc-card__title">EPS Drivers — NYSE (1,501 companies)</h3>
-            <p class="doc-card__summary">
-              Modeled earnings per share using EBT, operating margin, and pre-tax margin. EBT proved the strongest predictor. Identified unexpected negative margin relationships worth investigating.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Multiple regression, significance testing</li>
-              <li><strong>Tools:</strong> Model diagnostics, financial storytelling</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion4">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion4.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">📬</div>
-            <span class="doc-card__category">Lending Strategy</span>
-            <h3 class="doc-card__title">Debt Predictors — SoFi (≈2,000 clients)</h3>
-            <p class="doc-card__summary">
-              Predicted client debt levels using demographics and financial behavior. Identified key risk factors and multicollinearity issues. Enabled better targeting for consolidation offers.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Multiple regression, diagnostics</li>
-              <li><strong>Tools:</strong> Residual analysis, predictive screening</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDiscussion5">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion5.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">R</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">🎓</div>
-            <span class="doc-card__category">Data Wrangling</span>
-            <h3 class="doc-card__title">U.S. College Tuition — State &amp; Regional Trends</h3>
-            <p class="doc-card__summary">
-              Tidied and reshaped 50-state average tuition data (2004–2016) into long format, joined with U.S. Census regions, and produced five base visualizations revealing the Northeast's consistent cost premium over other regions.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Data tidying, pivot_longer, table joins</li>
-              <li><strong>Tools:</strong> R (tidyverse, ggplot2)</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDC3">Preview</button>
-              <a class="btn btn-resume" href="dc_03_jakemoore.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">R</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">📉</div>
-            <span class="doc-card__category">Data Visualization</span>
-            <h3 class="doc-card__title">Tuition Visualization — Storytelling &amp; Annotation</h3>
-            <p class="doc-card__summary">
-              Refined five tuition visualizations with titles, axis labels, reference lines, direct data labels, and on-plot annotations to transform raw charts into publication-ready figures that communicate regional cost trends clearly.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Visual storytelling, annotation, ggplot2 theming</li>
-              <li><strong>Tools:</strong> R (ggplot2, tidyverse)</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDC4">Preview</button>
-              <a class="btn btn-resume" href="dc_04_jakemoore.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">R</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">🏅</div>
-            <span class="doc-card__category">Sports Analytics</span>
-            <h3 class="doc-card__title">Olympic Medal Trends — Regional Analysis (1990–2016)</h3>
-            <p class="doc-card__summary">
-              Joined 271k Olympic athlete records with NOC region data to analyze medal counts across regions. Built multi-series line plots and faceted medal-type breakdowns for the top 6 regions over 26 years.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Table joins, group summaries, faceted visualization</li>
-              <li><strong>Tools:</strong> R (tidyverse, ggplot2)</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDC5">Preview</button>
-              <a class="btn btn-resume" href="dc_05_jakemoore.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">R</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">🗺️</div>
-            <span class="doc-card__category">Geospatial Analytics</span>
-            <h3 class="doc-card__title">State Milk Production &amp; Population — Correlation Study</h3>
-            <p class="doc-card__summary">
-              Analyzed U.S. milk production (1970–2017) using regional scatter plots and a choropleth map by state. Measured a moderate positive correlation (r = 0.63) between state population and milk output, with noted data limitations.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Choropleth mapping, Pearson correlation, trend analysis</li>
-              <li><strong>Tools:</strong> R (usmap, ggplot2, tidyverse)</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDC6">Preview</button>
-              <a class="btn btn-resume" href="dc_06_jakemoore.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">💼</div>
-            <span class="doc-card__category">Salary Analytics</span>
-            <h3 class="doc-card__title">Nonlinear Salary Growth — University Graduate Study</h3>
-            <p class="doc-card__summary">
-              Tested four nonlinear regression models (Quadratic, Lin-Log, Log-Lin, Log-Log) across 140 state universities to predict mid-career salary from starting salary. The Log-Log model outperformed all others with an adjusted R² of 0.7649 and the lowest standard error.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Nonlinear regression, model comparison, adjusted R²</li>
-              <li><strong>Tools:</strong> Excel regression analysis, statistical reporting</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDisc6">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion6.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
-        <div class="col-md-6 col-xl-4 project-column">
-          <article class="doc-card h-100" data-topics="excel,reports">
-            <div class="doc-card__tags">
-              <span class="doc-card__tag">Excel</span>
-              <span class="doc-card__tag">Reports</span>
-            </div>
-            <div class="doc-card__icon" aria-hidden="true">💳</div>
-            <span class="doc-card__category">Credit Analytics</span>
-            <h3 class="doc-card__title">Credit Limits &amp; Default Risk — Demographic Regression Study</h3>
-            <p class="doc-card__summary">
-              Built two regression models on ~24,000 credit card customers to examine how education and demographics influence credit limits and default probability. Found repayment behavior and age as key risk signals, and recommended collecting additional financial variables for stronger predictive power.
-            </p>
-            <ul class="doc-card__meta">
-              <li><strong>Skills:</strong> Multiple regression, predictive inference, model limitations</li>
-              <li><strong>Tools:</strong> Excel regression diagnostics, statistical reporting</li>
-            </ul>
-            <div class="doc-card__actions">
-              <button class="btn btn-outline-light doc-card__btn" data-bs-toggle="modal" data-bs-target="#previewDisc7">Preview</button>
-              <a class="btn btn-resume" href="Moore_Jake_Discussion7.pdf" target="_blank" rel="noopener">Download PDF</a>
-            </div>
-          </article>
-        </div>
-
+        <!-- Sample 2 — Tableau Dashboard Portfolio -->
+        <article class="doc-card">
+          <div class="doc-card__tags">
+            <span class="doc-card__tag">Visualization</span>
+          </div>
+          <span class="doc-card__category">Data Visualization</span>
+          <h3 class="doc-card__title">Tableau Public Dashboard Portfolio</h3>
+          <p class="doc-card__summary">
+            A collection of published interactive dashboards exploring Taiwanese credit card payment behavior, U.S. graduate salary trends by state institution, cellphone form factor preferences, and wine market analytics. Each dashboard applies calculated fields, interactive parameters, and intentional visual hierarchy to make data accessible to non-technical audiences.
+          </p>
+          <ul class="doc-card__meta">
+            <li><strong>Skills:</strong> Dashboard design, calculated fields, interactive parameters, data storytelling, visual hierarchy</li>
+            <li><strong>Tools:</strong> Tableau Public, Excel</li>
+          </ul>
+          <div class="doc-card__actions">
+            <a class="btn btn-resume" href="https://public.tableau.com/app/profile/jake.moore8327/vizzes" target="_blank" rel="noopener">View Dashboards</a>
+          </div>
+        </article>
 
       </div>
     </div>
   </section>
 
-  <!-- Preview Modals -->
-  <div class="modal fade" id="previewFinalScript" tabindex="-1" aria-labelledby="previewFinalScriptLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewFinalScriptLabel">Preview — Predicting Flight Delays: Logistic Regression Script</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="final_project_script_jakemoore.pdf#toolbar=0" title="Predicting Flight Delays Logistic Regression Script" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="final_project_script_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewCase1" tabindex="-1" aria-labelledby="previewCase1Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewCase1Label">Preview — Gallo Winery Preliminary Wine Analysis</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="BNAN276_Case1.pdf#toolbar=0" title="Gallo Winery Preliminary Wine Analysis" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="BNAN276_Case1.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewCase2" tabindex="-1" aria-labelledby="previewCase2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewCase2Label">Preview — Gallo Winery Wine Pricing Model &amp; Dashboard</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="BNAN276_Case2.pdf#toolbar=0" title="Gallo Winery Wine Pricing Model" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="BNAN276_Case2.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDiscussion2" tabindex="-1" aria-labelledby="previewDiscussion2Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDiscussion2Label">Preview — Credit Card Behavior (Taiwan)</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion2.pdf#toolbar=0" title="Credit Card Behavior Taiwan" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion2.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDiscussion3" tabindex="-1" aria-labelledby="previewDiscussion3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDiscussion3Label">Preview — Women’s Shoes Price Gap</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion3.pdf#toolbar=0" title="Women’s Shoes Price Gap" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion3.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDiscussion4" tabindex="-1" aria-labelledby="previewDiscussion4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDiscussion4Label">Preview — EPS Drivers (NYSE)</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion4.pdf#toolbar=0" title="EPS Drivers NYSE" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion4.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDiscussion5" tabindex="-1" aria-labelledby="previewDiscussion5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDiscussion5Label">Preview — Debt Predictors (SoFi)</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion5.pdf#toolbar=0" title="Debt Predictors SoFi" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion5.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Data Challenge Modals -->
-  <div class="modal fade" id="previewDC3" tabindex="-1" aria-labelledby="previewDC3Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDC3Label">Preview — U.S. College Tuition: State &amp; Regional Trends</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="dc_03_jakemoore.pdf#toolbar=0" title="U.S. College Tuition State and Regional Trends" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="dc_03_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDC4" tabindex="-1" aria-labelledby="previewDC4Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDC4Label">Preview — Tuition Visualization: Storytelling &amp; Annotation</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="dc_04_jakemoore.pdf#toolbar=0" title="Tuition Visualization Storytelling and Annotation" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="dc_04_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDC5" tabindex="-1" aria-labelledby="previewDC5Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDC5Label">Preview — Olympic Medal Trends: Regional Analysis (1990–2016)</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="dc_05_jakemoore.pdf#toolbar=0" title="Olympic Medal Trends Regional Analysis" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="dc_05_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDC6" tabindex="-1" aria-labelledby="previewDC6Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDC6Label">Preview — State Milk Production &amp; Population: Correlation Study</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="dc_06_jakemoore.pdf#toolbar=0" title="State Milk Production and Population Correlation Study" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="dc_06_jakemoore.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Analytics Report Modals -->
-  <div class="modal fade" id="previewDisc6" tabindex="-1" aria-labelledby="previewDisc6Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDisc6Label">Preview — Nonlinear Salary Growth: University Graduate Study</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion6.pdf#toolbar=0" title="Nonlinear Salary Growth University Graduate Study" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion6.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="previewDisc7" tabindex="-1" aria-labelledby="previewDisc7Label" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content modal-dark">
-        <div class="modal-header">
-          <h5 class="modal-title" id="previewDisc7Label">Preview — Credit Limits &amp; Default Risk: Demographic Regression Study</h5>
-          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="ratio ratio-4x3">
-            <iframe src="Moore_Jake_Discussion7.pdf#toolbar=0" title="Credit Limits and Default Risk Demographic Regression Study" loading="lazy"></iframe>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <a class="btn btn-resume" href="Moore_Jake_Discussion7.pdf" target="_blank" rel="noopener">Open Full PDF</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <!-- ── Footer ── -->
   <footer>
-    <small>© 2025 Jake Moore • Hosted on GitHub Pages</small>
+    <div class="container">
+      <span>© 2026 Jake Moore</span>
+      <span class="footer-sep">·</span>
+      <a href="index.html">Home</a>
+      <span class="footer-sep">·</span>
+      <a href="contact.html">Contact</a>
+    </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const filterSelect = document.getElementById('projectFilter');
-    const projectColumns = document.querySelectorAll('.project-column');
-
-    function applyProjectFilter(value) {
-      projectColumns.forEach((column) => {
-        const card = column.querySelector('.doc-card');
-        if (!card) {
-          return;
-        }
-        const topics = (card.dataset.topics || '').split(',');
-        const matches = value === 'all' || topics.includes(value);
-        column.classList.toggle('d-none', !matches);
-        card.setAttribute('aria-hidden', (!matches).toString());
-      });
-    }
-
-    if (filterSelect) {
-      const allowedFilters = ['excel', 'reports', 'tableau'];
-      const params = new URLSearchParams(window.location.search);
-      let preset = params.get('filter');
-      if (!preset && window.location.hash) {
-        preset = window.location.hash.replace('#', '');
-      }
-      preset = preset ? preset.toLowerCase() : 'all';
-      if (allowedFilters.includes(preset)) {
-        filterSelect.value = preset;
-      }
-      applyProjectFilter(filterSelect.value);
-      filterSelect.addEventListener('change', (event) => {
-        applyProjectFilter(event.target.value);
-      });
-    }
-  </script>
 </body>
 </html>

@@ -389,7 +389,7 @@ img { display: block; max-width: 100%; }
 .company-logo {
   height: 22px;
   width: auto;
-  max-width: 110px;
+  max-width: 160px;
   object-fit: contain;
   border-radius: 3px;
   flex-shrink: 0;

@@ -1,0 +1,6 @@
+# GitHub Pages: keep internal notes off the public site (files stay in the repo).
+exclude:
+  - Patch_Notes.txt
+  - Persona_Video.txt
+  - README.md
+  - SEO_PLAN.md

@@ -7,7 +7,7 @@
 - [Home](https://jakemoore.dev/): introduction, experience and contact options
 - [Portfolio](https://jakemoore.dev/portfolio.html): projects
 - [Contact](https://jakemoore.dev/contact.html): resume summary, education and experience
-- [Resume (PDF)](https://jakemoore.dev/JakeMoore_Resume.pdf)
+- [Resume (PDF)](https://jakemoore.dev/assets/docs/JakeMoore_Resume.pdf)
 
 ## Profiles
 

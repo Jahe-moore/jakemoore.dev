@@ -3,22 +3,22 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://jakemoore.dev/</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-09</lastmod>
     <image:image>
       <image:loc>https://jakemoore.dev/assets/img/headshot.png</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://jakemoore.dev/portfolio.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/contact.html</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/assets/docs/JakeMoore_Resume.pdf</loc>
-    <lastmod>2026-10-29</lastmod>
+    <lastmod>2026-11-09</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/assets/docs/Flight_Delay_Analysis.pdf</loc>

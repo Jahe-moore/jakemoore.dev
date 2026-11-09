@@ -1,3 +1,4 @@
 # GitHub Pages: keep repo-only files off the public site.
 exclude:
   - README.md
+  - indexnow_ping.sh

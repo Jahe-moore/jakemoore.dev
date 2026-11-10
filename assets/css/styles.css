@@ -500,6 +500,9 @@ img { display: block; max-width: 100%; }
   .portfolio-hero .ph-social { justify-content: flex-start; }
 }
 
+/* Samples section sits close under the hero */
+.portfolio-hero + #library { padding-top: 1.25rem; }
+
 .portfolio-hero .lead {
   color: rgba(255, 255, 255, 0.72) !important;
   font-family: 'Libre Baskerville', Georgia, serif;

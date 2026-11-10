@@ -468,6 +468,54 @@ img { display: block; max-width: 100%; }
 .portfolio-hero h1 { color: var(--white); }
 .portfolio-hero .hero-tagline { color: rgba(255, 255, 255, 0.85); font-style: normal; }
 
+/* Compact horizontal hero: text left, actions right; stacks below 1200px */
+.portfolio-hero {
+  padding-top: clamp(5rem, 8vw, 5.5rem);
+  padding-bottom: 1.75rem;
+}
+
+.portfolio-hero__inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.5rem;
+}
+
+.portfolio-hero__text { flex: 1 1 auto; min-width: 0; }
+
+.portfolio-hero .hero-eyebrow { font-size: 0.75rem; margin-bottom: 0.4rem; }
+.portfolio-hero .hero-name { font-size: clamp(2rem, 4.5vw, 2.75rem); margin-bottom: 0.4rem; }
+.portfolio-hero .hero-tagline { font-size: 1rem; max-width: 720px; margin-bottom: 0; }
+
+.portfolio-hero__aside {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.6rem;
+}
+
+.portfolio-hero .hero-links { margin-top: 0; gap: 0.5rem; justify-content: flex-end; }
+
+.portfolio-hero .btn-hero-primary,
+.portfolio-hero .btn-hero-secondary {
+  font-size: 0.7rem;
+  padding: 0.4rem 0.9rem;
+}
+
+.portfolio-hero .contact-social-links { margin-top: 0; justify-content: flex-end; }
+
+@media (max-width: 1199.98px) {
+  .portfolio-hero__inner { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .portfolio-hero__aside { align-items: flex-start; }
+  .portfolio-hero .hero-links,
+  .portfolio-hero .contact-social-links { justify-content: flex-start; }
+}
+
+@media (max-width: 991.98px) {
+  .portfolio-hero { padding-top: 6.5rem; }
+}
+
 .portfolio-hero .lead {
   color: rgba(255, 255, 255, 0.72) !important;
   font-family: 'Libre Baskerville', Georgia, serif;

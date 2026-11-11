@@ -1139,3 +1139,27 @@ footer a:hover {
   .btn-hero-primary,
   .btn-hero-secondary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
 }
+
+/* ═══════════════════════════════════════════════
+   CERTIFICATIONS — minimal list (contact page)
+   ═══════════════════════════════════════════════ */
+.cred-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 820px;
+}
+.cred-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  align-items: baseline;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.cred-list li:last-child { border-bottom: none; }
+.cred-name { font-weight: 600; color: var(--navy); }
+.cred-meta { color: var(--text-muted); font-size: 0.9rem; }
+.cred-links { margin-left: auto; font-size: 0.9rem; }
+.cred-links a { color: var(--steel); text-decoration: none; }
+.cred-links a:hover { text-decoration: underline; }

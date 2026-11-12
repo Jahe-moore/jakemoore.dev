@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jake Moore | R Code</title>
+  <meta name="description" content="Code I wrote while learning R: tidyverse wrangling, ggplot2 charts that state their own finding, and regression from linear fits to logistic and ridge models." />
+  <link rel="canonical" href="https://jakemoore.dev/r.html" />
+  <meta name="author" content="Jake Moore" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jake Moore | R Code" />
+  <meta property="og:description" content="Code I wrote while learning R: tidyverse wrangling, ggplot2 charts that state their own finding, and regression from linear fits to logistic and ridge models." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jakemoore.dev/r.html" />
+  <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
+  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261110d">
+  <style>
+    .code-hero { padding-bottom: 1.4rem; }
+    .code-hero .hero-name { margin: 0.6rem 0 0.35rem; }
+    .code-intro { max-width: 900px; }
+    .code-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .code-tab {
+      font-family: 'League Spartan', sans-serif; font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; color: rgba(255,255,255,0.8);
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .code-tab:hover { color: var(--white); border-color: rgba(255,255,255,0.7); text-decoration: none; }
+    .code-tab.is-active { background: var(--white); border-color: var(--white); color: var(--navy); }
+    .code-tab--back { margin-left: auto; border-color: transparent; }
+    .code-section { padding-top: 1.25rem; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+    .chip {
+      font-family: 'League Spartan', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--steel-light);
+      border: 1px solid var(--border); color: var(--navy);
+    }
+    .code-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+    .code-card--lead { grid-column: 1 / -1; }
+    @media (max-width: 991.98px) { .code-grid { grid-template-columns: minmax(0, 1fr); } }
+    .code-card { min-width: 0; gap: 0.5rem; padding: 1.1rem 1.15rem; }
+    .code-card .doc-card__title { margin: 0; font-size: 1.1rem; }
+    .code-card .doc-card__summary { margin: 0; line-height: 1.6; }
+    .code-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .code-card pre[class*="language-"] {
+      margin: 0; padding: 0.8rem 0.9rem; overflow: auto;
+      background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
+      border-radius: 4px; font-size: 0.78rem; line-height: 1.5;
+    }
+    .code-card details > pre[class*="language-"] { margin-top: 0.5rem; max-height: 40rem; }
+    pre[class*="language-"], code[class*="language-"] {
+      text-shadow: none; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+      color: var(--charcoal); white-space: pre; word-break: normal; overflow-wrap: normal;
+      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0;
+    }
+    .token.comment { color: #6B7280; font-style: italic; }
+    .token.keyword, .token.boolean { color: var(--navy); font-weight: 700; }
+    .token.function { color: #1D5FAA; }
+    .token.string { color: #1A6B4A; }
+    .token.number { color: #9A5B0A; }
+    .token.operator, .token.punctuation { color: #4B5563; background: none; }
+    .code-card summary {
+      cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); padding: 0.2rem 0;
+    }
+    .code-card summary:hover { color: var(--navy); }
+    .code-card summary:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--steel); border-radius: 3px; }
+    .code-card .doc-card__actions { margin-top: 0; padding-top: 0; }
+    .code-card .doc-card__actions .btn-resume { flex: 0 0 auto; padding: 0.45rem 1rem; font-size: 0.72rem; }
+    .xl-skills { font-family: 'League Spartan', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy);
+      margin-bottom: 0.9rem; line-height: 1.5; }
+    .xl-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; font-size: 0.85rem; }
+    .xl-table th { font-family: 'League Spartan', sans-serif; font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white); background: var(--navy); padding: 0.55rem 0.8rem; text-align: left; }
+    .xl-table td { padding: 0.55rem 0.8rem; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+    .xl-table tr:nth-child(even) td { background: #F6F7F9; }
+    .xl-table td:first-child { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy); width: 22%; }
+    .xl-table td:nth-child(2) { width: 36%; }
+    .xl-table code { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem;
+      color: var(--charcoal); background: var(--steel-light); padding: 0.1rem 0.35rem; border-radius: 3px;
+      overflow-wrap: anywhere; word-break: break-word;
+      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+    @media (max-width: 767.98px) {
+      .code-tab--back { margin-left: 0; }
+      .portfolio-hero.code-hero { padding-top: 6.4rem; }
+      .xl-table thead { display: none; }
+      .xl-table, .xl-table tbody, .xl-table tr, .xl-table td { display: block; width: 100% !important; }
+      .xl-table tr { border-top: 1px solid var(--border); padding: 0.5rem 0; }
+      .xl-table td { border-top: none; padding: 0.2rem 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jake Moore &middot; Management Information Systems</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="portfolio-hero code-hero">
+    <div class="container">
+      <nav class="code-tabs" aria-label="Code pages">
+        <a class="code-tab" href="python.html">Python</a>
+        <a class="code-tab is-active" aria-current="page" href="r.html">R</a>
+        <a class="code-tab" href="excel.html">Excel</a>
+        <a class="code-tab code-tab--back" href="portfolio.html">All work samples</a>
+      </nav>
+      <h1 class="hero-name">R Code</h1>
+      <p class="hero-tagline code-intro">Code I wrote while learning R: tidyverse wrangling, ggplot2 charts that state their own finding, and regression from linear fits to logistic and ridge models.</p>
+    </div>
+  </section>
+
+  <section class="section section-glass code-section">
+    <div class="container">
+      <div class="chip-row"><span class="chip">tidyverse</span><span class="chip">dplyr joins</span><span class="chip">pivot_longer / wider</span><span class="chip">ggplot2</span><span class="chip">logistic regression</span><span class="chip">linear and polynomial regression</span><span class="chip">multicollinearity and VIF</span><span class="chip">ridge regression</span><span class="chip">caret</span><span class="chip">pROC</span><span class="chip">kNN imputation</span></div>
+      <div class="code-grid">
+        <article class="doc-card code-card code-card--lead">
+          <h2 class="doc-card__title">Predicting Flight Delays: Logistic Regression</h2>
+          <p class="doc-card__summary">Logistic regression on 1+ million U.S. domestic flight records, built in R, translated for non-technical stakeholders. The model tests whether origin airport, departure time, day of the week and distance predict a delay, and is scored on a held-out 20% with a confusion matrix and ROC-AUC.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">glm (binomial)</span><span class="doc-card__tag">caret</span><span class="doc-card__tag">pROC</span><span class="doc-card__tag">broom</span><span class="doc-card__tag">ggplot2</span></div>
+          <div class="doc-card__actions"><a class="btn btn-resume" href="assets/docs/Flight_Delay_Analysis.pdf" target="_blank" rel="noopener">Read the Write-Up</a></div>
+          <pre class="language-r"><code class="language-r"># 5.0 Model ----
+# Keep the 50 busiest airports as their own levels; group the rest as &quot;Other&quot;
+top_50_airports &lt;- airplane_data %&gt;%
+  count(origin, sort = TRUE) %&gt;%
+  slice_max(n, n = 50) %&gt;%
+  pull(origin)
+
+model_data &lt;- airplane_data %&gt;%
+  mutate(origin = ifelse(origin %in% top_50_airports, origin, &quot;Other&quot;)) %&gt;%
+  select(delayed, origin, dep_time, distance, day) %&gt;%
+  na.omit()
+
+model_data$origin &lt;- as.factor(model_data$origin)
+model_data$day &lt;- as.factor(model_data$day)
+model_data$day &lt;- relevel(model_data$day, ref = &quot;Friday&quot;)  # Friday = baseline
+
+set.seed(123)
+train_index &lt;- createDataPartition(model_data$delayed, p = 0.8, list = FALSE)
+train_data &lt;- model_data[train_index, ]
+test_data &lt;- model_data[-train_index, ]
+
+logit_model &lt;- glm(delayed ~ ., data = train_data, family = &quot;binomial&quot;)
+
+coefs &lt;- coef(logit_model)
+sort(abs(coefs), decreasing = TRUE)[1:5]    # strongest effects
+sort(abs(coefs), decreasing = FALSE)[1:5]   # weakest effects
+
+# 6.0 Evaluate on the held-out 20% ----
+predictions &lt;- predict(logit_model, test_data, type = &quot;response&quot;)
+predicted_classes &lt;- ifelse(predictions &gt; 0.5, 1, 0)
+
+conf_matrix &lt;- confusionMatrix(factor(predicted_classes), factor(test_data$delayed))
+print(conf_matrix)
+
+roc_obj &lt;- roc(test_data$delayed, predictions)
+auc_value &lt;- auc(roc_obj)</code></pre>
+          <details>
+            <summary>Full code (192 lines)</summary>
+            <pre class="language-r"><code class="language-r"># Predicting Flight Delays: A Logistic Regression Approach
+#
+# Question: can we predict the likelihood of a flight delay from its origin
+# airport, scheduled departure time, day of the week and flight distance?
+# Data: over one million U.S. flights, January-February 2024 (BTS on-time data).
+# A flight counts as &quot;delayed&quot; when wheels-off is 15+ minutes after scheduled departure.
+
+library(tidyverse)
+library(pROC)
+library(caret)
+library(broom)
+
+# 1.0 Load and profile ----
+flight_data_raw &lt;- read_csv(&quot;flight_data_2024.csv&quot;)
+glimpse(flight_data_raw)
+
+sum(is.na(flight_data_raw))
+(sum(is.na(flight_data_raw)) / (nrow(flight_data_raw) * ncol(flight_data_raw))) * 100
+
+# 2.0 Clean ----
+# Drop cancelled flights and delays caused by weather or a late inbound aircraft,
+# so the model only sees delays the airport and schedule could explain.
+airplane_data &lt;- flight_data_raw %&gt;%
+  filter(cancelled == 0,
+         weather_delay == 0,
+         late_aircraft_delay == 0,
+         !is.na(dep_time),   # model uses this
+         !is.na(taxi_out)    # model uses this
+         ) %&gt;%
+  select(-air_time, -taxi_in, -late_aircraft_delay, -weather_delay,
+         -cancelled, -origin_city_name, -origin_state_nm, -month,
+         -day_of_month, -wheels_on, -year)
+
+removed_rows &lt;- nrow(flight_data_raw) - nrow(airplane_data)
+paste(removed_rows, &quot;flights removed.&quot;)
+
+# 3.0 Build the target ----
+# HHMM integers -&gt; real datetimes; a wheels-off time earlier than departure
+# means the flight crossed midnight, so add a day.
+airplane_data &lt;- airplane_data %&gt;%
+  mutate(
+    dep_time_str = sprintf(&quot;%02d:%02d&quot;, dep_time %/% 100, dep_time %% 100),
+    wheels_off_str = sprintf(&quot;%02d:%02d&quot;, wheels_off %/% 100, wheels_off %% 100),
+    dep_datetime = mdy_hm(paste(fl_date, dep_time_str)),
+    wheels_off_datetime = mdy_hm(paste(fl_date, wheels_off_str)),
+    wheels_off_datetime = if_else(wheels_off_datetime &lt; dep_datetime,
+                                  wheels_off_datetime + days(1), wheels_off_datetime),
+    delay_time = as.numeric(difftime(wheels_off_datetime, dep_datetime, units = &quot;mins&quot;)),
+    delayed = ifelse(delay_time &gt;= 15, 1, 0),
+    day = factor(day_of_week, levels = 1:7,
+                 labels = c(&quot;Monday&quot;, &quot;Tuesday&quot;, &quot;Wednesday&quot;, &quot;Thursday&quot;,
+                            &quot;Friday&quot;, &quot;Saturday&quot;, &quot;Sunday&quot;))
+  )
+
+# 4.0 Explore ----
+delay_summary &lt;- airplane_data %&gt;%
+  count(delayed) %&gt;%
+  mutate(prop = n / sum(n))
+
+ggplot(delay_summary, aes(x = &quot;&quot;, y = prop, fill = factor(delayed))) +
+  geom_bar(stat = &quot;identity&quot;, width = 1) +
+  coord_polar(&quot;y&quot;, start = 0) +
+  geom_text(aes(label = scales::percent(prop)), color = &quot;white&quot;,
+            position = position_stack(vjust = 0.5)) +
+  scale_fill_manual(values = c(&quot;0&quot; = &quot;darkgreen&quot;, &quot;1&quot; = &quot;darkred&quot;),
+                    labels = c(&quot;On-Time&quot;, &quot;Delayed&quot;)) +
+  labs(title = &quot;More Than Half of All Flights Were Delayed&quot;,
+       subtitle = &quot;On-Time vs. Delayed Flights (Jan-Feb 2024)&quot;,
+       fill = &quot;Status&quot;, caption = &quot;Source: flight_data_2024.csv&quot;) +
+  theme_void(base_size = 14)
+
+# Delay rate by origin airport (airports with 100+ flights only)
+delay_by_origin &lt;- airplane_data %&gt;%
+  group_by(origin) %&gt;%
+  summarise(total_flights = n(),
+            delayed_flights = sum(delayed),
+            delay_percentage = (delayed_flights / total_flights) * 100) %&gt;%
+  arrange(desc(delay_percentage)) %&gt;%
+  filter(total_flights &gt; 100)
+
+plot_data_origin &lt;- bind_rows(head(delay_by_origin, 5), tail(delay_by_origin, 5)) %&gt;%
+  mutate(origin = fct_reorder(origin, delay_percentage))
+
+ggplot(plot_data_origin, aes(x = origin, y = delay_percentage, fill = delay_percentage)) +
+  geom_col(width = 0.8) +
+  geom_text(aes(label = paste0(round(delay_percentage, 1), &quot;%&quot;)),
+            hjust = 1.07, size = 3, color = &quot;white&quot;) +
+  labs(title = &quot;Flight Delays Vary Significantly by Origin Airport&quot;,
+       subtitle = &quot;Top 5 and Bottom 5 Airports by Delay Percentage (airports with &gt;100 flights)&quot;,
+       caption = &quot;Source: flight_data_2024.csv&quot;,
+       x = &quot;Origin Airport&quot;, y = &quot;Percentage of Flights Delayed&quot;) +
+  scale_fill_gradient(low = &quot;darkgreen&quot;, high = &quot;darkred&quot;) +
+  coord_flip() +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5, face = &quot;bold&quot;, size = 18),
+        plot.subtitle = element_text(hjust = 0.5, size = 12),
+        axis.title = element_text(size = 12),
+        axis.text = element_text(size = 15),
+        legend.position = &quot;none&quot;)
+
+# Best and worst day of the week
+delay_by_day &lt;- airplane_data %&gt;%
+  group_by(day) %&gt;%
+  summarise(pct_delay = mean(delayed) * 100)
+
+max_delay_by_day &lt;- delay_by_day %&gt;%
+  slice_max(pct_delay, n = 1) %&gt;%
+  mutate(type = &quot;Highest Delay Day&quot;)
+
+min_delay_by_day &lt;- delay_by_day %&gt;%
+  slice_min(pct_delay, n = 1) %&gt;%
+  mutate(type = &quot;Lowest Delay Day&quot;)
+
+delay_day_summary &lt;- rbind(max_delay_by_day, min_delay_by_day)
+delay_day_summary &lt;- delay_day_summary[, c(&quot;type&quot;, &quot;day&quot;, &quot;pct_delay&quot;)]
+colnames(delay_day_summary) &lt;- c(&quot;Type&quot;, &quot;Day&quot;, &quot;Percent_Delayed&quot;)
+delay_day_summary
+
+# 5.0 Model ----
+# Keep the 50 busiest airports as their own levels; group the rest as &quot;Other&quot;
+top_50_airports &lt;- airplane_data %&gt;%
+  count(origin, sort = TRUE) %&gt;%
+  slice_max(n, n = 50) %&gt;%
+  pull(origin)
+
+model_data &lt;- airplane_data %&gt;%
+  mutate(origin = ifelse(origin %in% top_50_airports, origin, &quot;Other&quot;)) %&gt;%
+  select(delayed, origin, dep_time, distance, day) %&gt;%
+  na.omit()
+
+model_data$origin &lt;- as.factor(model_data$origin)
+model_data$day &lt;- as.factor(model_data$day)
+model_data$day &lt;- relevel(model_data$day, ref = &quot;Friday&quot;)  # Friday = baseline
+
+set.seed(123)
+train_index &lt;- createDataPartition(model_data$delayed, p = 0.8, list = FALSE)
+train_data &lt;- model_data[train_index, ]
+test_data &lt;- model_data[-train_index, ]
+
+logit_model &lt;- glm(delayed ~ ., data = train_data, family = &quot;binomial&quot;)
+
+coefs &lt;- coef(logit_model)
+sort(abs(coefs), decreasing = TRUE)[1:5]    # strongest effects
+sort(abs(coefs), decreasing = FALSE)[1:5]   # weakest effects
+
+# 6.0 Evaluate on the held-out 20% ----
+predictions &lt;- predict(logit_model, test_data, type = &quot;response&quot;)
+predicted_classes &lt;- ifelse(predictions &gt; 0.5, 1, 0)
+
+conf_matrix &lt;- confusionMatrix(factor(predicted_classes), factor(test_data$delayed))
+print(conf_matrix)
+
+roc_obj &lt;- roc(test_data$delayed, predictions)
+auc_value &lt;- auc(roc_obj)
+
+plot_data &lt;- data.frame(FPR = 1 - roc_obj$specificities, TPR = roc_obj$sensitivities)
+
+ggplot(plot_data, aes(x = FPR, y = TPR)) +
+  geom_line(color = &quot;black&quot;, size = 1) +
+  geom_abline(intercept = 0, slope = 1, linetype = &quot;dashed&quot;, color = &quot;darkred&quot;) +
+  labs(title = paste0(&quot;ROC Curve (AUC = &quot;, round(auc_value, 2), &quot;)&quot;),
+       x = &quot;Specificity (False Positive Rate)&quot;,
+       y = &quot;Sensitivity (True Positive Rate)&quot;,
+       caption = &quot;Source: flight_data_2024.csv&quot;) +
+  theme_minimal(base_size = 14)
+
+# 7.0 Which factors move the odds of a delay? ----
+model_summary &lt;- tidy(logit_model) %&gt;%
+  filter(term != &quot;(Intercept)&quot;) %&gt;%
+  mutate(odds_ratio = exp(estimate),
+         variable_group = case_when(
+           grepl(&quot;origin&quot;, term) ~ &quot;Airport (Origin)&quot;,
+           grepl(&quot;day&quot;, term) ~ &quot;Day of Week&quot;,
+           TRUE ~ &quot;Numeric&quot;))
+
+top_pos &lt;- model_summary %&gt;% arrange(desc(estimate)) %&gt;% slice(1:5)
+ggplot(top_pos, aes(x = reorder(term, estimate), y = estimate)) +
+  geom_col(fill = &quot;darkred&quot;) +
+  coord_flip() +
+  labs(title = &quot;Top 5 Factors Increasing Delay Odds&quot;,
+       x = &quot;Predictor&quot;, y = &quot;Log-Odds Effect&quot;,
+       caption = &quot;Source: flight_data_2024.csv&quot;) +
+  theme_minimal(base_size = 14)
+
+top_neg &lt;- model_summary %&gt;% arrange(estimate) %&gt;% slice(1:5)
+ggplot(top_neg, aes(x = reorder(term, estimate), y = estimate)) +
+  geom_col(fill = &quot;darkgreen&quot;) +
+  coord_flip() +
+  labs(title = &quot;Top 5 Factors Decreasing Delay Odds&quot;,
+       x = &quot;Predictor&quot;, y = &quot;Log-Odds Effect&quot;,
+       caption = &quot;Source: flight_data_2024.csv&quot;) +
+  theme_minimal(base_size = 14)</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">What Drives Caterpillar Sales?</h2>
+          <p class="doc-card__summary">Screens eight macro indicators against 39 quarters of Caterpillar sales, compares linear and cubic fits, and drops a collinear predictor, which raises adjusted R-squared with one fewer variable.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">lm</span><span class="doc-card__tag">polynomial fit</span><span class="doc-card__tag">corrplot</span><span class="doc-card__tag">multicollinearity</span></div>
+          <pre class="language-r"><code class="language-r"># 4.0 Multiple regression with the top six predictors ----
+model_multiple &lt;- lm(Caterpillar_Sales ~ Infrastructure_Bill_Score +
+  Residential_Spending + Severe_Weather_Index + Tariff_Index +
+  Construction_Spending + Interest_Rate,
+  data = df)
+summary(model_multiple)
+
+# 5.0 Multicollinearity check ----
+corrplot(cor_matrix, method = &quot;color&quot;, addCoef.col = &quot;black&quot;, tl.cex = 0.8)
+# Construction_Spending and Residential_Spending correlate at 0.94.
+# (Infrastructure_Bill_Score vs sales doesn&#x27;t count: that&#x27;s target vs predictor.)
+# The overlap inflates standard errors and blurs which variable drives sales.
+# Construction_Spending also has p = 0.7430, far above 0.05, so it adds nothing
+# unique. Remove it.
+
+model2_multiple &lt;- lm(Caterpillar_Sales ~ Infrastructure_Bill_Score +
+  Residential_Spending + Severe_Weather_Index + Tariff_Index +
+  Interest_Rate,
+  data = df)
+summary(model2_multiple)
+# Result:
+#   Adjusted R-squared rises from 0.9288 to 0.9307 with one fewer variable.
+#   Residential_Spending goes from p = 0.0701 (not significant) to p = 7.33e-07.
+#   With Construction_Spending gone, multicollinearity is no longer a concern.</code></pre>
+          <details>
+            <summary>Full code (80 lines)</summary>
+            <pre class="language-r"><code class="language-r"># What drives Caterpillar sales? Correlation screening, linear vs cubic fits,
+# multiple regression, and removing a predictor that causes multicollinearity.
+# Data: 39 quarters of Caterpillar sales with eight macro indicators.
+
+library(ggplot2)
+library(readr)
+library(corrplot)
+
+df &lt;- read.csv(&quot;Caterpillar_TimeSeries.csv&quot;)
+
+# 1.0 Distribution of the target (sales in millions) ----
+summary(df)
+summary(df$Caterpillar_Sales)
+summary(df$Interest_Rate)
+
+hist(df$Caterpillar_Sales, col = &quot;skyblue&quot;,
+     xlab = &quot;Sales (in millions)&quot;, main = &quot;Distribution of Sales&quot;)
+boxplot(df$Caterpillar_Sales, col = &quot;orange&quot;, main = &quot;Boxplot of Sales&quot;)
+plot(density(df$Caterpillar_Sales),
+     main = &quot;Density Plot of Sales&quot;, xlab = &quot;Sales (in millions)&quot;)
+
+# 2.0 Correlations ----
+cor(df$Caterpillar_Sales, df$Tariff_Index)
+# -0.3048: makes sense. Higher tariffs raise costs, which lowers sales.
+
+df_numeric &lt;- df[sapply(df, is.numeric)]   # keep numeric columns only
+cor_matrix &lt;- cor(df_numeric)
+corrplot(cor_matrix, method = &quot;color&quot;, addCoef.col = &quot;black&quot;, tl.cex = 0.8)
+
+# Rank every variable by the strength of its correlation with sales
+sales_cor &lt;- cor_matrix[, &quot;Caterpillar_Sales&quot;]
+sales_df &lt;- data.frame(Variable = names(sales_cor), Correlation = sales_cor)
+top_7_corr &lt;- sales_df[order(-abs(sales_df$Correlation)), ][1:7, ]   # target + 6 predictors
+top_7_corr
+# The directions make sense:
+#   Infrastructure_Bill_Score up -&gt; sales up (more funding, more machinery)
+#   Residential_Spending up      -&gt; sales up (housing projects need heavy equipment)
+#   Tariff_Index up              -&gt; sales down (less trade, higher costs)
+
+# 3.0 Strongest single predictor: linear vs cubic ----
+plot(df$Infrastructure_Bill_Score, df$Caterpillar_Sales)
+abline(lm(Caterpillar_Sales ~ Infrastructure_Bill_Score, data = df), col = &quot;red&quot;)
+lines(lowess(df$Infrastructure_Bill_Score, df$Caterpillar_Sales), col = &quot;darkgreen&quot;)
+# The LOWESS line curves, so a non-linear model may fit better.
+
+model_linear &lt;- lm(Caterpillar_Sales ~ Infrastructure_Bill_Score, data = df)
+summary(model_linear)
+
+model_cubic &lt;- lm(Caterpillar_Sales ~ poly(Infrastructure_Bill_Score, 3, raw = TRUE), data = df)
+summary(model_cubic)
+# The cubic model has the higher R-squared, so it explains more of the variance in sales.
+
+ggplot(df, aes(x = Infrastructure_Bill_Score, y = Caterpillar_Sales)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, formula = y ~ poly(x, 3), color = &quot;blue&quot;)
+
+# 4.0 Multiple regression with the top six predictors ----
+model_multiple &lt;- lm(Caterpillar_Sales ~ Infrastructure_Bill_Score +
+  Residential_Spending + Severe_Weather_Index + Tariff_Index +
+  Construction_Spending + Interest_Rate,
+  data = df)
+summary(model_multiple)
+
+# 5.0 Multicollinearity check ----
+corrplot(cor_matrix, method = &quot;color&quot;, addCoef.col = &quot;black&quot;, tl.cex = 0.8)
+# Construction_Spending and Residential_Spending correlate at 0.94.
+# (Infrastructure_Bill_Score vs sales doesn&#x27;t count: that&#x27;s target vs predictor.)
+# The overlap inflates standard errors and blurs which variable drives sales.
+# Construction_Spending also has p = 0.7430, far above 0.05, so it adds nothing
+# unique. Remove it.
+
+model2_multiple &lt;- lm(Caterpillar_Sales ~ Infrastructure_Bill_Score +
+  Residential_Spending + Severe_Weather_Index + Tariff_Index +
+  Interest_Rate,
+  data = df)
+summary(model2_multiple)
+# Result:
+#   Adjusted R-squared rises from 0.9288 to 0.9307 with one fewer variable.
+#   Residential_Spending goes from p = 0.0701 (not significant) to p = 7.33e-07.
+#   With Construction_Spending gone, multicollinearity is no longer a concern.</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">Housing Prices: EDA to Ridge Regression</h2>
+          <p class="doc-card__summary">Explores 2,930 Ames home sales, fills missing values with kNN imputation, flags multicollinearity with VIF, and fits a ridge regression that trades a little accuracy for a stable model.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">kNN imputation</span><span class="doc-card__tag">VIF</span><span class="doc-card__tag">glmnet ridge</span><span class="doc-card__tag">cross-validation</span></div>
+          <pre class="language-r"><code class="language-r"># 7.0 Multicollinearity: correlations above 0.70 and VIF above 5 ----
+vars_top10 &lt;- top_10_corr$Variable
+cor_top10 &lt;- cor(df[, vars_top10])
+corrplot(cor_top10, method = &quot;color&quot;, addCoef.col = &quot;black&quot;, tl.cex = 0.8)
+# High pairs: Garage.Cars / Garage.Area and Total.Bsmt.SF / X1st.Flr.SF
+
+library(car)
+vif_values &lt;- vif(model_multiple)
+vif_values[vif_values &gt; 5]
+# Garage.Area and Total.Bsmt.SF exceed 5. Correlation &gt; 0.70 plus VIF &gt; 5 needs a remedy.
+
+# 8.0 Ridge regression ----
+library(glmnet)
+X &lt;- model.matrix(SalePrice ~ Overall.Qual + Gr.Liv.Area + Garage.Cars + Garage.Area +
+                    Total.Bsmt.SF + X1st.Flr.SF + Year.Built + Full.Bath + Year.Remod.Add,
+                  data = df_imputed)[, -1]   # drop the intercept column
+y &lt;- df_imputed$SalePrice
+
+set.seed(123)
+cv_ridge &lt;- cv.glmnet(X, y, alpha = 0)   # cross-validate lambda
+ridge_best_lambda &lt;- glmnet(X, y, alpha = 0, lambda = cv_ridge$lambda.min)
+coef(ridge_best_lambda)
+
+# R-squared by hand for the ridge model
+y_pred &lt;- predict(ridge_best_lambda, newx = X)
+SSE &lt;- sum((y - y_pred)^2)
+SST &lt;- sum((y - mean(y))^2)
+R2_ridge &lt;- 1 - SSE / SST
+R2_ridge
+summary(model_multiple)
+# Ridge gives up a little predictive power, but the model is more stable and
+# free of multicollinearity.</code></pre>
+          <details>
+            <summary>Full code (118 lines)</summary>
+            <pre class="language-r"><code class="language-r"># Ames housing prices: exploratory analysis, kNN imputation, linear and cubic
+# models, multiple regression, VIF checks, and ridge regression to handle
+# multicollinearity. Data: Ames Housing (2,930 home sales).
+
+library(ggplot2)
+library(readr)
+
+df &lt;- read.csv(&quot;AmesHousing.csv&quot;)
+
+# 1.0 Inspect ----
+head(df)
+names(df)     # pandas equivalent: df.columns
+str(df)       # &quot;structure&quot; in R; closest pandas equivalent is df.info()
+# R is data-frame-centric out of the box; Python needs pandas and NumPy for the same structures.
+
+# 2.0 Distribution of sale price ----
+summary(df)   # pandas equivalent: df.describe()
+summary(df$SalePrice)
+
+Scaled_SalePrice &lt;- df$SalePrice / 1000    # $1k units instead of scientific notation
+hist(Scaled_SalePrice, col = &quot;skyblue&quot;, xlab = &quot;SalePrice (in 1k units)&quot;)
+boxplot(Scaled_SalePrice, col = &quot;orange&quot;, horizontal = TRUE)
+# The box is the middle 50% of prices; the line inside it is the median.
+plot(density(Scaled_SalePrice))
+# Right-skewed.
+
+# 3.0 Correlations and missing values ----
+cor(df$Fireplaces, df$X1st.Flr.SF)   # 0.4, positive
+
+df_numeric &lt;- df[sapply(df, is.numeric)]
+
+# DMwR2 was removed from CRAN, so install it from GitHub instead
+devtools::install_github(&quot;ltorgo/DMwR2&quot;, ref = &quot;master&quot;)
+library(DMwR2)
+df_imputed &lt;- knnImputation(df_numeric, k = 5)
+# k-nearest neighbors: to guess a missing grade, ask the 5 classmates with the
+# most similar profiles and average their answers.
+
+library(corrplot)
+options(repr.plot.width = 12, repr.plot.height = 10)
+corrplot(cor(df_imputed), method = &quot;color&quot;)
+
+library(skimr)
+print(skim(df))
+library(DataExplorer)
+introduce(df_imputed)
+plot_intro(df)
+plot_missing(df)
+
+# 4.0 Ten strongest correlations with SalePrice ----
+cor_matrix &lt;- cor(df_imputed)
+saleprice_cor &lt;- cor_matrix[, &quot;SalePrice&quot;]
+# The matrix already holds every pairwise correlation; just pull the SalePrice column.
+saleprice_df &lt;- data.frame(Variable = names(saleprice_cor), Correlation = saleprice_cor)
+top_10_corr &lt;- saleprice_df[order(-abs(saleprice_df$Correlation)), ][1:10, ]
+top_10_corr
+
+# 5.0 SalePrice by overall quality: linear vs cubic ----
+df &lt;- df_imputed
+plot(df$Overall.Qual, df$SalePrice)
+abline(lm(SalePrice ~ Overall.Qual, data = df), col = &quot;red&quot;)
+lines(lowess(df$Overall.Qual, df$SalePrice), col = &quot;darkgreen&quot;)
+# The LOWESS curve bends upward, so a curved model should fit better.
+
+model_linear &lt;- lm(SalePrice ~ Overall.Qual, data = df)
+summary(model_linear)
+
+# SalePrice = b0 + b1*Qual + b2*Qual^2 + b3*Qual^3 + e
+model_cubic &lt;- lm(SalePrice ~ poly(Overall.Qual, 3, raw = TRUE), data = df)
+summary(model_cubic)
+# The cubic model captures the curvature that the linear model misses.
+
+# 6.0 Multiple regression ----
+model_multiple &lt;- lm(SalePrice ~ Overall.Qual +
+  Gr.Liv.Area + Garage.Cars + Garage.Area + Total.Bsmt.SF +
+  X1st.Flr.SF + Year.Built + Full.Bath + Year.Remod.Add,
+  data = df)
+summary(model_multiple)
+
+# 7.0 Multicollinearity: correlations above 0.70 and VIF above 5 ----
+vars_top10 &lt;- top_10_corr$Variable
+cor_top10 &lt;- cor(df[, vars_top10])
+corrplot(cor_top10, method = &quot;color&quot;, addCoef.col = &quot;black&quot;, tl.cex = 0.8)
+# High pairs: Garage.Cars / Garage.Area and Total.Bsmt.SF / X1st.Flr.SF
+
+library(car)
+vif_values &lt;- vif(model_multiple)
+vif_values[vif_values &gt; 5]
+# Garage.Area and Total.Bsmt.SF exceed 5. Correlation &gt; 0.70 plus VIF &gt; 5 needs a remedy.
+
+# 8.0 Ridge regression ----
+library(glmnet)
+X &lt;- model.matrix(SalePrice ~ Overall.Qual + Gr.Liv.Area + Garage.Cars + Garage.Area +
+                    Total.Bsmt.SF + X1st.Flr.SF + Year.Built + Full.Bath + Year.Remod.Add,
+                  data = df_imputed)[, -1]   # drop the intercept column
+y &lt;- df_imputed$SalePrice
+
+set.seed(123)
+cv_ridge &lt;- cv.glmnet(X, y, alpha = 0)   # cross-validate lambda
+ridge_best_lambda &lt;- glmnet(X, y, alpha = 0, lambda = cv_ridge$lambda.min)
+coef(ridge_best_lambda)
+
+# R-squared by hand for the ridge model
+y_pred &lt;- predict(ridge_best_lambda, newx = X)
+SSE &lt;- sum((y - y_pred)^2)
+SST &lt;- sum((y - mean(y))^2)
+R2_ridge &lt;- 1 - SSE / SST
+R2_ridge
+summary(model_multiple)
+# Ridge gives up a little predictive power, but the model is more stable and
+# free of multicollinearity.
+
+plot(cv_ridge$glmnet.fit, xvar = &quot;lambda&quot;)             # coefficient shrinkage paths
+abline(v = log(cv_ridge$lambda.min), col = &quot;blue&quot;, lty = 2)
+
+# 9.0 Residual check for non-linearity ----
+residualPlots(model_multiple)
+# Several predictors show patterns (p &lt; 0.05). Fix: transform the target (log or square root).</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">U.S. Tuition Trends: Charts That Tell the Story</h2>
+          <p class="doc-card__summary">Tidies a wide tuition spreadsheet (2004-05 to 2015-16) into one row per state and year, joins census regions, and builds charts whose titles state the finding, such as which states raised tuition the most.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">pivot_longer / wider</span><span class="doc-card__tag">left_join</span><span class="doc-card__tag">ggplot2</span><span class="doc-card__tag">annotation</span></div>
+          <pre class="language-r"><code class="language-r"># 7.0 2004 vs 2015 with a y = x reference and the biggest movers labeled ----
+two_years_wide &lt;- tuition_with_region %&gt;%
+  filter(school_year %in% c(&quot;2004-05&quot;, &quot;2015-16&quot;)) %&gt;%
+  select(state, school_year, avg_cost) %&gt;%
+  pivot_wider(names_from = school_year, values_from = avg_cost) %&gt;%
+  rename(cost_2004 = `2004-05`, cost_2015 = `2015-16`) %&gt;%
+  mutate(delta = cost_2015 - cost_2004)
+
+top3 &lt;- two_years_wide %&gt;% slice_max(delta, n = 3)
+
+ggplot(two_years_wide, aes(x = cost_2004, y = cost_2015)) +
+  geom_point(alpha = 0.7) +
+  geom_abline(slope = 1, intercept = 0, linetype = &quot;dotted&quot;) +
+  geom_smooth(method = &quot;lm&quot;) +
+  geom_label(data = top3, aes(label = as.character(state)), size = 3, vjust = -0.3) +
+  labs(title = &quot;Tuition: 2004-05 vs. 2015-16&quot;,
+       subtitle = &quot;Hawaii, Arizona, and Colorado are top 3 tuition increases.&quot;,
+       x = &quot;Average Tuition in 2004-05 ($USD)&quot;,
+       y = &quot;Average Tuition in 2015-16 ($USD)&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme_minimal()</code></pre>
+          <details>
+            <summary>Full code (104 lines)</summary>
+            <pre class="language-r"><code class="language-r"># U.S. college tuition, 2004-05 to 2015-16: tidy a wide spreadsheet, join regions,
+# and turn five plain charts into ones that tell the story on their own.
+# Data: us_avg_tuition.xlsx (average in-state tuition by state and school year).
+
+library(tidyverse)
+library(readxl)
+
+# 1.0 Tidy: one column per year -&gt; one row per state-year ----
+us_avg_tuition_raw &lt;- read_excel(&quot;us_avg_tuition.xlsx&quot;)
+
+state_tuition_long &lt;- us_avg_tuition_raw %&gt;%
+  rename_with(tolower) %&gt;%
+  pivot_longer(cols = -state, names_to = &quot;school_year&quot;, values_to = &quot;avg_cost&quot;) %&gt;%
+  mutate(
+    state = factor(state),
+    school_year = as.character(school_year),
+    avg_cost = as.numeric(avg_cost)
+  )
+
+# Join census regions from R&#x27;s built-in state data
+state_regions &lt;- tibble(state = state.name, region = state.region)
+tuition_with_region &lt;- state_tuition_long %&gt;%
+  left_join(state_regions, by = &quot;state&quot;)
+
+# 2.0 Summaries ----
+region_cost_2015 &lt;- tuition_with_region %&gt;%
+  filter(school_year == &quot;2015-16&quot;) %&gt;%
+  group_by(region) %&gt;%
+  summarise(avg_cost = mean(avg_cost), .groups = &quot;drop&quot;) %&gt;%
+  arrange(desc(avg_cost))
+
+national_by_year &lt;- state_tuition_long %&gt;%
+  mutate(school_year = factor(school_year, levels = unique(school_year))) %&gt;%
+  group_by(school_year) %&gt;%
+  summarise(avg_cost = mean(avg_cost), .groups = &quot;drop&quot;) %&gt;%
+  arrange(school_year)
+
+# 3.0 National trend ----
+ggplot(national_by_year, aes(x = school_year, y = avg_cost, group = 1)) +
+  geom_line() +
+  geom_point() +
+  labs(title = &quot;Average U.S. Tuition by Year&quot;,
+       subtitle = &quot;There is a positive correlation.&quot;,
+       x = &quot;School Year&quot;, y = &quot;Average Tuition (USD)&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+# Tuition rose steadily from 2004-05 through 2015-16, with the biggest jump
+# between 2008-09 and 2009-10. Growth slowed after 2012-13.
+
+# 4.0 Regions, ordered and directly labeled ----
+ggplot(region_cost_2015, aes(x = fct_reorder(region, avg_cost), y = avg_cost, fill = region)) +
+  geom_col() +
+  geom_text(aes(label = round(avg_cost, 0), vjust = -0.3, size = 3)) +
+  labs(title = &quot;Tuition by Region (2015-16)&quot;,
+       subtitle = &quot;Tuition was the highest in the Northeast Region in 2015-16&quot;,
+       x = &quot;Region&quot;, y = &quot;Average Tuition (USD)&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme(legend.position = &quot;none&quot;)
+
+# 5.0 State distribution with a mean reference line ----
+state_2015 &lt;- tuition_with_region %&gt;% filter(school_year == &quot;2015-16&quot;)
+mean_2015 &lt;- mean(state_2015$avg_cost)
+
+ggplot(state_2015, aes(x = avg_cost)) +
+  geom_histogram(binwidth = 500) +
+  geom_vline(xintercept = mean_2015, linetype = &quot;dashed&quot;) +
+  annotate(&quot;label&quot;, x = mean_2015, y = 5, label = paste0(&quot;Mean ~ &quot;, round(mean_2015, 0))) +
+  labs(title = &quot;State Tuition Distribution (2015-16)&quot;,
+       subtitle = &quot;Most cluster around the national mean of $9,318 but several states exceed it.&quot;,
+       x = &quot;Average Tuition (USD)&quot;, y = &quot;Number of States&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme_minimal()
+# Right-skewed: most states sit near $9,318, a few run much higher.
+
+# 6.0 Spread by region ----
+ggplot(state_2015, aes(x = avg_cost, y = region, fill = region)) +
+  geom_boxplot() +
+  labs(title = &quot;Regional Cost Distribution (2015-16)&quot;,
+       subtitle = &quot;Northeast has the highest average tuition and widest spread&quot;,
+       x = &quot;Average Tuition (USD)&quot;, y = &quot;Region&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme(legend.position = &quot;none&quot;)
+
+# 7.0 2004 vs 2015 with a y = x reference and the biggest movers labeled ----
+two_years_wide &lt;- tuition_with_region %&gt;%
+  filter(school_year %in% c(&quot;2004-05&quot;, &quot;2015-16&quot;)) %&gt;%
+  select(state, school_year, avg_cost) %&gt;%
+  pivot_wider(names_from = school_year, values_from = avg_cost) %&gt;%
+  rename(cost_2004 = `2004-05`, cost_2015 = `2015-16`) %&gt;%
+  mutate(delta = cost_2015 - cost_2004)
+
+top3 &lt;- two_years_wide %&gt;% slice_max(delta, n = 3)
+
+ggplot(two_years_wide, aes(x = cost_2004, y = cost_2015)) +
+  geom_point(alpha = 0.7) +
+  geom_abline(slope = 1, intercept = 0, linetype = &quot;dotted&quot;) +
+  geom_smooth(method = &quot;lm&quot;) +
+  geom_label(data = top3, aes(label = as.character(state)), size = 3, vjust = -0.3) +
+  labs(title = &quot;Tuition: 2004-05 vs. 2015-16&quot;,
+       subtitle = &quot;Hawaii, Arizona, and Colorado are top 3 tuition increases.&quot;,
+       x = &quot;Average Tuition in 2004-05 ($USD)&quot;,
+       y = &quot;Average Tuition in 2015-16 ($USD)&quot;,
+       caption = &quot;Source = us_avg_tuition.xlsx&quot;) +
+  theme_minimal()</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">120 Years of Olympic Medals</h2>
+          <p class="doc-card__summary">Joins 271,116 athlete-event records to region codes, validates the join before trusting it, ranks regions by medals, and compares the leaders since 1990 with faceted trend lines.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">left_join</span><span class="doc-card__tag">join validation</span><span class="doc-card__tag">count / top_n</span><span class="doc-card__tag">facet_wrap</span></div>
+          <pre class="language-r"><code class="language-r"># 1.0 Join and keep medal winners only ----
+olympic_events &lt;- olympic_events_raw %&gt;%
+  left_join(noc_regions, by = &#x27;NOC&#x27;) %&gt;%
+  rename_with(tolower) %&gt;%
+  filter(!is.na(medal))
+
+# Validate the join before trusting it
+sum(is.na(olympic_events$medal)) == 0
+sum(is.na(olympic_events$region)) == 0
+ncol(olympic_events) == (ncol(olympic_events_raw) + ncol(noc_regions %&gt;% select(-region)))
+
+# 2.0 Which region leads each medal type in the Summer Games? ----
+region_medal_count &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;) %&gt;%
+  count(region, medal, sort = TRUE)
+
+region_medal_count %&gt;% filter(medal == &quot;Gold&quot;)   %&gt;% top_n(1) %&gt;% .$region
+region_medal_count %&gt;% filter(medal == &quot;Silver&quot;) %&gt;% top_n(1) %&gt;% .$region
+region_medal_count %&gt;% filter(medal == &quot;Bronze&quot;) %&gt;% top_n(1) %&gt;% .$region
+
+# 3.0 Top six regions since 1990 ----
+top_6 &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;) %&gt;%
+  count(region, sort = TRUE) %&gt;%
+  top_n(6)
+
+olympic_top6 &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;, year &gt;= 1990, region %in% top_6$region)
+
+olympic_top6 %&gt;%
+  count(year, region) %&gt;%
+  ggplot(aes(x = year, y = n, color = region)) +
+  geom_point() +
+  geom_line() +
+  ggtitle(&quot;Top 6 Regional medals per year&quot;, &quot;since 1990 in the Summer Olympics&quot;) +
+  theme_minimal()
+# The United States has led every region in Summer medals since 1990, with a peak in 2008.</code></pre>
+          <details>
+            <summary>Full code (67 lines)</summary>
+            <pre class="language-r"><code class="language-r"># 120 years of Olympic results: join country codes to regions, validate the
+# join, rank regions by medals, and compare the leaders with faceted trends.
+# Data: 271,116 athlete-event records (1896-2016) and 206 NOC region codes.
+
+library(tidyverse)
+
+olympic_events_raw &lt;- read_csv(&quot;olympic_history_athlete_events.csv&quot;)
+noc_regions &lt;- read_csv(&quot;olympic_history_noc_regions.csv&quot;)
+
+# 1.0 Join and keep medal winners only ----
+olympic_events &lt;- olympic_events_raw %&gt;%
+  left_join(noc_regions, by = &#x27;NOC&#x27;) %&gt;%
+  rename_with(tolower) %&gt;%
+  filter(!is.na(medal))
+
+# Validate the join before trusting it
+sum(is.na(olympic_events$medal)) == 0
+sum(is.na(olympic_events$region)) == 0
+ncol(olympic_events) == (ncol(olympic_events_raw) + ncol(noc_regions %&gt;% select(-region)))
+
+# 2.0 Which region leads each medal type in the Summer Games? ----
+region_medal_count &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;) %&gt;%
+  count(region, medal, sort = TRUE)
+
+region_medal_count %&gt;% filter(medal == &quot;Gold&quot;)   %&gt;% top_n(1) %&gt;% .$region
+region_medal_count %&gt;% filter(medal == &quot;Silver&quot;) %&gt;% top_n(1) %&gt;% .$region
+region_medal_count %&gt;% filter(medal == &quot;Bronze&quot;) %&gt;% top_n(1) %&gt;% .$region
+
+# 3.0 Top six regions since 1990 ----
+top_6 &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;) %&gt;%
+  count(region, sort = TRUE) %&gt;%
+  top_n(6)
+
+olympic_top6 &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;, year &gt;= 1990, region %in% top_6$region)
+
+olympic_top6 %&gt;%
+  count(year, region) %&gt;%
+  ggplot(aes(x = year, y = n, color = region)) +
+  geom_point() +
+  geom_line() +
+  ggtitle(&quot;Top 6 Regional medals per year&quot;, &quot;since 1990 in the Summer Olympics&quot;) +
+  theme_minimal()
+# The United States has led every region in Summer medals since 1990, with a peak in 2008.
+
+# 4.0 Top three regions, split by medal type ----
+top_3 &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;) %&gt;%
+  count(region, sort = TRUE) %&gt;%
+  top_n(3)
+
+olympic_top3_ordered &lt;- olympic_events %&gt;%
+  filter(season == &quot;Summer&quot;, year &gt;= 1990, region %in% top_3$region) %&gt;%
+  mutate(medal = factor(medal, levels = c(&quot;Gold&quot;, &quot;Silver&quot;, &quot;Bronze&quot;)),
+         region = factor(region, levels = top_3$region))
+
+olympic_top3_ordered %&gt;%
+  count(year, region, medal) %&gt;%
+  ggplot(aes(x = year, y = n, color = region)) +
+  geom_point() +
+  geom_line() +
+  ggtitle(&quot;Top 3 Regional medals per year by medal type&quot;, &quot;since 1990 in the Summer Olympics&quot;) +
+  facet_wrap(region ~ medal, ncol = 3) +
+  theme_linedraw()
+# The United States wins the most medals in every category at every Summer Games since 1990.</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">U.S. Milk Production: Maps and Correlation</h2>
+          <p class="doc-card__summary">Reads state milk production for 1970-2017 straight from the web, maps 2017 output by state, and joins population data to test whether bigger states produce more milk (r = 0.63).</p>
+          <div class="code-card__tags"><span class="doc-card__tag">read from URL</span><span class="doc-card__tag">usmap</span><span class="doc-card__tag">left_join</span><span class="doc-card__tag">cor</span></div>
+          <pre class="language-r"><code class="language-r"># 4.0 Does population track production? ----
+statepop_renamed &lt;- usmap::statepop %&gt;% rename(state = full)
+
+# Find the most recent population column without hard-coding its name
+pop_recent_col &lt;- grep(&quot;pop_&quot;, names(statepop_renamed), value = TRUE)
+pop_recent_yr &lt;- gsub(&quot;pop_&quot;, &quot;&quot;, pop_recent_col)
+
+milk_recent &lt;- milk_production_data %&gt;%
+  filter(year == q1_year_max) %&gt;%
+  select(state, milk_produced)
+
+milk_pop_recent &lt;- left_join(milk_recent, statepop_renamed, by = &quot;state&quot;)
+
+r_pop_milk &lt;- cor(milk_pop_recent[[pop_recent_col]],
+                  milk_pop_recent$milk_produced,
+                  use = &quot;complete.obs&quot;)
+
+ggplot(milk_pop_recent, aes(x = .data[[pop_recent_col]], y = milk_produced)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  labs(title = paste0(&quot;Population vs. Milk Production (&quot;, q1_year_max, &quot;)&quot;),
+       subtitle = &quot;Population and milk production are positively correlated (r = 0.63)&quot;,
+       x = paste0(&quot;Population (&quot;, pop_recent_yr, &quot;)&quot;),
+       y = paste0(&quot;Milk Produced (&quot;, q1_year_max, &quot;)&quot;),
+       caption = &quot;Data Source: State_milk_production.csv &amp; usmap::statepop&quot;) +
+  theme_minimal()
+# Population is from 2022 and milk from 2017, so treat population as an indicator,
+# not an exact match. r = 0.63: larger states tend to produce more milk.</code></pre>
+          <details>
+            <summary>Full code (74 lines)</summary>
+            <pre class="language-r"><code class="language-r"># U.S. milk production 1970-2017: pull data straight from the web, map it by
+# state, then join population data and test the relationship.
+# Data: TidyTuesday state milk production (2019-01-29) and usmap::statepop.
+
+library(tidyverse)
+library(usmap)
+
+milk_production_data &lt;- read.csv(
+  &quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-29/state_milk_production.csv&quot;
+)
+
+# 1.0 Profile the data ----
+q1_year_min &lt;- summarise(milk_production_data, min(year)) %&gt;% pull()
+q1_year_max &lt;- summarise(milk_production_data, max(year)) %&gt;% pull()
+
+q2_state_count &lt;- milk_production_data %&gt;%
+  summarise(n_states = n_distinct(state)) %&gt;%
+  pull()
+q2_has_50_states &lt;- (q2_state_count == 50)
+
+q3_top_state_2017 &lt;- milk_production_data %&gt;%
+  filter(year == 2017) %&gt;%
+  arrange(desc(milk_produced)) %&gt;%
+  slice(1) %&gt;%
+  pull(state)
+
+# 2.0 Production over time by region ----
+ggplot(milk_production_data, aes(x = year, y = milk_produced, color = region)) +
+  geom_point() +
+  labs(title = &quot;Milk Production by US state over time&quot;,
+       x = &quot;Year&quot;, y = &quot;Milk Produced (lb)&quot;, color = &quot;Region&quot;,
+       caption = &quot;Data Source: State_milk_production.csv&quot;) +
+  theme_minimal()
+# Shows consistent regional differences and the long-run trend from 1970 to 2017.
+
+# 3.0 Choropleth map, 2017 ----
+milk_2017 &lt;- milk_production_data %&gt;%
+  filter(year == 2017) %&gt;%
+  select(state, milk_produced)
+
+plot_usmap(data = milk_2017, values = &quot;milk_produced&quot;, color = &quot;black&quot;) +
+  scale_fill_continuous(name = &quot;Milk (lb)&quot;, labels = scales::label_number()) +
+  labs(title = &quot;US Milk Production (2017)&quot;,
+       caption = &quot;Data Source: State_milk_production.csv&quot;)
+# Totals are not normalized by population, so read this as volume, not per-capita production.
+
+# 4.0 Does population track production? ----
+statepop_renamed &lt;- usmap::statepop %&gt;% rename(state = full)
+
+# Find the most recent population column without hard-coding its name
+pop_recent_col &lt;- grep(&quot;pop_&quot;, names(statepop_renamed), value = TRUE)
+pop_recent_yr &lt;- gsub(&quot;pop_&quot;, &quot;&quot;, pop_recent_col)
+
+milk_recent &lt;- milk_production_data %&gt;%
+  filter(year == q1_year_max) %&gt;%
+  select(state, milk_produced)
+
+milk_pop_recent &lt;- left_join(milk_recent, statepop_renamed, by = &quot;state&quot;)
+
+r_pop_milk &lt;- cor(milk_pop_recent[[pop_recent_col]],
+                  milk_pop_recent$milk_produced,
+                  use = &quot;complete.obs&quot;)
+
+ggplot(milk_pop_recent, aes(x = .data[[pop_recent_col]], y = milk_produced)) +
+  geom_point() +
+  geom_smooth(method = &quot;lm&quot;, se = FALSE) +
+  labs(title = paste0(&quot;Population vs. Milk Production (&quot;, q1_year_max, &quot;)&quot;),
+       subtitle = &quot;Population and milk production are positively correlated (r = 0.63)&quot;,
+       x = paste0(&quot;Population (&quot;, pop_recent_yr, &quot;)&quot;),
+       y = paste0(&quot;Milk Produced (&quot;, q1_year_max, &quot;)&quot;),
+       caption = &quot;Data Source: State_milk_production.csv &amp; usmap::statepop&quot;) +
+  theme_minimal()
+# Population is from 2022 and milk from 2017, so treat population as an indicator,
+# not an exact match. r = 0.63: larger states tend to produce more milk.</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">R Fundamentals: Vectors, Data Frames and Functions</h2>
+          <p class="doc-card__summary">Builds a data frame from vectors, subsets it by position and condition, adds NA-safe derived columns, and writes small functions that drop straight into a pipe.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">data.frame</span><span class="doc-card__tag">subsetting</span><span class="doc-card__tag">ifelse</span><span class="doc-card__tag">functions + pipe</span></div>
+          <pre class="language-r"><code class="language-r"># 3.0 Derived columns: z-score and letter grade, NA-safe ----
+df$z_score &lt;- (df$score - mean(df$score, na.rm = TRUE)) / sd(df$score, na.rm = TRUE)
+
+df$grade_band &lt;- ifelse(
+  is.na(df$score), NA,
+  ifelse(df$score &gt;= 90, &quot;A&quot;,
+  ifelse(df$score &gt;= 80 &amp; df$score &lt;= 89, &quot;B&quot;,
+  ifelse(df$score &gt;= 70 &amp; df$score &lt;= 79, &quot;C&quot;,
+  ifelse(df$score &gt;= 60 &amp; df$score &lt;= 69, &quot;D&quot;, &quot;F&quot;)))))
+
+cat(&quot;Mean:&quot;, mean(df$score, na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;SD:&quot;,   sd(df$score,   na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;Min:&quot;,  min(df$score,  na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;Max:&quot;,  max(df$score,  na.rm = TRUE), &quot;\n&quot;)
+
+# 4.0 Functions ----
+head_func2 &lt;- function(df, n = 6) {
+  if (n &lt;= 0) {
+    result &lt;- df[0, ]          # zero rows, same columns
+  } else {
+    result &lt;- df[1:n, ]
+  }
+  return(result)
+}
+
+select_make_model_year &lt;- function(df) {
+  df %&gt;% select(manufacturer, model, year)
+}
+
+filter_manufacturer &lt;- function(df, manufacturer_name) {
+  df %&gt;% filter(manufacturer == manufacturer_name)
+}
+
+# Custom functions drop straight into a pipe
+land_rover_models &lt;- mpg %&gt;%
+  select_make_model_year() %&gt;%
+  filter_manufacturer(&quot;land rover&quot;) %&gt;%
+  arrange(year)</code></pre>
+          <details>
+            <summary>Full code (58 lines)</summary>
+            <pre class="language-r"><code class="language-r"># R fundamentals: vectors and data frames, subsetting, derived columns,
+# and writing small reusable functions that chain with the pipe.
+
+library(tidyverse)
+
+# 1.0 Build a data frame from vectors ----
+name_vector   &lt;- c(&quot;Jake&quot;, &quot;Pepsi&quot;, &quot;Laura&quot;, &quot;James&quot;, &quot;Ron&quot;, &quot;Spencer&quot;)
+score_vector  &lt;- c(NA, 70, 95, 90, 86, 77)
+passed_vector &lt;- c(FALSE, FALSE, TRUE, TRUE, TRUE, FALSE)
+
+df &lt;- data.frame(name = name_vector,
+                 score = score_vector,
+                 passed = passed_vector,
+                 stringsAsFactors = FALSE)
+
+# 2.0 Subset by position and by condition ----
+part_a &lt;- df[2:5, c(&quot;name&quot;, &quot;score&quot;)]
+score_85_condition &lt;- df$score &gt;= 85
+part_b &lt;- df[score_85_condition, c(&quot;name&quot;, &quot;score&quot;)]
+
+# 3.0 Derived columns: z-score and letter grade, NA-safe ----
+df$z_score &lt;- (df$score - mean(df$score, na.rm = TRUE)) / sd(df$score, na.rm = TRUE)
+
+df$grade_band &lt;- ifelse(
+  is.na(df$score), NA,
+  ifelse(df$score &gt;= 90, &quot;A&quot;,
+  ifelse(df$score &gt;= 80 &amp; df$score &lt;= 89, &quot;B&quot;,
+  ifelse(df$score &gt;= 70 &amp; df$score &lt;= 79, &quot;C&quot;,
+  ifelse(df$score &gt;= 60 &amp; df$score &lt;= 69, &quot;D&quot;, &quot;F&quot;)))))
+
+cat(&quot;Mean:&quot;, mean(df$score, na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;SD:&quot;,   sd(df$score,   na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;Min:&quot;,  min(df$score,  na.rm = TRUE), &quot;\n&quot;)
+cat(&quot;Max:&quot;,  max(df$score,  na.rm = TRUE), &quot;\n&quot;)
+
+# 4.0 Functions ----
+head_func2 &lt;- function(df, n = 6) {
+  if (n &lt;= 0) {
+    result &lt;- df[0, ]          # zero rows, same columns
+  } else {
+    result &lt;- df[1:n, ]
+  }
+  return(result)
+}
+
+select_make_model_year &lt;- function(df) {
+  df %&gt;% select(manufacturer, model, year)
+}
+
+filter_manufacturer &lt;- function(df, manufacturer_name) {
+  df %&gt;% filter(manufacturer == manufacturer_name)
+}
+
+# Custom functions drop straight into a pipe
+land_rover_models &lt;- mpg %&gt;%
+  select_make_model_year() %&gt;%
+  filter_manufacturer(&quot;land rover&quot;) %&gt;%
+  arrange(year)</code></pre>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span>© 2026 Jake Moore</span>
+      <span class="footer-sep">·</span>
+      <a href="/">Home</a>
+      <span class="footer-sep">·</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span class="footer-sep">·</span>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+</body>
+</html>

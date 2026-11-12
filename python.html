@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jake Moore | Python Code</title>
+  <meta name="description" content="Code I wrote while learning Python: pandas and plotnine for joining, reshaping and time series, then a first machine learning model in PyCaret." />
+  <link rel="canonical" href="https://jakemoore.dev/python.html" />
+  <meta name="author" content="Jake Moore" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jake Moore | Python Code" />
+  <meta property="og:description" content="Code I wrote while learning Python: pandas and plotnine for joining, reshaping and time series, then a first machine learning model in PyCaret." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jakemoore.dev/python.html" />
+  <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
+  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css?v=20261110d">
+  <style>
+    .code-hero { padding-bottom: 1.4rem; }
+    .code-hero .hero-name { margin: 0.6rem 0 0.35rem; }
+    .code-intro { max-width: 900px; }
+    .code-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .code-tab {
+      font-family: 'League Spartan', sans-serif; font-size: 0.73rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.9rem;
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; color: rgba(255,255,255,0.8);
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .code-tab:hover { color: var(--white); border-color: rgba(255,255,255,0.7); text-decoration: none; }
+    .code-tab.is-active { background: var(--white); border-color: var(--white); color: var(--navy); }
+    .code-tab--back { margin-left: auto; border-color: transparent; }
+    .code-section { padding-top: 1.25rem; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
+    .chip {
+      font-family: 'League Spartan', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+      padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--steel-light);
+      border: 1px solid var(--border); color: var(--navy);
+    }
+    .code-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
+    .code-card--lead { grid-column: 1 / -1; }
+    @media (max-width: 991.98px) { .code-grid { grid-template-columns: minmax(0, 1fr); } }
+    .code-card { min-width: 0; gap: 0.5rem; padding: 1.1rem 1.15rem; }
+    .code-card .doc-card__title { margin: 0; font-size: 1.1rem; }
+    .code-card .doc-card__summary { margin: 0; line-height: 1.6; }
+    .code-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .code-card pre[class*="language-"] {
+      margin: 0; padding: 0.8rem 0.9rem; overflow: auto;
+      background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
+      border-radius: 4px; font-size: 0.78rem; line-height: 1.5;
+    }
+    .code-card details > pre[class*="language-"] { margin-top: 0.5rem; max-height: 40rem; }
+    pre[class*="language-"], code[class*="language-"] {
+      text-shadow: none; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+      color: var(--charcoal); white-space: pre; word-break: normal; overflow-wrap: normal;
+      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0;
+    }
+    .token.comment { color: #6B7280; font-style: italic; }
+    .token.keyword, .token.boolean { color: var(--navy); font-weight: 700; }
+    .token.function { color: #1D5FAA; }
+    .token.string { color: #1A6B4A; }
+    .token.number { color: #9A5B0A; }
+    .token.operator, .token.punctuation { color: #4B5563; background: none; }
+    .code-card summary {
+      cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); padding: 0.2rem 0;
+    }
+    .code-card summary:hover { color: var(--navy); }
+    .code-card summary:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--steel); border-radius: 3px; }
+    .code-card .doc-card__actions { margin-top: 0; padding-top: 0; }
+    .code-card .doc-card__actions .btn-resume { flex: 0 0 auto; padding: 0.45rem 1rem; font-size: 0.72rem; }
+    .xl-skills { font-family: 'League Spartan', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy);
+      margin-bottom: 0.9rem; line-height: 1.5; }
+    .xl-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border);
+      border-radius: 6px; font-size: 0.85rem; }
+    .xl-table th { font-family: 'League Spartan', sans-serif; font-size: 0.68rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--white); background: var(--navy); padding: 0.55rem 0.8rem; text-align: left; }
+    .xl-table td { padding: 0.55rem 0.8rem; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+    .xl-table tr:nth-child(even) td { background: #F6F7F9; }
+    .xl-table td:first-child { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy); width: 22%; }
+    .xl-table td:nth-child(2) { width: 36%; }
+    .xl-table code { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem;
+      color: var(--charcoal); background: var(--steel-light); padding: 0.1rem 0.35rem; border-radius: 3px;
+      overflow-wrap: anywhere; word-break: break-word;
+      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+    @media (max-width: 767.98px) {
+      .code-tab--back { margin-left: 0; }
+      .portfolio-hero.code-hero { padding-top: 6.4rem; }
+      .xl-table thead { display: none; }
+      .xl-table, .xl-table tbody, .xl-table tr, .xl-table td { display: block; width: 100% !important; }
+      .xl-table tr { border-top: 1px solid var(--border); padding: 0.5rem 0; }
+      .xl-table td { border-top: none; padding: 0.2rem 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Jake Moore &middot; Management Information Systems</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="portfolio.html">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="portfolio-hero code-hero">
+    <div class="container">
+      <nav class="code-tabs" aria-label="Code pages">
+        <a class="code-tab is-active" aria-current="page" href="python.html">Python</a>
+        <a class="code-tab" href="r.html">R</a>
+        <a class="code-tab" href="excel.html">Excel</a>
+        <a class="code-tab code-tab--back" href="portfolio.html">All work samples</a>
+      </nav>
+      <h1 class="hero-name">Python Code</h1>
+      <p class="hero-tagline code-intro">Code I wrote while learning Python: pandas and plotnine for joining, reshaping and time series, then a first machine learning model in PyCaret.</p>
+    </div>
+  </section>
+
+  <section class="section section-glass code-section">
+    <div class="container">
+      <div class="chip-row"><span class="chip">pandas</span><span class="chip">method chaining</span><span class="chip">merge and join</span><span class="chip">groupby and pivot</span><span class="chip">time-series resampling</span><span class="chip">regex filtering</span><span class="chip">matplotlib</span><span class="chip">plotnine</span><span class="chip">PyCaret</span><span class="chip">XGBoost</span></div>
+      <div class="code-grid">
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">Bike Sales Pipeline: Joins to Revenue Trends</h2>
+          <p class="doc-card__summary">Joins order lines, products and shops from three Excel tables (15,644 order lines), splits compound text fields into category and location columns, and rolls revenue up to monthly and weekly trends to show which product lines are growing.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">merge</span><span class="doc-card__tag">method chaining</span><span class="doc-card__tag">resample</span><span class="doc-card__tag">plotnine</span></div>
+          <pre class="language-python"><code class="language-python"># 3.0 Join order lines to products and shops in one method chain
+bike_orderlines_joined_df = orderlines_df \
+    .drop(columns=&#x27;Unnamed: 0&#x27;, axis=1) \
+    .merge(
+        right=bikes_df,
+        how=&#x27;left&#x27;,
+        left_on=&#x27;product.id&#x27;,
+        right_on=&#x27;bike.id&#x27;
+    ) \
+    .merge(
+        right=bikeshop_df,
+        how=&#x27;left&#x27;,
+        left_on=&#x27;customer.id&#x27;,
+        right_on=&#x27;bikeshop.id&#x27;
+    )
+
+# 4.0 Split compound text fields into their own columns
+df = bike_orderlines_joined_df.copy()
+
+# &quot;Road - Elite Road - Carbon&quot; -&gt; category, sub-category, material
+temp_df = df[&#x27;description&#x27;].str.split(&quot; - &quot;, expand=True)
+df[&#x27;Category_1&#x27;] = temp_df[0]
+df[&#x27;Category_2&#x27;] = temp_df[1]
+df[&#x27;Material&#x27;] = temp_df[2]
+
+# &quot;Ithaca, NY&quot; -&gt; city, state
+temp_df = df[&#x27;location&#x27;].str.split(&quot;, &quot;, expand=True)
+df[&#x27;City&#x27;] = temp_df[0]
+df[&#x27;State&#x27;] = temp_df[1]
+
+# 5.0 Extended price, then keep only the columns the analysis needs
+df[&#x27;total_revenue&#x27;] = df[&#x27;price&#x27;] * df[&#x27;quantity&#x27;]
+df.sort_values(&#x27;total_revenue&#x27;, ascending=False).head(10)</code></pre>
+          <details>
+            <summary>Full code (110 lines)</summary>
+            <pre class="language-python"><code class="language-python"># Bike sales pipeline: join three tables, clean text fields, build revenue,
+# then roll orders up to monthly and weekly revenue trends.
+# Data: bikes.xlsx, bikeshops.xlsx, orderlines.xlsx (15,644 order lines, 97 bikes, 30 shops)
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from mizani.formatters import currency_format
+from plotnine import (
+    ggplot, aes,
+    geom_line, geom_smooth,
+    scale_y_continuous,
+    labs, theme_minimal, expand_limits,
+)
+
+# 1.0 Read the three source tables
+bikes_df = pd.read_excel(&quot;bikes.xlsx&quot;)
+bikeshop_df = pd.read_excel(&quot;bikeshops.xlsx&quot;)
+orderlines_df = pd.read_excel(&quot;orderlines.xlsx&quot;)
+
+# 2.0 Quick look: five best-selling bike descriptions
+top5_bike_series = bikes_df[&#x27;description&#x27;].value_counts().nlargest(5)
+top5_bike_series.plot(kind=&quot;barh&quot;, color=&quot;black&quot;)
+plt.show()
+
+# 3.0 Join order lines to products and shops in one method chain
+bike_orderlines_joined_df = orderlines_df \
+    .drop(columns=&#x27;Unnamed: 0&#x27;, axis=1) \
+    .merge(
+        right=bikes_df,
+        how=&#x27;left&#x27;,
+        left_on=&#x27;product.id&#x27;,
+        right_on=&#x27;bike.id&#x27;
+    ) \
+    .merge(
+        right=bikeshop_df,
+        how=&#x27;left&#x27;,
+        left_on=&#x27;customer.id&#x27;,
+        right_on=&#x27;bikeshop.id&#x27;
+    )
+
+# 4.0 Split compound text fields into their own columns
+df = bike_orderlines_joined_df.copy()
+
+# &quot;Road - Elite Road - Carbon&quot; -&gt; category, sub-category, material
+temp_df = df[&#x27;description&#x27;].str.split(&quot; - &quot;, expand=True)
+df[&#x27;Category_1&#x27;] = temp_df[0]
+df[&#x27;Category_2&#x27;] = temp_df[1]
+df[&#x27;Material&#x27;] = temp_df[2]
+
+# &quot;Ithaca, NY&quot; -&gt; city, state
+temp_df = df[&#x27;location&#x27;].str.split(&quot;, &quot;, expand=True)
+df[&#x27;City&#x27;] = temp_df[0]
+df[&#x27;State&#x27;] = temp_df[1]
+
+# 5.0 Extended price, then keep only the columns the analysis needs
+df[&#x27;total_revenue&#x27;] = df[&#x27;price&#x27;] * df[&#x27;quantity&#x27;]
+df.sort_values(&#x27;total_revenue&#x27;, ascending=False).head(10)
+
+cols_to_keep_list = [
+    &#x27;order.id&#x27;, &#x27;order.line&#x27;, &#x27;order.date&#x27;, &#x27;quantity&#x27;,
+    &#x27;bike.id&#x27;, &#x27;model&#x27;, &#x27;description&#x27;, &#x27;price&#x27;,
+    &#x27;bikeshop.id&#x27;, &#x27;bikeshop.name&#x27;, &#x27;location&#x27;,
+    &#x27;Category_1&#x27;, &#x27;Category_2&#x27;, &#x27;Material&#x27;, &#x27;City&#x27;,
+    &#x27;total_revenue&#x27;,
+]
+df = df[cols_to_keep_list].copy()
+
+# Dots in column names break attribute access, so swap them for underscores
+df.columns = df.columns.str.replace(&quot;.&quot;, &quot;_&quot;)
+
+# 6.0 Monthly revenue trend
+# Time series order of operations:
+#   set the date column as the index -&gt; group -&gt; resample -&gt; aggregate
+sales_month_df = df[[&quot;order_date&quot;, &quot;total_revenue&quot;]] \
+    .set_index(&quot;order_date&quot;) \
+    .resample(rule=&quot;M&quot;) \
+    .aggregate(np.mean) \
+    .reset_index()
+
+usd = currency_format(prefix=&quot;$&quot;, precision=0, big_mark=&quot;,&quot;)
+
+(
+    ggplot(data=sales_month_df, mapping=aes(x=&quot;order_date&quot;, y=&quot;total_revenue&quot;))
+    + geom_line()
+    + geom_smooth(method=&#x27;lowess&#x27;, color=&#x27;red&#x27;, span=0.4, se=True)
+    + scale_y_continuous(labels=usd)
+    + labs(title=&#x27;Revenue by Month&#x27;, x=&#x27;&#x27;, y=&#x27;Revenue&#x27;)
+    + theme_minimal()
+    + expand_limits(y=10)
+)
+
+# 6.2 Weekly revenue for each sub-category
+sales_by_level_week = df[[&#x27;Category_2&#x27;, &#x27;order_date&#x27;, &#x27;total_revenue&#x27;]] \
+    .set_index(&#x27;order_date&#x27;) \
+    .groupby(&#x27;Category_2&#x27;) \
+    .resample(&quot;W&quot;) \
+    .agg(np.sum) \
+    .drop(columns=&#x27;Category_2&#x27;) \
+    .reset_index()
+
+# Long -&gt; wide so each sub-category gets its own panel
+sales_by_level_week \
+    .pivot(
+        index=&quot;order_date&quot;,
+        columns=&quot;Category_2&quot;,
+        values=&quot;total_revenue&quot;
+    ) \
+    .fillna(0) \
+    .plot(kind=&quot;line&quot;, subplots=True, layout=(5, 2), figsize=(15, 15))</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">Revenue by Shop and Product Line</h2>
+          <p class="doc-card__summary">Aggregates revenue by shop and product line, reshapes the result from long to wide, and plots a formatted comparison so the strongest stores for each line stand out; the same pattern runs on a ski dataset and a bike dataset.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">groupby</span><span class="doc-card__tag">agg</span><span class="doc-card__tag">pivot</span><span class="doc-card__tag">matplotlib</span></div>
+          <pre class="language-python"><code class="language-python"># Total revenue by shop and level, sorted, with readable column names
+skishop_revenue_df = df[[&#x27;skishop_name&#x27;, &#x27;Level&#x27;, &#x27;total_revenue&#x27;]] \
+    .groupby([&#x27;skishop_name&#x27;, &#x27;Level&#x27;]) \
+    .agg(np.sum) \
+    .reset_index() \
+    .sort_values(&#x27;total_revenue&#x27;, ascending=False) \
+    .rename(columns=lambda x: x.replace(&quot;_&quot;, &quot; &quot;).title())
+
+# Long -&gt; wide: one row per shop, one column per level
+skishop_revenue_wide_df = skishop_revenue_df \
+    .pivot(
+        index=&#x27;Skishop Name&#x27;,
+        columns=&#x27;Level&#x27;,
+        values=&#x27;Total Revenue&#x27;
+    ) \
+    .reset_index()
+skishop_revenue_wide_df.columns = [&#x27;Skishop Name&#x27;, &#x27;Advanced&#x27;, &#x27;Beginner&#x27;, &#x27;Intermediate&#x27;]
+
+skishop_revenue_wide_df \
+    .sort_values(&quot;Advanced&quot;) \
+    .plot(
+        x=&quot;Skishop Name&quot;,
+        y=[&quot;Advanced&quot;, &quot;Intermediate&quot;, &quot;Beginner&quot;],
+        kind=&quot;barh&quot;,
+        figsize=(6, 10)
+    ) \
+    .xaxis.set_major_formatter(FuncFormatter(
+        lambda x, pos: f&#x27;${int(x/1000)}k&#x27;     # 125000 -&gt; $125k
+    ))</code></pre>
+          <details>
+            <summary>Full code (81 lines)</summary>
+            <pre class="language-python"><code class="language-python"># Aggregate revenue by shop and product line, reshape long -&gt; wide,
+# and plot a formatted comparison chart. Same pattern on two datasets.
+
+import pandas as pd
+import numpy as np
+from matplotlib.ticker import FuncFormatter
+
+# 1.0 Ski shops: revenue by shop and skill level
+df = pd.read_pickle(&quot;ski_orderlines_wrangled_df.pkl&quot;)
+
+# Sum and median revenue per level
+df[[&#x27;Level&#x27;, &#x27;total_revenue&#x27;]] \
+    .groupby([&#x27;Level&#x27;]) \
+    .agg([np.sum, np.median]) \
+    .reset_index()
+
+# Total revenue by shop and level, sorted, with readable column names
+skishop_revenue_df = df[[&#x27;skishop_name&#x27;, &#x27;Level&#x27;, &#x27;total_revenue&#x27;]] \
+    .groupby([&#x27;skishop_name&#x27;, &#x27;Level&#x27;]) \
+    .agg(np.sum) \
+    .reset_index() \
+    .sort_values(&#x27;total_revenue&#x27;, ascending=False) \
+    .rename(columns=lambda x: x.replace(&quot;_&quot;, &quot; &quot;).title())
+
+# Long -&gt; wide: one row per shop, one column per level
+skishop_revenue_wide_df = skishop_revenue_df \
+    .pivot(
+        index=&#x27;Skishop Name&#x27;,
+        columns=&#x27;Level&#x27;,
+        values=&#x27;Total Revenue&#x27;
+    ) \
+    .reset_index()
+skishop_revenue_wide_df.columns = [&#x27;Skishop Name&#x27;, &#x27;Advanced&#x27;, &#x27;Beginner&#x27;, &#x27;Intermediate&#x27;]
+
+skishop_revenue_wide_df \
+    .sort_values(&quot;Advanced&quot;) \
+    .plot(
+        x=&quot;Skishop Name&quot;,
+        y=[&quot;Advanced&quot;, &quot;Intermediate&quot;, &quot;Beginner&quot;],
+        kind=&quot;barh&quot;,
+        figsize=(6, 10)
+    ) \
+    .xaxis.set_major_formatter(FuncFormatter(
+        lambda x, pos: f&#x27;${int(x/1000)}k&#x27;     # 125000 -&gt; $125k
+    ))
+
+# 2.0 Bike shops: same pattern, mountain vs road
+df = pd.read_pickle(&quot;bike_orderlines_wrangled_df.pkl&quot;)
+
+df[[&#x27;category_1&#x27;, &#x27;category_2&#x27;, &#x27;total_price&#x27;]] \
+    .groupby([&#x27;category_1&#x27;, &#x27;category_2&#x27;]) \
+    .agg([np.sum, np.mean]) \
+    .reset_index()
+
+bike_price_df = df[[&#x27;bikeshop_name&#x27;, &#x27;category_1&#x27;, &#x27;total_price&#x27;]] \
+    .groupby([&#x27;bikeshop_name&#x27;, &#x27;category_1&#x27;]) \
+    .agg(np.sum) \
+    .reset_index() \
+    .sort_values(&#x27;total_price&#x27;, ascending=False) \
+    .rename(columns=lambda x: x.replace(&#x27;_&#x27;, &#x27; &#x27;).title())
+
+bike_price_wide_df = bike_price_df \
+    .pivot(
+        index=&#x27;Bikeshop Name&#x27;,
+        columns=&#x27;Category 1&#x27;,
+        values=&#x27;Total Price&#x27;
+    ) \
+    .reset_index()
+bike_price_wide_df.columns = [&#x27;Bikeshop Name&#x27;, &#x27;Mountain&#x27;, &#x27;Road&#x27;]
+
+bike_price_wide_df \
+    .sort_values(&#x27;Mountain&#x27;) \
+    .plot(
+        x=&#x27;Bikeshop Name&#x27;,
+        y=[&#x27;Mountain&#x27;, &#x27;Road&#x27;],
+        kind=&#x27;barh&#x27;,
+        figsize=(6, 10)
+    ) \
+    .xaxis.set_major_formatter(FuncFormatter(
+        lambda x, pos: f&#x27;${int(x/1000000)}m&#x27;  # millions this time
+    ))</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">Selecting and Filtering Data in pandas</h2>
+          <p class="doc-card__summary">Pulls exactly the rows and columns a question needs from 12,947 ski order lines: by name, position, regex, data type, boolean masks, query strings and reproducible samples.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">loc / iloc</span><span class="doc-card__tag">regex</span><span class="doc-card__tag">query</span><span class="doc-card__tag">sampling</span></div>
+          <pre class="language-python"><code class="language-python"># 4.0 Rearranging columns
+# Single column to the front
+l = df.columns.tolist()
+l.remove(&#x27;model&#x27;)
+df[[&#x27;model&#x27;, *l]]        # *l unpacks the list
+
+# Several columns to the front with a list comprehension
+cols_to_front = [&#x27;model&#x27;, &#x27;Level&#x27;]
+l2 = [col for col in df.columns.tolist() if col not in cols_to_front]
+df[[*cols_to_front, *l2]]
+
+# 5.0 Select by data type
+df1 = df.select_dtypes(include=&#x27;object&#x27;)
+df2 = df.select_dtypes(exclude=&#x27;object&#x27;)
+pd.concat([df1, df2], axis=1)
+# concat needs intermediate frames; the list comprehension above does not,
+# so it is the lighter option on memory.
+
+# 6.0 Row filters with boolean masks
+df.order_date &gt;= pd.to_datetime(&#x27;2015-01-01&#x27;)        # boolean Series
+df[df.order_date &gt;= pd.to_datetime(&#x27;2015-01-01&#x27;)]    # apply the mask
+df[df[&#x27;model&#x27;] == &#x27;Nitro Dropout&#x27;]
+df[df[&#x27;model&#x27;].str.startswith(&#x27;Never&#x27;)]
+df[df[&#x27;model&#x27;].str.contains(&#x27;Proto Type&#x27;)]
+
+# 7.0 query(): string filters that read cleanly inside a method chain
+price_threshold_1 = 1600
+price_threshold_2 = 700
+df.query(&#x27;(price &gt;= @price_threshold_1) | (price &lt;= @price_threshold_2)&#x27;)</code></pre>
+          <details>
+            <summary>Full code (64 lines)</summary>
+            <pre class="language-python"><code class="language-python"># Selecting columns and filtering rows in pandas: by name, position, regex,
+# data type, boolean masks, query strings, slicing and reproducible sampling.
+# Data: ski order lines (12,947 rows).
+
+import pandas as pd
+
+df = pd.read_pickle(&quot;ski_orderlines_wrangled_df.pkl&quot;)
+
+# 1.0 Select by name
+df[[&#x27;order_date&#x27;, &#x27;order_id&#x27;, &#x27;order_line&#x27;]]
+df[&#x27;order_date&#x27;]        # one bracket  -&gt; Series (1-D)
+df[[&#x27;order_date&#x27;]]      # two brackets -&gt; DataFrame (2-D)
+
+# 2.0 Select by position
+df.iloc[:, 0:3]         # first 3 columns, &quot;:&quot; = all rows
+df.iloc[:, -3:]         # last 3 columns, negative indexing
+
+# 3.0 Select by text matching (regex)
+#   &#x27;term&#x27;  contains      &#x27;^term&#x27; starts with
+#   &#x27;term$&#x27; ends with     (a)|(b) a OR b
+# Closer to Excel&#x27;s REGEXMATCH than to MATCH.
+df.filter(regex=&#x27;(^model)|(^Level)&#x27;, axis=1)
+df.filter(regex=&#x27;(price$)|(date$)&#x27;, axis=1)
+
+# 4.0 Rearranging columns
+# Single column to the front
+l = df.columns.tolist()
+l.remove(&#x27;model&#x27;)
+df[[&#x27;model&#x27;, *l]]        # *l unpacks the list
+
+# Several columns to the front with a list comprehension
+cols_to_front = [&#x27;model&#x27;, &#x27;Level&#x27;]
+l2 = [col for col in df.columns.tolist() if col not in cols_to_front]
+df[[*cols_to_front, *l2]]
+
+# 5.0 Select by data type
+df1 = df.select_dtypes(include=&#x27;object&#x27;)
+df2 = df.select_dtypes(exclude=&#x27;object&#x27;)
+pd.concat([df1, df2], axis=1)
+# concat needs intermediate frames; the list comprehension above does not,
+# so it is the lighter option on memory.
+
+# 6.0 Row filters with boolean masks
+df.order_date &gt;= pd.to_datetime(&#x27;2015-01-01&#x27;)        # boolean Series
+df[df.order_date &gt;= pd.to_datetime(&#x27;2015-01-01&#x27;)]    # apply the mask
+df[df[&#x27;model&#x27;] == &#x27;Nitro Dropout&#x27;]
+df[df[&#x27;model&#x27;].str.startswith(&#x27;Never&#x27;)]
+df[df[&#x27;model&#x27;].str.contains(&#x27;Proto Type&#x27;)]
+
+# 7.0 query(): string filters that read cleanly inside a method chain
+price_threshold_1 = 1600
+price_threshold_2 = 700
+df.query(&#x27;(price &gt;= @price_threshold_1) | (price &lt;= @price_threshold_2)&#x27;)
+df.query(f&#x27;price &gt;= {price_threshold_1}&#x27;)   # works, but @variables are cleaner
+
+# 8.0 Slicing
+df[:5]
+df.head(5)
+df.tail(5)
+df.iloc[0:5, [1, 3, 5]]   # loc = by label, iloc = by position
+
+# 9.0 Sampling, e.g. for train/test splits
+df.sample(n=10, random_state=123)       # random_state makes it reproducible
+df.sample(frac=0.10, random_state=123)</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">Will a Subscriber Buy? XGBoost Classifier</h2>
+          <p class="doc-card__summary">Trains and cross-validates an XGBoost model in PyCaret on about 19,900 email subscribers to estimate the chance a new subscriber makes a purchase, then scores one new contact.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">PyCaret</span><span class="doc-card__tag">XGBoost</span><span class="doc-card__tag">cross-validation</span><span class="doc-card__tag">AUC</span></div>
+          <pre class="language-python"><code class="language-python"># 1.0 Features and target
+df = subscribers_joined_df[[&quot;member_rating&quot;, &quot;country_code&quot;, &quot;made_purchase&quot;]]
+# member_rating = numeric feature, country_code = categorical feature
+
+# 2.0 Set up the experiment: 80/20 train-test split, fixed seed
+clf_1 = clf.setup(
+    data=df,
+    target=&quot;made_purchase&quot;,
+    train_size=0.8,
+    session_id=123
+)
+# Binary target; transformed train set shape (15920, 3)
+
+# 3.0 Train XGBoost (Extreme Gradient Boosting)
+# Think of friends guessing someone&#x27;s age. Averaging many guesses beats any
+# single guess. Boosting goes further: each friend sees the earlier guesses
+# and corrects them, so the combined guess keeps getting closer.
+xgb_model = clf.create_model(estimator=&quot;xgboost&quot;)
+# 10-fold cross-validation.
+# AUC: 0.5 = random guessing, 1.0 = perfect.
+
+# 4.0 Retrain on all of the data
+xgb_model_finalized = clf.finalize_model(xgb_model)
+
+# 5.0 Score a new subscriber: rating 5, United States
+new_df = pd.DataFrame(dict(
+    member_rating=[5],
+    country_code=[&quot;us&quot;],
+))
+
+clf.predict_model(
+    estimator=xgb_model_finalized,
+    data=new_df,
+    raw_score=True
+)
+# prediction_score_0 = 0.8239, prediction_score_1 = 0.1761
+# -&gt; about an 18% chance this subscriber buys</code></pre>
+          <details>
+            <summary>Full code (50 lines)</summary>
+            <pre class="language-python"><code class="language-python"># Predict whether an email subscriber will make a purchase, using an
+# XGBoost classifier trained and cross-validated through PyCaret.
+# Data: subscribers joined with purchase history (about 19,900 rows).
+
+import pandas as pd
+import pycaret.classification as clf
+
+subscribers_joined_df = pd.read_pickle(&quot;subscribers_joined_df.pkl&quot;)
+
+# 1.0 Features and target
+df = subscribers_joined_df[[&quot;member_rating&quot;, &quot;country_code&quot;, &quot;made_purchase&quot;]]
+# member_rating = numeric feature, country_code = categorical feature
+
+# 2.0 Set up the experiment: 80/20 train-test split, fixed seed
+clf_1 = clf.setup(
+    data=df,
+    target=&quot;made_purchase&quot;,
+    train_size=0.8,
+    session_id=123
+)
+# Binary target; transformed train set shape (15920, 3)
+
+# 3.0 Train XGBoost (Extreme Gradient Boosting)
+# Think of friends guessing someone&#x27;s age. Averaging many guesses beats any
+# single guess. Boosting goes further: each friend sees the earlier guesses
+# and corrects them, so the combined guess keeps getting closer.
+xgb_model = clf.create_model(estimator=&quot;xgboost&quot;)
+# 10-fold cross-validation.
+# AUC: 0.5 = random guessing, 1.0 = perfect.
+
+# 4.0 Retrain on all of the data
+xgb_model_finalized = clf.finalize_model(xgb_model)
+
+# 5.0 Score a new subscriber: rating 5, United States
+new_df = pd.DataFrame(dict(
+    member_rating=[5],
+    country_code=[&quot;us&quot;],
+))
+
+clf.predict_model(
+    estimator=xgb_model_finalized,
+    data=new_df,
+    raw_score=True
+)
+# prediction_score_0 = 0.8239, prediction_score_1 = 0.1761
+# -&gt; about an 18% chance this subscriber buys
+
+# 6.0 Save and reload the model
+clf.save_model(model=xgb_model_finalized, model_name=&quot;xgb_model_finalized&quot;)
+clf.load_model(model_name=&quot;xgb_model_finalized&quot;)</code></pre>
+          </details>
+        </article>
+        <article class="doc-card code-card">
+          <h2 class="doc-card__title">How pandas Is Built: Objects and Data Structures</h2>
+          <p class="doc-card__summary">Works down from a DataFrame to the Series and NumPy arrays underneath it, then through dictionaries, lists and type casting, the pieces that make data cleaning predictable.</p>
+          <div class="code-card__tags"><span class="doc-card__tag">DataFrame / Series</span><span class="doc-card__tag">NumPy</span><span class="doc-card__tag">dict / list</span><span class="doc-card__tag">casting</span></div>
+          <pre class="language-python"><code class="language-python"># 1.0 Everything is an object
+type(df)
+# pandas.core.frame.DataFrame
+# An object bundles
+#   attributes (data, indexes, columns)
+#   methods (groupby, agg, reset_index)
+
+type(df).__mro__
+# Method Resolution Order: most specific class first, most generic last
+#   (DataFrame, NDFrame, PandasObject, DirNamesMixin, IndexingMixin, OpsMixin, object)
+
+type(&quot;car&quot;).mro()
+# [str, object]
+
+df.shape
+# (12947, 13)
+
+df.query(&quot;Level == &#x27;Intermediate&#x27;&quot;)
+# A method is a function attached to an object
+
+# 2.0 The three layers of a DataFrame
+type(df[&#x27;order_date&#x27;])
+# pandas.core.series.Series -&gt; each column is a Series
+
+df[&#x27;order_date&#x27;].dt.year
+# .dt is an accessor, like .str: it reaches inside the Series
+
+type(df.index)
+
+type(df[&#x27;order_date&#x27;].values).mro()
+# [numpy.ndarray, object]
+# Externally order_date is a pandas Series; internally it is a NumPy array.
+#
+#   1) DataFrame   holds many Series
+#   2) Series      adds an index and a name
+#   3) NumPy array does the fast math (sum, mean, std, log) in C</code></pre>
+          <details>
+            <summary>Full code (78 lines)</summary>
+            <pre class="language-python"><code class="language-python"># How pandas is built: objects, classes, and the structures underneath a DataFrame.
+# Data: ski order lines (12,947 rows x 13 columns), already joined and cleaned.
+
+import pandas as pd
+import numpy as np
+
+df = pd.read_pickle(&quot;ski_orderlines_wrangled_df.pkl&quot;)
+
+# 1.0 Everything is an object
+type(df)
+# pandas.core.frame.DataFrame
+# An object bundles
+#   attributes (data, indexes, columns)
+#   methods (groupby, agg, reset_index)
+
+type(df).__mro__
+# Method Resolution Order: most specific class first, most generic last
+#   (DataFrame, NDFrame, PandasObject, DirNamesMixin, IndexingMixin, OpsMixin, object)
+
+type(&quot;car&quot;).mro()
+# [str, object]
+
+df.shape
+# (12947, 13)
+
+df.query(&quot;Level == &#x27;Intermediate&#x27;&quot;)
+# A method is a function attached to an object
+
+# 2.0 The three layers of a DataFrame
+type(df[&#x27;order_date&#x27;])
+# pandas.core.series.Series -&gt; each column is a Series
+
+df[&#x27;order_date&#x27;].dt.year
+# .dt is an accessor, like .str: it reaches inside the Series
+
+type(df.index)
+
+type(df[&#x27;order_date&#x27;].values).mro()
+# [numpy.ndarray, object]
+# Externally order_date is a pandas Series; internally it is a NumPy array.
+#
+#   1) DataFrame   holds many Series
+#   2) Series      adds an index and a name
+#   3) NumPy array does the fast math (sum, mean, std, log) in C
+
+# 3.0 Core Python structures
+# Dictionaries: key-value pairs with fast lookup.
+# Used constantly in pandas: df.rename(), df.agg(), and **kwargs are all dictionaries.
+d = {&#x27;a&#x27;: 1}
+type(d)          # dict
+d.keys()         # dict_keys([&#x27;a&#x27;])
+d.values()       # dict_values([1])
+d[&#x27;a&#x27;]           # 1
+
+# Lists: ordered collections, the workhorse of loops
+l = [1, &#x27;A&#x27;, [2, &#x27;B&#x27;]]   # integer, string, nested list
+l[0]
+l[1]
+l[2]
+list(d.values())[0]
+
+# Base types: str, int, float, bool
+type(1.5).mro()
+type(1)
+df.total_revenue.values            # array([ 890, 1230,  700, ..., 1670, 1190, 1520])
+type(df[&#x27;model&#x27;].values[0])        # str
+
+# 4.0 Casting: converting between types, the heart of data cleaning
+model = &#x27;Rossignol&#x27;
+price = 6070
+f&#x27;The first model is {model}&#x27;
+f&#x27;The price of the first model is {price}&#x27;
+str(price) + &#x27;USD&#x27;
+str(1.0)
+int(&#x27;50%&#x27;.replace(&#x27;%&#x27;, &#x27;&#x27;))        # &quot;50%&quot; -&gt; 50
+
+r = list(range(1, 51))
+r_array = np.array(r)              # list -&gt; NumPy array for fast vector math</code></pre>
+          </details>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <span>© 2026 Jake Moore</span>
+      <span class="footer-sep">·</span>
+      <a href="/">Home</a>
+      <span class="footer-sep">·</span>
+      <a href="portfolio.html">Portfolio</a>
+      <span class="footer-sep">·</span>
+      <a href="contact.html">Contact</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+</html>

@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jake Moore | Excel Formulas</title>
-  <meta name="description" content="Formulas I wrote while learning Excel, each paired with the business question it answers." />
+  <title>Jake Moore | Excel</title>
+  <meta name="description" content="Formulas paired with the business question each one answers." />
   <link rel="canonical" href="https://jakemoore.dev/excel.html" />
   <meta name="author" content="Jake Moore" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Jake Moore | Excel Formulas" />
-  <meta property="og:description" content="Formulas I wrote while learning Excel, each paired with the business question it answers." />
+  <meta property="og:title" content="Jake Moore | Excel" />
+  <meta property="og:description" content="Formulas paired with the business question each one answers." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jakemoore.dev/excel.html" />
   <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
@@ -25,71 +23,89 @@
     .code-hero .hero-name { margin: 0.6rem 0 0.35rem; }
     .code-intro { max-width: 900px; }
     .code-tabs { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .code-tab {
-      font-family: 'League Spartan', sans-serif; font-size: 0.73rem; font-weight: 600;
+    .code-tab { font-family: 'League Spartan', sans-serif; font-size: 0.73rem; font-weight: 600;
       letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3rem 0.9rem;
-      border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; color: rgba(255,255,255,0.8);
-      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-    }
+      border: 1px solid rgba(255,255,255,0.3); border-radius: 4px; color: rgba(255,255,255,0.8); }
     .code-tab:hover { color: var(--white); border-color: rgba(255,255,255,0.7); text-decoration: none; }
     .code-tab.is-active { background: var(--white); border-color: var(--white); color: var(--navy); }
     .code-tab--back { margin-left: auto; border-color: transparent; }
     .code-section { padding-top: 1.25rem; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1.1rem; }
-    .chip {
-      font-family: 'League Spartan', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
-      padding: 0.2rem 0.65rem; border-radius: 999px; background: var(--steel-light);
-      border: 1px solid var(--border); color: var(--navy);
-    }
-    .code-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
-    .code-card--lead { grid-column: 1 / -1; }
-    @media (max-width: 991.98px) { .code-grid { grid-template-columns: minmax(0, 1fr); } }
-    .code-card { min-width: 0; gap: 0.5rem; padding: 1.1rem 1.15rem; }
-    .code-card .doc-card__title { margin: 0; font-size: 1.1rem; }
-    .code-card .doc-card__summary { margin: 0; line-height: 1.6; }
-    .code-card__tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
-    .code-card pre[class*="language-"] {
-      margin: 0; padding: 0.8rem 0.9rem; overflow: auto;
-      background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
-      border-radius: 4px; font-size: 0.78rem; line-height: 1.5;
-    }
-    .code-card details > pre[class*="language-"] { margin-top: 0.5rem; max-height: 40rem; }
-    pre[class*="language-"], code[class*="language-"] {
-      text-shadow: none; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
-      color: var(--charcoal); white-space: pre; word-break: normal; overflow-wrap: normal;
-      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0;
-    }
+
+    .proj { background: var(--white); border: 1px solid var(--border); border-radius: 6px;
+      padding: 1.25rem 1.35rem; margin-bottom: 1.25rem; }
+    .proj__grid { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 1.4rem; }
+    .proj__title { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy);
+      font-size: 1.3rem; margin: 0 0 0.45rem; }
+    .proj__summary { font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.9rem; }
+    .stats { display: grid; gap: 0.5rem; margin-bottom: 0.9rem; }
+    .stat { border-left: 3px solid var(--steel); padding: 0.15rem 0 0.15rem 0.7rem; }
+    .stat b { display: block; font-family: 'League Spartan', sans-serif; font-size: 1.3rem; color: var(--navy);
+      line-height: 1.15; }
+    .stat span { font-size: 0.78rem; color: #4B5563; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.8rem; }
+    .tags span { font-family: 'League Spartan', sans-serif; font-size: 0.7rem; font-weight: 600;
+      padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--steel-light);
+      border: 1px solid var(--border); color: var(--navy); }
+    .proj__link { font-family: 'League Spartan', sans-serif; font-size: 0.78rem; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; }
+    .figs { display: grid; gap: 0.8rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: start; }
+    .figs--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figs a { display: block; border: 1px solid var(--border); border-radius: 4px; background: #fff;
+      padding: 0.35rem; }
+    .figs a:hover { border-color: var(--steel); }
+    .figs img { width: 100%; height: auto; display: block; }
+    .proj__noviz { display: flex; align-items: center; justify-content: center; min-height: 140px;
+      border: 1px dashed var(--border); border-radius: 4px; background: #F6F7F9; padding: 1rem;
+      font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.82rem; color: var(--charcoal); white-space: pre; overflow: auto; }
+
+    details.code { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+    details.code summary { cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem;
+      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); }
+    details.code summary:hover { color: var(--navy); }
+    details.code pre[class*="language-"] { margin: 0.6rem 0 0; padding: 0.8rem 0.9rem; max-height: 42rem;
+      overflow: auto; background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
+      border-radius: 4px; font-size: 0.78rem; line-height: 1.5; }
+    pre[class*="language-"], code[class*="language-"] { text-shadow: none; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace;
+      color: var(--charcoal); white-space: pre; font-variant-ligatures: none; }
     .token.comment { color: #6B7280; font-style: italic; }
     .token.keyword, .token.boolean { color: var(--navy); font-weight: 700; }
     .token.function { color: #1D5FAA; }
     .token.string { color: #1A6B4A; }
     .token.number { color: #9A5B0A; }
     .token.operator, .token.punctuation { color: #4B5563; background: none; }
-    .code-card summary {
-      cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); padding: 0.2rem 0;
-    }
-    .code-card summary:hover { color: var(--navy); }
-    .code-card summary:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--steel); border-radius: 3px; }
-    .code-card .doc-card__actions { margin-top: 0; padding-top: 0; }
-    .code-card .doc-card__actions .btn-resume { flex: 0 0 auto; padding: 0.45rem 1rem; font-size: 0.72rem; }
+
+    .found { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 1.35rem; }
+    .found h2 { font-family: 'League Spartan', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--steel); margin: 0.6rem 0 0.2rem; }
+    .found details.code { margin-top: 0; padding: 0.55rem 0; }
+    .found details.code + details.code { border-top: 1px solid var(--border); }
+    .found summary b { color: var(--navy); margin-right: 0.5rem; }
+    .found summary span { text-transform: none; letter-spacing: 0; font-weight: 400; color: #4B5563;
+      font-family: 'Libre Baskerville', serif; font-size: 0.82rem; }
+
     .xl-skills { font-family: 'League Spartan', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--navy);
       margin-bottom: 0.9rem; line-height: 1.5; }
     .xl-table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--border);
-      border-radius: 6px; font-size: 0.85rem; }
+      font-size: 0.85rem; }
     .xl-table th { font-family: 'League Spartan', sans-serif; font-size: 0.68rem; letter-spacing: 0.12em;
       text-transform: uppercase; color: var(--white); background: var(--navy); padding: 0.55rem 0.8rem; text-align: left; }
     .xl-table td { padding: 0.55rem 0.8rem; border-top: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
     .xl-table tr:nth-child(even) td { background: #F6F7F9; }
     .xl-table td:first-child { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy); width: 22%; }
     .xl-table td:nth-child(2) { width: 36%; }
-    .xl-table code { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem;
-      color: var(--charcoal); background: var(--steel-light); padding: 0.1rem 0.35rem; border-radius: 3px;
-      overflow-wrap: anywhere; word-break: break-word;
-      font-variant-ligatures: none; font-feature-settings: "liga" 0, "calt" 0; }
+    .xl-table code { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem; color: var(--charcoal); background: var(--steel-light);
+      padding: 0.1rem 0.35rem; border-radius: 3px; overflow-wrap: anywhere; }
+
+    @media (max-width: 991.98px) {
+      .proj__grid { grid-template-columns: minmax(0, 1fr); }
+      .stats { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    }
     @media (max-width: 767.98px) {
       .code-tab--back { margin-left: 0; }
       .portfolio-hero.code-hero { padding-top: 6.4rem; }
+      .proj { padding: 1rem; }
+      .figs, .figs--4 { grid-template-columns: minmax(0, 1fr); }
       .xl-table thead { display: none; }
       .xl-table, .xl-table tbody, .xl-table tr, .xl-table td { display: block; width: 100% !important; }
       .xl-table tr { border-top: 1px solid var(--border); padding: 0.5rem 0; }
@@ -99,7 +115,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/">Jake Moore &middot; Management Information Systems</a>
@@ -124,8 +139,8 @@
         <a class="code-tab is-active" aria-current="page" href="excel.html">Excel</a>
         <a class="code-tab code-tab--back" href="portfolio.html">All work samples</a>
       </nav>
-      <h1 class="hero-name">Excel Formulas</h1>
-      <p class="hero-tagline code-intro">Formulas I wrote while learning Excel, each paired with the business question it answers.</p>
+      <h1 class="hero-name">Excel</h1>
+      <p class="hero-tagline code-intro">Formulas paired with the business question each one answers.</p>
     </div>
   </section>
 
@@ -156,7 +171,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <span>© 2026 Jake Moore</span>

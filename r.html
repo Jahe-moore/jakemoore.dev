@@ -56,9 +56,48 @@
       padding: 0.35rem; }
     .figs a:hover { border-color: var(--steel); }
     .figs img { width: 100%; height: auto; display: block; }
-    .proj__noviz { display: flex; align-items: center; justify-content: center; min-height: 140px;
-      border: 1px dashed var(--border); border-radius: 4px; background: #F6F7F9; padding: 1rem;
-      font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.82rem; color: var(--charcoal); white-space: pre; overflow: auto; }
+    .proj__noviz { border: 1px solid var(--border); border-left: 3px solid var(--steel); border-radius: 4px;
+      background: #F6F7F9; padding: 0.7rem 0.9rem; align-self: center;
+      font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem; color: var(--charcoal); white-space: pre; overflow: auto; }
+    .proj--wide .proj__grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .proj--wide .proj__grid > div:first-child { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      column-gap: 2rem; align-items: start; }
+    .proj--wide .proj__title, .proj--wide .proj__summary { grid-column: 1; }
+    .proj--wide .stats { grid-column: 2; grid-row: 1 / span 3; }
+    .proj--wide .tags { grid-column: 1; }
+    .proj--wide .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figs--1 { max-width: 760px; }
+    .proj--compact { padding: 1rem 1.35rem; }
+    .proj--compact .proj__grid { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .proj--compact .proj__summary { margin-bottom: 0.6rem; max-width: 640px; }
+    .proj--compact .stats { grid-auto-flow: column; grid-auto-columns: max-content; gap: 1.4rem;
+      margin-bottom: 0.6rem; }
+    .proj--compact .tags { margin-bottom: 0; }
+    .proj--compact details.code { margin-top: 0.7rem; }
+
+    .fx { display: flex; align-items: stretch; margin-top: 1rem; border: 1px solid #C8CDD5; border-radius: 3px;
+      background: #fff; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.8rem; overflow: hidden; }
+    .fx > * { padding: 0.4rem 0.6rem; display: flex; align-items: center; }
+    .fx__cell { min-width: 4.2rem; justify-content: center; border-right: 1px solid #C8CDD5; color: #374151;
+      background: #F3F4F6; }
+    .fx__fx { font-style: italic; font-weight: 700; color: #6B7280; border-right: 1px solid #C8CDD5; }
+    .fx__f { flex: 1; color: var(--charcoal); overflow-x: auto; white-space: nowrap; }
+    .fx__val { border-left: 1px solid #C8CDD5; background: #E8F3EC; color: #14532D; font-weight: 700;
+      white-space: nowrap; }
+    .fx__f .fn { color: #1D5FAA; font-weight: 700; }
+    .fx__f .ref { color: #9A5B0A; }
+    .fx__f .str { color: #1A6B4A; }
+    .ftable { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-size: 0.8rem; }
+    .ftable th { font-family: 'League Spartan', sans-serif; font-size: 0.66rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #4B5563; text-align: left; padding: 0.35rem 0.6rem;
+      border-bottom: 1px solid var(--border); }
+    .ftable td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #EEF0F3; vertical-align: top; }
+    .ftable td:first-child { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; color: #374151; width: 4.5rem; }
+    .ftable td:nth-child(2) { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; overflow-wrap: anywhere; }
+    .ftable td:last-child { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; color: #14532D; font-weight: 700; width: 30%; }
+    .ftable--ref td:first-child { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy);
+      width: 22%; }
+    .ftable--ref td:last-child { font-family: inherit; color: #4B5563; font-weight: 400; width: 34%; }
 
     details.code { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
     details.code summary { cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem;
@@ -99,8 +138,13 @@
       padding: 0.1rem 0.35rem; border-radius: 3px; overflow-wrap: anywhere; }
 
     @media (max-width: 991.98px) {
-      .proj__grid { grid-template-columns: minmax(0, 1fr); }
+      .proj__grid, .proj--compact .proj__grid { grid-template-columns: minmax(0, 1fr); }
       .stats { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .proj--compact .stats { grid-auto-flow: row; }
+      .proj--wide .proj__grid > div:first-child { display: block; }
+      .fx { flex-wrap: wrap; }
+      .fx__f { flex-basis: 100%; order: 3; border-top: 1px solid #C8CDD5; }
+      .fx__val { margin-left: auto; }
     }
     @media (max-width: 767.98px) {
       .code-tab--back { margin-left: 0; }
@@ -698,7 +742,7 @@ ggplot(two_years_wide, aes(x = cost_2004, y = cost_2015)) +
             <div class="tags"><span>left_join</span><span>join validation</span><span>count</span><span>facet_wrap</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/olympic_medals_top3_by_type.png" target="_blank" rel="noopener"><img src="assets/img/code/olympic_medals_top3_by_type.png" alt="Medals per Summer Games for USA, Russia and Germany by medal type" loading="lazy"></a></div>
+          <div class="figs figs--1"><a href="assets/img/code/olympic_medals_top3_by_type.png" target="_blank" rel="noopener"><img src="assets/img/code/olympic_medals_top3_by_type.png" alt="Medals per Summer Games for USA, Russia and Germany by medal type" loading="lazy"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 67 lines</summary><pre class="language-r"><code class="language-r"># 120 years of Olympic results: join country codes to regions, validate the
 # join, rank regions by medals, and compare the leaders with faceted trends.

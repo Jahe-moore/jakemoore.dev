@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jake Moore | Excel</title>
-  <meta name="description" content="Formulas paired with the business question each one answers." />
+  <meta name="description" content="Pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
   <link rel="canonical" href="https://jakemoore.dev/excel.html" />
   <meta name="author" content="Jake Moore" />
   <meta property="og:title" content="Jake Moore | Excel" />
-  <meta property="og:description" content="Formulas paired with the business question each one answers." />
+  <meta property="og:description" content="Pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://jakemoore.dev/excel.html" />
   <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
@@ -55,9 +55,48 @@
       padding: 0.35rem; }
     .figs a:hover { border-color: var(--steel); }
     .figs img { width: 100%; height: auto; display: block; }
-    .proj__noviz { display: flex; align-items: center; justify-content: center; min-height: 140px;
-      border: 1px dashed var(--border); border-radius: 4px; background: #F6F7F9; padding: 1rem;
-      font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.82rem; color: var(--charcoal); white-space: pre; overflow: auto; }
+    .proj__noviz { border: 1px solid var(--border); border-left: 3px solid var(--steel); border-radius: 4px;
+      background: #F6F7F9; padding: 0.7rem 0.9rem; align-self: center;
+      font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.78rem; color: var(--charcoal); white-space: pre; overflow: auto; }
+    .proj--wide .proj__grid { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+    .proj--wide .proj__grid > div:first-child { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      column-gap: 2rem; align-items: start; }
+    .proj--wide .proj__title, .proj--wide .proj__summary { grid-column: 1; }
+    .proj--wide .stats { grid-column: 2; grid-row: 1 / span 3; }
+    .proj--wide .tags { grid-column: 1; }
+    .proj--wide .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .figs--1 { max-width: 760px; }
+    .proj--compact { padding: 1rem 1.35rem; }
+    .proj--compact .proj__grid { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .proj--compact .proj__summary { margin-bottom: 0.6rem; max-width: 640px; }
+    .proj--compact .stats { grid-auto-flow: column; grid-auto-columns: max-content; gap: 1.4rem;
+      margin-bottom: 0.6rem; }
+    .proj--compact .tags { margin-bottom: 0; }
+    .proj--compact details.code { margin-top: 0.7rem; }
+
+    .fx { display: flex; align-items: stretch; margin-top: 1rem; border: 1px solid #C8CDD5; border-radius: 3px;
+      background: #fff; font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; font-size: 0.8rem; overflow: hidden; }
+    .fx > * { padding: 0.4rem 0.6rem; display: flex; align-items: center; }
+    .fx__cell { min-width: 4.2rem; justify-content: center; border-right: 1px solid #C8CDD5; color: #374151;
+      background: #F3F4F6; }
+    .fx__fx { font-style: italic; font-weight: 700; color: #6B7280; border-right: 1px solid #C8CDD5; }
+    .fx__f { flex: 1; color: var(--charcoal); overflow-x: auto; white-space: nowrap; }
+    .fx__val { border-left: 1px solid #C8CDD5; background: #E8F3EC; color: #14532D; font-weight: 700;
+      white-space: nowrap; }
+    .fx__f .fn { color: #1D5FAA; font-weight: 700; }
+    .fx__f .ref { color: #9A5B0A; }
+    .fx__f .str { color: #1A6B4A; }
+    .ftable { width: 100%; border-collapse: collapse; margin-top: 0.6rem; font-size: 0.8rem; }
+    .ftable th { font-family: 'League Spartan', sans-serif; font-size: 0.66rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #4B5563; text-align: left; padding: 0.35rem 0.6rem;
+      border-bottom: 1px solid var(--border); }
+    .ftable td { padding: 0.4rem 0.6rem; border-bottom: 1px solid #EEF0F3; vertical-align: top; }
+    .ftable td:first-child { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; color: #374151; width: 4.5rem; }
+    .ftable td:nth-child(2) { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; overflow-wrap: anywhere; }
+    .ftable td:last-child { font-family: ui-monospace, 'Cascadia Code', Consolas, 'Courier New', monospace; color: #14532D; font-weight: 700; width: 30%; }
+    .ftable--ref td:first-child { font-family: 'League Spartan', sans-serif; font-weight: 700; color: var(--navy);
+      width: 22%; }
+    .ftable--ref td:last-child { font-family: inherit; color: #4B5563; font-weight: 400; width: 34%; }
 
     details.code { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
     details.code summary { cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem;
@@ -98,8 +137,13 @@
       padding: 0.1rem 0.35rem; border-radius: 3px; overflow-wrap: anywhere; }
 
     @media (max-width: 991.98px) {
-      .proj__grid { grid-template-columns: minmax(0, 1fr); }
+      .proj__grid, .proj--compact .proj__grid { grid-template-columns: minmax(0, 1fr); }
       .stats { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+      .proj--compact .stats { grid-auto-flow: row; }
+      .proj--wide .proj__grid > div:first-child { display: block; }
+      .fx { flex-wrap: wrap; }
+      .fx__f { flex-basis: 100%; order: 3; border-top: 1px solid #C8CDD5; }
+      .fx__val { margin-left: auto; }
     }
     @media (max-width: 767.98px) {
       .code-tab--back { margin-left: 0; }
@@ -140,34 +184,68 @@
         <a class="code-tab code-tab--back" href="portfolio.html">All work samples</a>
       </nav>
       <h1 class="hero-name">Excel</h1>
-      <p class="hero-tagline code-intro">Formulas paired with the business question each one answers.</p>
+      <p class="hero-tagline code-intro">Pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them.</p>
     </div>
   </section>
 
   <section class="section section-glass code-section">
     <div class="container">
-      <p class="xl-skills">Lookups (XLOOKUP, INDEX/MATCH, VLOOKUP) · conditional aggregation (SUMIFS, COUNTIFS, AVERAGEIFS) · structured tables · pivot tables and charts · text and date functions · statistics (CORREL, T.TEST)</p>
-      <table class="xl-table">
-        <thead><tr><th>Technique</th><th>What it solves</th><th>Formula</th></tr></thead>
-        <tbody>
-          <tr><td>XLOOKUP on structured tables</td><td>Pull a policy&#x27;s premium by ID, or a city&#x27;s rate into every row of a 500-row table</td><td><code>=XLOOKUP(Table134[[#This Row],[City]],$S$2:$S$6,$T$2:$T$6)</code></td></tr>
-          <tr><td>XLOOKUP + MAX</td><td>Find the SKU behind the single largest order</td><td><code>=XLOOKUP(MAX(Table14[OrderAmount]),Table14[OrderAmount],Table14[SKU])</code></td></tr>
-          <tr><td>XLOOKUP wildcard, fallback and reverse search</td><td>Partial-text matches, a default when nothing is found, last match instead of first</td><td><code>=XLOOKUP(B48&amp;&quot;*&quot;,F43:F48,G43:G48,,2,1)</code></td></tr>
-          <tr><td>INDEX / MATCH</td><td>Look up a product name by UPC when the key column sits to the right</td><td><code>=INDEX(item_ranking_!B:B, MATCH($B$3, item_ranking_!F:F, 0))</code></td></tr>
-          <tr><td>VLOOKUP inside IF</td><td>Return a contact only when a record is missing a value</td><td><code>=IF(D72=&quot;Y&quot;,&quot;No contact needed&quot;,VLOOKUP(B72,H72:J80,2,FALSE))</code></td></tr>
-          <tr><td>Multi-condition IF / AND / OR</td><td>Flag 1,000 insurance policies as special by claim count and coverage</td><td><code>=IF(AND(Table1345[[#This Row],[Claim_Count]]&gt;3,Table1345[[#This Row],[Coverage_Amount]]&gt;750000),&quot;Special&quot;,&quot;Not Special&quot;)</code></td></tr>
-          <tr><td>IFS tiered pricing</td><td>Apply a different rate to each quantity bracket without nesting</td><td><code>=IFS(B13&lt;500,B13*E$13,B13&lt;=1000,B13*E$14,B13&gt;1000,B13*E$15)</code></td></tr>
-          <tr><td>COUNTIFS / SUMIFS</td><td>Count cancelled orders by state; total earnings by department above a threshold</td><td><code>=SUMIFS(Earnings,Department,B37,Earnings,&quot;&gt;=100,000&quot;)</code></td></tr>
-          <tr><td>AVERAGEIFS</td><td>Average claim amount for comprehensive policies only</td><td><code>=AVERAGEIFS(K3:K501,E3:E501,&quot;Comprehensive&quot;)</code></td></tr>
-          <tr><td>SUBTOTAL on a filtered table</td><td>Averages that update as table filters change</td><td><code>=SUBTOTAL(101,Amazon_Orders[Target Profit])</code></td></tr>
-          <tr><td>Text parsing in a table</td><td>Flag orders shipped outside Washington from a free-text address</td><td><code>=RIGHT(Amazon_Orders[[#This Row],[Shipping_Location]],2)=&quot;WA&quot;=FALSE</code></td></tr>
-          <tr><td>Unit conversion</td><td>Convert 2,000 property areas from square meters to square feet</td><td><code>=CONVERT(M100,&quot;m2&quot;,&quot;ft2&quot;)</code></td></tr>
-          <tr><td>Dynamic report header</td><td>&quot;AS OF&quot; date that always shows the last day of the prior month</td><td><code>=&quot;AS OF &quot;&amp;TEXT(EOMONTH(AB4,-1),&quot;mmmm dd, yyyy&quot;)</code></td></tr>
-          <tr><td>Back out prior-year values</td><td>Rebuild last year&#x27;s household penetration from this year and the % change</td><td><code>=D2/(1+F2)</code></td></tr>
-          <tr><td>CORREL</td><td>Test whether bigger discounts go with bigger orders</td><td><code>=CORREL(G504:G525,H504:H525)</code></td></tr>
-          <tr><td>Welch two-sample t-test</td><td>Is household penetration really different between engaged and low-engagement brands?</td><td><code>=T.TEST(E51:E79,B90:B238,1,3)</code></td></tr>
-        </tbody>
-      </table>
+      <article class="proj proj--wide">
+        <div class="proj__grid">
+          <div>
+            <h2 class="proj__title">Does Caffeine Build Repeat Buyers?</h2>
+            <p class="proj__summary">Household-panel data on consumer brands. Pivot tables with a Brand Engagement slicer compare categories, and a Welch t-test checks whether 29 caffeine brands earn more repeat buyers than 149 other brands.</p>
+            <div class="stats"><div class="stat"><b>r = 0.83</b><span>household penetration vs repeat buyers</span></div><div class="stat"><b>p = 0.19</b><span>caffeine vs other brands: no significant difference</span></div></div>
+            <div class="tags"><span>pivot tables</span><span>slicers</span><span>pivot charts</span><span>CORREL</span><span>T.TEST</span></div>
+            
+          </div>
+          <div class="figs"><a href="assets/img/code/excel_brand_engagement_vs_penetration.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_engagement_vs_penetration.png" alt="Pivot chart: brand engagement versus average household penetration" loading="lazy"></a><a href="assets/img/code/excel_category_spend_per_trip.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_category_spend_per_trip.png" alt="Pivot chart: average dollars spent per trip by category" loading="lazy"></a><a href="assets/img/code/excel_brand_pivot_with_slicer.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_pivot_with_slicer.png" alt="Pivot table of loyalty and spend per trip with a Brand Engagement slicer and CORREL result" loading="lazy"></a></div>
+        </div>
+        <div class="fx" role="img" aria-label="Cell L53: =T.TEST(E51:E79,B90:B238,1,3) returns 0.1914"><span class="fx__cell">L53</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">T.TEST</span>(<span class="ref">E51:E79</span>,<span class="ref">B90:B238</span>,1,3)</code><span class="fx__val">0.1914</span></div><details class="code"><summary>More formulas &middot; 6</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>E4</td><td>=<span class="fn">CORREL</span>(<span class="ref">B4:B16</span>,<span class="ref">C4:C16</span>)</td><td>0.8282</td></tr><tr><td>E21</td><td>=<span class="fn">CORREL</span>(<span class="ref">B21:B33</span>,<span class="ref">C21:C33</span>)</td><td>0.5880</td></tr><tr><td>L55</td><td>=<span class="fn">T.TEST</span>(<span class="ref">F51:F79</span>,<span class="ref">C90:C238</span>,1,3)</td><td>0.1789</td></tr><tr><td>E84</td><td>=<span class="fn">STDEV.S</span>(<span class="ref">E51:E79</span>)</td><td>0.1407</td></tr><tr><td>D87</td><td>=<span class="fn">COUNTIF</span>(<span class="ref">I51:I79</span>,<span class="str">&quot;Low Engagement&quot;</span>)/<span class="fn">COUNTA</span>(<span class="ref">I51:I79</span>)</td><td>10.3%</td></tr><tr><td>E2</td><td>=<span class="ref">D2</span>/(1+<span class="ref">F2</span>)</td><td>22.6% (prior-year penetration)</td></tr></tbody></table></details>
+      </article>
+      <article class="proj">
+        <div class="proj__grid">
+          <div>
+            <h2 class="proj__title">Amazon Orders by City</h2>
+            <p class="proj__summary">1,002 electronics orders in a structured table. A pivot chart ranks revenue by city, SUBTOTAL keeps totals right when the table is filtered, and a text formula flags orders shipped outside Washington.</p>
+            <div class="stats"><div class="stat"><b>$535K</b><span>Seattle, the top revenue city</span></div><div class="stat"><b>$1,014.52</b><span>average price (filter-aware)</span></div></div>
+            <div class="tags"><span>structured tables</span><span>pivot chart</span><span>SUBTOTAL</span><span>RIGHT</span><span>SUMIF</span></div>
+            
+          </div>
+          <div class="figs figs--1"><a href="assets/img/code/excel_amazon_revenue_by_city.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_amazon_revenue_by_city.png" alt="Pivot chart: sum of revenue by shipping location in thousands" loading="lazy"></a></div>
+        </div>
+        <div class="fx" role="img" aria-label="Cell H1004: =SUBTOTAL(101,Amazon_Orders[Price]) returns 1,014.52"><span class="fx__cell">H1004</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">SUBTOTAL</span>(101,Amazon_Orders[Price])</code><span class="fx__val">1,014.52</span></div><details class="code"><summary>More formulas &middot; 2</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>I1004</td><td>=<span class="fn">SUBTOTAL</span>(109,Amazon_Orders[Quantity])</td><td>2,453</td></tr><tr><td>M3</td><td>=<span class="fn">RIGHT</span>(Amazon_Orders[[#This Row],[Shipping_Location]],2)=<span class="str">&quot;WA&quot;</span>=FALSE</td><td>FALSE</td></tr></tbody></table></details>
+      </article>
+      <article class="proj proj--wide">
+        <div class="proj__grid">
+          <div>
+            <h2 class="proj__title">Supplier Order Dashboard</h2>
+            <p class="proj__summary">500 supplier orders. A pivot dashboard with Discount and Notes slicers and an order-date timeline highlights the top region, and a lookup finds the SKU behind the largest order. Bigger discounts did not bring bigger West orders.</p>
+            <div class="stats"><div class="stat"><b>r = -0.07</b><span>discount vs order amount, West</span></div><div class="stat"><b>SKU3248</b><span>largest single order</span></div></div>
+            <div class="tags"><span>timeline</span><span>slicers</span><span>conditional formatting</span><span>XLOOKUP</span><span>pivot chart</span></div>
+            
+          </div>
+          <div class="figs"><a href="assets/img/code/excel_supplier_pivot_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_supplier_pivot_dashboard.png" alt="Pivot dashboard with highlighted top region, timeline and slicers" loading="lazy"></a><a href="assets/img/code/excel_metrics_by_supplier.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_metrics_by_supplier.png" alt="Pivot chart: average order amount and standard deviation by supplier" loading="lazy"></a></div>
+        </div>
+        <div class="fx" role="img" aria-label="Cell P2: =XLOOKUP(MAX(Table14[OrderAmount]),Table14[OrderAmount],Table14[SKU]) returns SKU3248"><span class="fx__cell">P2</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">XLOOKUP</span>(<span class="fn">MAX</span>(Table14[OrderAmount]),Table14[OrderAmount],Table14[SKU])</code><span class="fx__val">SKU3248</span></div><details class="code"><summary>More formulas &middot; 3</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>P1</td><td>=<span class="fn">XLOOKUP</span>(<span class="fn">MAX</span>(Table14[OrderAmount]),Table14[OrderAmount],Table14[Cust_Rebate])</td><td>10</td></tr><tr><td>I504</td><td>=<span class="fn">CORREL</span>(<span class="ref">G504:G525</span>,<span class="ref">H504:H525</span>)</td><td>-0.0655</td></tr><tr><td>G502</td><td>=<span class="fn">SUBTOTAL</span>(101,Table1[OrderAmount])</td><td>506.68</td></tr></tbody></table></details>
+      </article>
+      <article class="proj">
+        <div class="proj__grid">
+          <div>
+            <h2 class="proj__title">Insurance Policy Flags and Renewals</h2>
+            <p class="proj__summary">500 insurance policies. Row formulas flag special and high-risk policies, set renewal discount eligibility and map cities to regions. A timeline and slicers drive the renewal pivot.</p>
+            <div class="stats"><div class="stat"><b>41</b><span>special policies flagged</span></div><div class="stat"><b>69 of 500</b><span>eligible for a renewal discount</span></div></div>
+            <div class="tags"><span>IF / AND / OR</span><span>AVERAGEIFS</span><span>XLOOKUP</span><span>CONVERT</span><span>timeline</span></div>
+            
+          </div>
+          <div class="figs figs--1"><a href="assets/img/code/excel_insurance_renewal_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_insurance_renewal_dashboard.png" alt="Renewal pivot with Policy End Date timeline, Discount Eligibility and Region slicers" loading="lazy"></a></div>
+        </div>
+        <div class="fx" role="img" aria-label="Cell O2: =IF(AND(Table1345[[#This Row],[Claim_Count]]&gt;3,Table1345[[#This Row],[Coverage_Amount]]&gt;750000),&quot;Special&quot;,&quot;Not Special&quot;) returns Not Special"><span class="fx__cell">O2</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">IF</span>(<span class="fn">AND</span>(Table1345[[#This Row],[Claim_Count]]&gt;3,Table1345[[#This Row],[Coverage_Amount]]&gt;750000),<span class="str">&quot;Special&quot;</span>,<span class="str">&quot;Not Special&quot;</span>)</code><span class="fx__val">Not Special</span></div><details class="code"><summary>More formulas &middot; 5</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>P3</td><td>=<span class="fn">IF</span>(<span class="fn">OR</span>(Table1345[[#This Row],[Premium_Amount]]&gt;4000,Table1345[[#This Row],[Claim_Amount]]&gt;25000),<span class="str">&quot;Yes&quot;</span>,<span class="str">&quot;No&quot;</span>)</td><td>Yes</td></tr><tr><td>K2</td><td>=<span class="fn">AVERAGEIFS</span>(<span class="ref">K3:K501</span>,<span class="ref">E3:E501</span>,<span class="str">&quot;Comprehensive&quot;</span>)</td><td>2.43 (fills a missing claim count)</td></tr><tr><td>P2</td><td>=<span class="fn">XLOOKUP</span>(Table134[[#This Row],[City]],<span class="ref">$S$2:$S$6</span>,<span class="ref">$T$2:$T$6</span>)</td><td>South</td></tr><tr><td>Q4</td><td>=<span class="fn">XLOOKUP</span>(<span class="ref">Q3</span>,Policy_ID,Premium_Amount)</td><td>1,261</td></tr><tr><td>N2</td><td>=<span class="fn">CONVERT</span>(<span class="ref">M2</span>,<span class="str">&quot;m2&quot;</span>,<span class="str">&quot;ft2&quot;</span>)</td><td>1,194.79</td></tr></tbody></table></details>
+      </article>
+      <div class="found">
+        <h2>Foundations</h2>
+        <details class="code"><summary><b>Lookups, logic and text</b><span>6 more formulas: INDEX/MATCH, wildcard XLOOKUP, IFS, SUMIFS, EOMONTH</span></summary><table class="ftable ftable--ref"><thead><tr><th>Technique</th><th>Formula</th><th>What it solves</th></tr></thead><tbody><tr><td>XLOOKUP wildcard, fallback and reverse search</td><td>=<span class="fn">XLOOKUP</span>(<span class="ref">B48</span>&amp;<span class="str">&quot;*&quot;</span>,<span class="ref">F43:F48</span>,<span class="ref">G43:G48</span>,,2,1)</td><td>Partial-text matches, a default when nothing is found, last match instead of first</td></tr><tr><td>INDEX / MATCH</td><td>=<span class="fn">INDEX</span>(item_ranking_!<span class="ref">B:B</span>, <span class="fn">MATCH</span>(<span class="ref">$B$3</span>, item_ranking_!<span class="ref">F:F</span>, 0))</td><td>Look up a product name by UPC when the key column sits to the right</td></tr><tr><td>VLOOKUP inside IF</td><td>=<span class="fn">IF</span>(<span class="ref">D72</span>=<span class="str">&quot;Y&quot;</span>,<span class="str">&quot;No contact needed&quot;</span>,<span class="fn">VLOOKUP</span>(<span class="ref">B72</span>,<span class="ref">H72:J80</span>,2,FALSE))</td><td>Return a contact only when a record is missing a value</td></tr><tr><td>IFS tiered pricing</td><td>=<span class="fn">IFS</span>(<span class="ref">B13</span>&lt;500,<span class="ref">B13</span>*<span class="ref">E$13</span>,<span class="ref">B13</span>&lt;=1000,<span class="ref">B13</span>*<span class="ref">E$14</span>,<span class="ref">B13</span>&gt;1000,<span class="ref">B13</span>*<span class="ref">E$15</span>)</td><td>Apply a different rate to each quantity bracket without nesting</td></tr><tr><td>COUNTIFS / SUMIFS</td><td>=<span class="fn">SUMIFS</span>(Earnings,Department,<span class="ref">B37</span>,Earnings,<span class="str">&quot;&gt;=100,000&quot;</span>)</td><td>Count cancelled orders by state; total earnings by department above a threshold</td></tr><tr><td>Dynamic report header</td><td>=<span class="str">&quot;AS OF &quot;</span>&amp;<span class="fn">TEXT</span>(<span class="fn">EOMONTH</span>(<span class="ref">AB4</span>,-1),<span class="str">&quot;mmmm dd, yyyy&quot;</span>)</td><td>&quot;AS OF&quot; date that always shows the last day of the prior month</td></tr></tbody></table></details>
+      </div>
     </div>
   </section>
 

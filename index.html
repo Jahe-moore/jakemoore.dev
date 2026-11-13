@@ -33,24 +33,48 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "ProfilePage",
+        "@id": "https://jakemoore.dev/#profilepage",
+        "url": "https://jakemoore.dev/",
+        "name": "Jake Moore | Management Information Systems, University of Arizona",
+        "dateModified": "2026-11-13",
+        "mainEntity": {
+          "@id": "https://jakemoore.dev/#person"
+        },
+        "isPartOf": {
+          "@id": "https://jakemoore.dev/#website"
+        }
+      },
+      {
         "@type": "Person",
         "@id": "https://jakemoore.dev/#person",
         "name": "Jake Moore",
         "alternateName": "Jake M.",
         "url": "https://jakemoore.dev/",
         "image": "https://jakemoore.dev/assets/img/headshot.png",
+        "description": "Management Information Systems student at the University of Arizona Eller College of Management and Digital Engineering / IT Intern at Honeywell Aerospace, based in Tucson, Arizona.",
         "jobTitle": "Digital Engineering / IT Intern",
         "worksFor": {
           "@type": "Organization",
           "name": "Honeywell Aerospace"
         },
-        "alumniOf": {
+        "affiliation": {
           "@type": "CollegeOrUniversity",
-          "name": "University of Arizona, Eller College of Management"
+          "name": "University of Arizona",
+          "department": {
+            "@type": "Organization",
+            "name": "Eller College of Management"
+          }
         },
+        "homeLocation": {
+          "@type": "Place",
+          "name": "Tucson, Arizona"
+        },
+        "knowsAbout": ["Management Information Systems", "Business analytics", "Python", "R", "SQL", "Tableau", "Cloud infrastructure"],
         "sameAs": [
           "https://www.linkedin.com/in/jake-moore74/",
           "https://github.com/Jahe-moore",
+          "https://www.youtube.com/@JakeMooreEdu",
           "https://public.tableau.com/app/profile/jake.moore8327/vizzes"
         ]
       },

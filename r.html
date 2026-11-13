@@ -3,22 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jake Moore | R</title>
-  <meta name="description" content="Regression from linear fits to logistic and ridge models, and ggplot2 charts that state their finding." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; img-src 'self' data: https://i.ytimg.com https://cdn.jsdelivr.net; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <title>Jake Moore | R Code Samples: Regression and ggplot2</title>
+  <meta name="description" content="R code samples by Jake Moore: regression from linear fits to logistic and ridge models, and ggplot2 charts that state their finding." />
   <link rel="canonical" href="https://jakemoore.dev/r.html" />
   <meta name="author" content="Jake Moore" />
-  <meta property="og:title" content="Jake Moore | R" />
-  <meta property="og:description" content="Regression from linear fits to logistic and ridge models, and ggplot2 charts that state their finding." />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1B2A4A" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Jake Moore" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jake Moore | R Code Samples: Regression and ggplot2" />
+  <meta property="og:description" content="R code samples by Jake Moore: regression from linear fits to logistic and ridge models, and ggplot2 charts that state their finding." />
   <meta property="og:url" content="https://jakemoore.dev/r.html" />
-  <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
-  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <meta property="og:image" content="https://jakemoore.dev/assets/img/jake-moore-arizona.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Jake Moore, University of Arizona MIS student" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Jake Moore | R Code Samples: Regression and ggplot2" />
+  <meta name="twitter:description" content="R code samples by Jake Moore: regression from linear fits to logistic and ridge models, and ggplot2 charts that state their finding." />
+  <meta name="twitter:image" content="https://jakemoore.dev/assets/img/jake-moore-arizona.jpg" />
+  <meta name="twitter:image:alt" content="Jake Moore, University of Arizona MIS student" />
+
+  <link rel="preload" href="/assets/fonts/league-spartan-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/libre-baskerville-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/bootstrap.trim.css?v=20261113">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261110d">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261113">
   <style>
     .code-hero { padding-bottom: 1.4rem; }
     .code-hero .hero-name { margin: 0.6rem 0 0.35rem; }
@@ -101,7 +120,7 @@
 
     details.code { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
     details.code summary { cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem;
-      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); }
+      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel-text); }
     details.code summary:hover { color: var(--navy); }
     details.code pre[class*="language-"] { margin: 0.6rem 0 0; padding: 0.8rem 0.9rem; max-height: 42rem;
       overflow: auto; background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
@@ -117,7 +136,7 @@
 
     .found { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 1.35rem; }
     .found h2 { font-family: 'League Spartan', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--steel); margin: 0.6rem 0 0.2rem; }
+      text-transform: uppercase; color: var(--steel-text); margin: 0.6rem 0 0.2rem; }
     .found details.code { margin-top: 0; padding: 0.55rem 0; }
     .found details.code + details.code { border-top: 1px solid var(--border); }
     .found summary b { color: var(--navy); margin-right: 0.5rem; }
@@ -163,7 +182,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/">Jake Moore &middot; Management Information Systems</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler collapsed" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -175,6 +194,8 @@
       </div>
     </div>
   </nav>
+
+  <main id="main">
 
   <section class="portfolio-hero code-hero">
     <div class="container">
@@ -200,7 +221,7 @@
             <div class="tags"><span>glm binomial</span><span>caret</span><span>pROC</span><span>broom</span><span>ggplot2</span></div>
             <a class="proj__link" href="assets/docs/Flight_Delay_Analysis.pdf" target="_blank" rel="noopener">Full write-up (PDF)</a>
           </div>
-          <div class="figs figs--4"><a href="assets/img/code/flight_delay_by_origin_airport.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_delay_by_origin_airport.png" alt="Top and bottom five origin airports by share of flights delayed" loading="lazy"></a><a href="assets/img/code/flight_factors_increasing_delay.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_factors_increasing_delay.png" alt="Top five factors increasing delay odds: JFK, LGA, EWR, ORD, MIA" loading="lazy"></a><a href="assets/img/code/flight_roc_curve.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_roc_curve.png" alt="ROC curve, AUC 0.7" loading="lazy"></a><a href="assets/img/code/flight_on_time_vs_delayed.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_on_time_vs_delayed.png" alt="56 percent of flights delayed" loading="lazy"></a></div>
+          <div class="figs figs--4"><a href="assets/img/code/flight_delay_by_origin_airport.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_delay_by_origin_airport.png" width="1400" height="966" alt="Top and bottom five origin airports by share of flights delayed" decoding="async"></a><a href="assets/img/code/flight_factors_increasing_delay.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_factors_increasing_delay.png" width="1400" height="974" alt="Top five factors increasing delay odds: JFK, LGA, EWR, ORD, MIA" loading="lazy" decoding="async"></a><a href="assets/img/code/flight_roc_curve.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_roc_curve.png" width="1400" height="974" alt="ROC curve, AUC 0.7" loading="lazy" decoding="async"></a><a href="assets/img/code/flight_on_time_vs_delayed.png" target="_blank" rel="noopener"><img src="assets/img/code/flight_on_time_vs_delayed.png" width="1042" height="996" alt="56 percent of flights delayed" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 192 lines</summary><pre class="language-r"><code class="language-r"># Predicting Flight Delays: A Logistic Regression Approach
 #
@@ -404,7 +425,7 @@ ggplot(top_neg, aes(x = reorder(term, estimate), y = estimate)) +
             <div class="tags"><span>lm</span><span>cubic fit</span><span>LOWESS</span><span>corrplot</span><span>multicollinearity</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/caterpillar_correlation_matrix.png" target="_blank" rel="noopener"><img src="assets/img/code/caterpillar_correlation_matrix.png" alt="Correlation matrix of Caterpillar sales and macro indicators" loading="lazy"></a><a href="assets/img/code/caterpillar_cubic_fit.png" target="_blank" rel="noopener"><img src="assets/img/code/caterpillar_cubic_fit.png" alt="Cubic fit of sales on infrastructure bill score" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/caterpillar_correlation_matrix.png" target="_blank" rel="noopener"><img src="assets/img/code/caterpillar_correlation_matrix.png" width="840" height="840" alt="Correlation matrix of Caterpillar sales and macro indicators" loading="lazy" decoding="async"></a><a href="assets/img/code/caterpillar_cubic_fit.png" target="_blank" rel="noopener"><img src="assets/img/code/caterpillar_cubic_fit.png" width="840" height="840" alt="Cubic fit of sales on infrastructure bill score" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 80 lines</summary><pre class="language-r"><code class="language-r"># What drives Caterpillar sales? Correlation screening, linear vs cubic fits,
 # multiple regression, and removing a predictor that causes multicollinearity.
@@ -496,7 +517,7 @@ summary(model2_multiple)
             <div class="tags"><span>kNN imputation</span><span>lm</span><span>VIF</span><span>glmnet ridge</span><span>residual plots</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/housing_top10_correlations.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_top10_correlations.png" alt="Correlation matrix of the ten predictors most correlated with sale price" loading="lazy"></a><a href="assets/img/code/housing_quality_vs_price.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_quality_vs_price.png" alt="Sale price by overall quality with linear and LOWESS lines" loading="lazy"></a><a href="assets/img/code/housing_residual_plots.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_residual_plots.png" alt="Residual plots for each predictor in the multiple regression" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/housing_top10_correlations.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_top10_correlations.png" width="1400" height="1167" alt="Correlation matrix of the ten predictors most correlated with sale price" loading="lazy" decoding="async"></a><a href="assets/img/code/housing_quality_vs_price.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_quality_vs_price.png" width="1400" height="1167" alt="Sale price by overall quality with linear and LOWESS lines" loading="lazy" decoding="async"></a><a href="assets/img/code/housing_residual_plots.png" target="_blank" rel="noopener"><img src="assets/img/code/housing_residual_plots.png" width="1400" height="1167" alt="Residual plots for each predictor in the multiple regression" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 118 lines</summary><pre class="language-r"><code class="language-r"># Ames housing prices: exploratory analysis, kNN imputation, linear and cubic
 # models, multiple regression, VIF checks, and ridge regression to handle
@@ -626,7 +647,7 @@ residualPlots(model_multiple)
             <div class="tags"><span>pivot_longer</span><span>left_join</span><span>ggplot2</span><span>annotation</span><span>reference lines</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/tuition_by_region.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_by_region.png" alt="Average tuition by region, 2015-16" loading="lazy"></a><a href="assets/img/code/tuition_state_distribution.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_state_distribution.png" alt="Distribution of state tuition with mean line" loading="lazy"></a><a href="assets/img/code/tuition_2004_vs_2015.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_2004_vs_2015.png" alt="State tuition 2004-05 versus 2015-16" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/tuition_by_region.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_by_region.png" width="1400" height="977" alt="Average tuition by region, 2015-16" loading="lazy" decoding="async"></a><a href="assets/img/code/tuition_state_distribution.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_state_distribution.png" width="1400" height="974" alt="Distribution of state tuition with mean line" loading="lazy" decoding="async"></a><a href="assets/img/code/tuition_2004_vs_2015.png" target="_blank" rel="noopener"><img src="assets/img/code/tuition_2004_vs_2015.png" width="1400" height="974" alt="State tuition 2004-05 versus 2015-16" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 104 lines</summary><pre class="language-r"><code class="language-r"># U.S. college tuition, 2004-05 to 2015-16: tidy a wide spreadsheet, join regions,
 # and turn five plain charts into ones that tell the story on their own.
@@ -742,7 +763,7 @@ ggplot(two_years_wide, aes(x = cost_2004, y = cost_2015)) +
             <div class="tags"><span>left_join</span><span>join validation</span><span>count</span><span>facet_wrap</span></div>
             
           </div>
-          <div class="figs figs--1"><a href="assets/img/code/olympic_medals_top3_by_type.png" target="_blank" rel="noopener"><img src="assets/img/code/olympic_medals_top3_by_type.png" alt="Medals per Summer Games for USA, Russia and Germany by medal type" loading="lazy"></a></div>
+          <div class="figs figs--1"><a href="assets/img/code/olympic_medals_top3_by_type.png" target="_blank" rel="noopener"><img src="assets/img/code/olympic_medals_top3_by_type.png" width="1400" height="977" alt="Medals per Summer Games for USA, Russia and Germany by medal type" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 67 lines</summary><pre class="language-r"><code class="language-r"># 120 years of Olympic results: join country codes to regions, validate the
 # join, rank regions by medals, and compare the leaders with faceted trends.
@@ -821,7 +842,7 @@ olympic_top3_ordered %&gt;%
             <div class="tags"><span>read from URL</span><span>usmap</span><span>left_join</span><span>cor</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/milk_production_map_2017.png" target="_blank" rel="noopener"><img src="assets/img/code/milk_production_map_2017.png" alt="Choropleth map of 2017 milk production" loading="lazy"></a><a href="assets/img/code/milk_vs_population.png" target="_blank" rel="noopener"><img src="assets/img/code/milk_vs_population.png" alt="State population versus milk produced" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/milk_production_map_2017.png" target="_blank" rel="noopener"><img src="assets/img/code/milk_production_map_2017.png" width="1342" height="984" alt="Choropleth map of 2017 milk production" loading="lazy" decoding="async"></a><a href="assets/img/code/milk_vs_population.png" target="_blank" rel="noopener"><img src="assets/img/code/milk_vs_population.png" width="1400" height="683" alt="State population versus milk produced" loading="lazy" decoding="async"></a></div>
         </div>
         <details class="code"><summary>Code &middot; 74 lines</summary><pre class="language-r"><code class="language-r"># U.S. milk production 1970-2017: pull data straight from the web, map it by
 # state, then join population data and test the relationship.
@@ -961,6 +982,7 @@ land_rover_models &lt;- mpg %&gt;%
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -970,12 +992,16 @@ land_rover_models &lt;- mpg %&gt;%
       <span class="footer-sep">·</span>
       <a href="portfolio.html">Portfolio</a>
       <span class="footer-sep">·</span>
+      <a href="python.html">Python</a>
+      <span class="footer-sep">·</span>
+      <a href="excel.html">Excel</a>
+      <span class="footer-sep">·</span>
       <a href="contact.html">Contact</a>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+  <script src="/assets/js/site.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js" defer></script>
 </body>
 </html>

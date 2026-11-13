@@ -3,21 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jake Moore | Excel</title>
-  <meta name="description" content="Pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; font-src 'self'; img-src 'self' data: https://i.ytimg.com https://cdn.jsdelivr.net; frame-src https://www.youtube-nocookie.com; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <title>Jake Moore | Excel Work Samples: Pivot Tables and Formulas</title>
+  <meta name="description" content="Excel work samples by Jake Moore: pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
   <link rel="canonical" href="https://jakemoore.dev/excel.html" />
   <meta name="author" content="Jake Moore" />
-  <meta property="og:title" content="Jake Moore | Excel" />
-  <meta property="og:description" content="Pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" href="/assets/img/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/img/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1B2A4A" />
+
+  <!-- Open Graph -->
+  <meta property="og:site_name" content="Jake Moore" />
+  <meta property="og:locale" content="en_US" />
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Jake Moore | Excel Work Samples: Pivot Tables and Formulas" />
+  <meta property="og:description" content="Excel work samples by Jake Moore: pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
   <meta property="og:url" content="https://jakemoore.dev/excel.html" />
-  <meta property="og:image" content="https://jakemoore.dev/assets/img/headshot.png" />
-  <meta property="og:image:alt" content="Professional headshot of Jake Moore" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20261110d">
+  <meta property="og:image" content="https://jakemoore.dev/assets/img/jake-moore-arizona.jpg" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="1200" />
+  <meta property="og:image:alt" content="Jake Moore, University of Arizona MIS student" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Jake Moore | Excel Work Samples: Pivot Tables and Formulas" />
+  <meta name="twitter:description" content="Excel work samples by Jake Moore: pivot tables, slicers, timelines and pivot charts on four business datasets, with the formulas behind them." />
+  <meta name="twitter:image" content="https://jakemoore.dev/assets/img/jake-moore-arizona.jpg" />
+  <meta name="twitter:image:alt" content="Jake Moore, University of Arizona MIS student" />
+
+  <link rel="preload" href="/assets/fonts/league-spartan-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/libre-baskerville-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/assets/css/bootstrap.trim.css?v=20261113">
+  <link rel="stylesheet" href="/assets/css/styles.css?v=20261113">
   <style>
     .code-hero { padding-bottom: 1.4rem; }
     .code-hero .hero-name { margin: 0.6rem 0 0.35rem; }
@@ -100,7 +119,7 @@
 
     details.code { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
     details.code summary { cursor: pointer; font-family: 'League Spartan', sans-serif; font-size: 0.75rem;
-      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel); }
+      font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--steel-text); }
     details.code summary:hover { color: var(--navy); }
     details.code pre[class*="language-"] { margin: 0.6rem 0 0; padding: 0.8rem 0.9rem; max-height: 42rem;
       overflow: auto; background: #F6F7F9; border: 1px solid var(--border); border-left: 3px solid var(--steel);
@@ -116,7 +135,7 @@
 
     .found { background: var(--white); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 1.35rem; }
     .found h2 { font-family: 'League Spartan', sans-serif; font-size: 0.75rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--steel); margin: 0.6rem 0 0.2rem; }
+      text-transform: uppercase; color: var(--steel-text); margin: 0.6rem 0 0.2rem; }
     .found details.code { margin-top: 0; padding: 0.55rem 0; }
     .found details.code + details.code { border-top: 1px solid var(--border); }
     .found summary b { color: var(--navy); margin-right: 0.5rem; }
@@ -162,7 +181,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="/">Jake Moore &middot; Management Information Systems</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler collapsed" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -174,6 +193,8 @@
       </div>
     </div>
   </nav>
+
+  <main id="main">
 
   <section class="portfolio-hero code-hero">
     <div class="container">
@@ -199,7 +220,7 @@
             <div class="tags"><span>pivot tables</span><span>slicers</span><span>pivot charts</span><span>CORREL</span><span>T.TEST</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/excel_brand_engagement_vs_penetration.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_engagement_vs_penetration.png" alt="Pivot chart: brand engagement versus average household penetration" loading="lazy"></a><a href="assets/img/code/excel_category_spend_per_trip.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_category_spend_per_trip.png" alt="Pivot chart: average dollars spent per trip by category" loading="lazy"></a><a href="assets/img/code/excel_brand_pivot_with_slicer.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_pivot_with_slicer.png" alt="Pivot table of loyalty and spend per trip with a Brand Engagement slicer and CORREL result" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/excel_brand_engagement_vs_penetration.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_engagement_vs_penetration.png" width="1400" height="460" alt="Pivot chart: brand engagement versus average household penetration" decoding="async"></a><a href="assets/img/code/excel_category_spend_per_trip.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_category_spend_per_trip.png" width="1400" height="519" alt="Pivot chart: average dollars spent per trip by category" loading="lazy" decoding="async"></a><a href="assets/img/code/excel_brand_pivot_with_slicer.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_brand_pivot_with_slicer.png" width="1400" height="648" alt="Pivot table of loyalty and spend per trip with a Brand Engagement slicer and CORREL result" loading="lazy" decoding="async"></a></div>
         </div>
         <div class="fx" role="img" aria-label="Cell L53: =T.TEST(E51:E79,B90:B238,1,3) returns 0.1914"><span class="fx__cell">L53</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">T.TEST</span>(<span class="ref">E51:E79</span>,<span class="ref">B90:B238</span>,1,3)</code><span class="fx__val">0.1914</span></div><details class="code"><summary>More formulas &middot; 6</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>E4</td><td>=<span class="fn">CORREL</span>(<span class="ref">B4:B16</span>,<span class="ref">C4:C16</span>)</td><td>0.8282</td></tr><tr><td>E21</td><td>=<span class="fn">CORREL</span>(<span class="ref">B21:B33</span>,<span class="ref">C21:C33</span>)</td><td>0.5880</td></tr><tr><td>L55</td><td>=<span class="fn">T.TEST</span>(<span class="ref">F51:F79</span>,<span class="ref">C90:C238</span>,1,3)</td><td>0.1789</td></tr><tr><td>E84</td><td>=<span class="fn">STDEV.S</span>(<span class="ref">E51:E79</span>)</td><td>0.1407</td></tr><tr><td>D87</td><td>=<span class="fn">COUNTIF</span>(<span class="ref">I51:I79</span>,<span class="str">&quot;Low Engagement&quot;</span>)/<span class="fn">COUNTA</span>(<span class="ref">I51:I79</span>)</td><td>10.3%</td></tr><tr><td>E2</td><td>=<span class="ref">D2</span>/(1+<span class="ref">F2</span>)</td><td>22.6% (prior-year penetration)</td></tr></tbody></table></details>
       </article>
@@ -212,7 +233,7 @@
             <div class="tags"><span>structured tables</span><span>pivot chart</span><span>SUBTOTAL</span><span>RIGHT</span><span>SUMIF</span></div>
             
           </div>
-          <div class="figs figs--1"><a href="assets/img/code/excel_amazon_revenue_by_city.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_amazon_revenue_by_city.png" alt="Pivot chart: sum of revenue by shipping location in thousands" loading="lazy"></a></div>
+          <div class="figs figs--1"><a href="assets/img/code/excel_amazon_revenue_by_city.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_amazon_revenue_by_city.png" width="1400" height="849" alt="Pivot chart: sum of revenue by shipping location in thousands" loading="lazy" decoding="async"></a></div>
         </div>
         <div class="fx" role="img" aria-label="Cell H1004: =SUBTOTAL(101,Amazon_Orders[Price]) returns 1,014.52"><span class="fx__cell">H1004</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">SUBTOTAL</span>(101,Amazon_Orders[Price])</code><span class="fx__val">1,014.52</span></div><details class="code"><summary>More formulas &middot; 2</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>I1004</td><td>=<span class="fn">SUBTOTAL</span>(109,Amazon_Orders[Quantity])</td><td>2,453</td></tr><tr><td>M3</td><td>=<span class="fn">RIGHT</span>(Amazon_Orders[[#This Row],[Shipping_Location]],2)=<span class="str">&quot;WA&quot;</span>=FALSE</td><td>FALSE</td></tr></tbody></table></details>
       </article>
@@ -225,7 +246,7 @@
             <div class="tags"><span>timeline</span><span>slicers</span><span>conditional formatting</span><span>XLOOKUP</span><span>pivot chart</span></div>
             
           </div>
-          <div class="figs"><a href="assets/img/code/excel_supplier_pivot_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_supplier_pivot_dashboard.png" alt="Pivot dashboard with highlighted top region, timeline and slicers" loading="lazy"></a><a href="assets/img/code/excel_metrics_by_supplier.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_metrics_by_supplier.png" alt="Pivot chart: average order amount and standard deviation by supplier" loading="lazy"></a></div>
+          <div class="figs"><a href="assets/img/code/excel_supplier_pivot_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_supplier_pivot_dashboard.png" width="1400" height="734" alt="Pivot dashboard with highlighted top region, timeline and slicers" loading="lazy" decoding="async"></a><a href="assets/img/code/excel_metrics_by_supplier.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_metrics_by_supplier.png" width="1400" height="845" alt="Pivot chart: average order amount and standard deviation by supplier" loading="lazy" decoding="async"></a></div>
         </div>
         <div class="fx" role="img" aria-label="Cell P2: =XLOOKUP(MAX(Table14[OrderAmount]),Table14[OrderAmount],Table14[SKU]) returns SKU3248"><span class="fx__cell">P2</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">XLOOKUP</span>(<span class="fn">MAX</span>(Table14[OrderAmount]),Table14[OrderAmount],Table14[SKU])</code><span class="fx__val">SKU3248</span></div><details class="code"><summary>More formulas &middot; 3</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>P1</td><td>=<span class="fn">XLOOKUP</span>(<span class="fn">MAX</span>(Table14[OrderAmount]),Table14[OrderAmount],Table14[Cust_Rebate])</td><td>10</td></tr><tr><td>I504</td><td>=<span class="fn">CORREL</span>(<span class="ref">G504:G525</span>,<span class="ref">H504:H525</span>)</td><td>-0.0655</td></tr><tr><td>G502</td><td>=<span class="fn">SUBTOTAL</span>(101,Table1[OrderAmount])</td><td>506.68</td></tr></tbody></table></details>
       </article>
@@ -238,7 +259,7 @@
             <div class="tags"><span>IF / AND / OR</span><span>AVERAGEIFS</span><span>XLOOKUP</span><span>CONVERT</span><span>timeline</span></div>
             
           </div>
-          <div class="figs figs--1"><a href="assets/img/code/excel_insurance_renewal_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_insurance_renewal_dashboard.png" alt="Renewal pivot with Policy End Date timeline, Discount Eligibility and Region slicers" loading="lazy"></a></div>
+          <div class="figs figs--1"><a href="assets/img/code/excel_insurance_renewal_dashboard.png" target="_blank" rel="noopener"><img src="assets/img/code/excel_insurance_renewal_dashboard.png" width="1400" height="750" alt="Renewal pivot with Policy End Date timeline, Discount Eligibility and Region slicers" loading="lazy" decoding="async"></a></div>
         </div>
         <div class="fx" role="img" aria-label="Cell O2: =IF(AND(Table1345[[#This Row],[Claim_Count]]&gt;3,Table1345[[#This Row],[Coverage_Amount]]&gt;750000),&quot;Special&quot;,&quot;Not Special&quot;) returns Not Special"><span class="fx__cell">O2</span><span class="fx__fx">fx</span><code class="fx__f">=<span class="fn">IF</span>(<span class="fn">AND</span>(Table1345[[#This Row],[Claim_Count]]&gt;3,Table1345[[#This Row],[Coverage_Amount]]&gt;750000),<span class="str">&quot;Special&quot;</span>,<span class="str">&quot;Not Special&quot;</span>)</code><span class="fx__val">Not Special</span></div><details class="code"><summary>More formulas &middot; 5</summary><table class="ftable"><thead><tr><th>Cell</th><th>Formula</th><th>Returns</th></tr></thead><tbody><tr><td>P3</td><td>=<span class="fn">IF</span>(<span class="fn">OR</span>(Table1345[[#This Row],[Premium_Amount]]&gt;4000,Table1345[[#This Row],[Claim_Amount]]&gt;25000),<span class="str">&quot;Yes&quot;</span>,<span class="str">&quot;No&quot;</span>)</td><td>Yes</td></tr><tr><td>K2</td><td>=<span class="fn">AVERAGEIFS</span>(<span class="ref">K3:K501</span>,<span class="ref">E3:E501</span>,<span class="str">&quot;Comprehensive&quot;</span>)</td><td>2.43 (fills a missing claim count)</td></tr><tr><td>P2</td><td>=<span class="fn">XLOOKUP</span>(Table134[[#This Row],[City]],<span class="ref">$S$2:$S$6</span>,<span class="ref">$T$2:$T$6</span>)</td><td>South</td></tr><tr><td>Q4</td><td>=<span class="fn">XLOOKUP</span>(<span class="ref">Q3</span>,Policy_ID,Premium_Amount)</td><td>1,261</td></tr><tr><td>N2</td><td>=<span class="fn">CONVERT</span>(<span class="ref">M2</span>,<span class="str">&quot;m2&quot;</span>,<span class="str">&quot;ft2&quot;</span>)</td><td>1,194.79</td></tr></tbody></table></details>
       </article>
@@ -248,6 +269,7 @@
       </div>
     </div>
   </section>
+  </main>
 
   <footer>
     <div class="container">
@@ -257,10 +279,14 @@
       <span class="footer-sep">·</span>
       <a href="portfolio.html">Portfolio</a>
       <span class="footer-sep">·</span>
+      <a href="python.html">Python</a>
+      <span class="footer-sep">·</span>
+      <a href="r.html">R</a>
+      <span class="footer-sep">·</span>
       <a href="contact.html">Contact</a>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/site.js" defer></script>
 </body>
 </html>

@@ -5,34 +5,38 @@
     <loc>https://jakemoore.dev/</loc>
     <lastmod>2026-11-13</lastmod>
     <image:image>
-      <image:loc>https://jakemoore.dev/assets/img/headshot.png</image:loc>
+      <image:loc>https://jakemoore.dev/assets/img/jake-moore-arizona.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://jakemoore.dev/portfolio.html</loc>
-    <lastmod>2026-11-09</lastmod>
-  </url>
-  <url>
-    <loc>https://jakemoore.dev/python.html</loc>
-    <lastmod>2026-11-12</lastmod>
-  </url>
-  <url>
-    <loc>https://jakemoore.dev/r.html</loc>
-    <lastmod>2026-11-12</lastmod>
-  </url>
-  <url>
-    <loc>https://jakemoore.dev/excel.html</loc>
-    <lastmod>2026-11-12</lastmod>
+    <lastmod>2026-11-13</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/contact.html</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-11-13</lastmod>
+    <image:image>
+      <image:loc>https://jakemoore.dev/assets/img/jake-moore-arizona.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://jakemoore.dev/python.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://jakemoore.dev/r.html</loc>
+    <lastmod>2026-11-13</lastmod>
+  </url>
+  <url>
+    <loc>https://jakemoore.dev/excel.html</loc>
+    <lastmod>2026-11-13</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/assets/docs/JakeMoore_Resume.pdf</loc>
-    <lastmod>2026-11-09</lastmod>
+    <lastmod>2026-10-29</lastmod>
   </url>
   <url>
     <loc>https://jakemoore.dev/assets/docs/Flight_Delay_Analysis.pdf</loc>
+    <lastmod>2026-10-29</lastmod>
   </url>
 </urlset>
